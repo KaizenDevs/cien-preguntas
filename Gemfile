@@ -22,6 +22,6 @@ group :development, :test do
   gem 'guard-livereload', require: false
   gem 'byebug'
   gem 'web-console', '~> 2.0'
-  gem 'annotate'  
+  gem 'annotate'
   #gem 'spring'
 end
