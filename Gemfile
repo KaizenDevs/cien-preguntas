@@ -13,20 +13,15 @@ gem "font-awesome-rails"
 gem 'devise'
 gem "figaro"
 gem 'pg'
+gem 'rails_12factor', group: :production
 gem "puma"
-
-
+gem 'hirb'
 
 group :development, :test do
   gem 'guard'
   gem 'guard-livereload', require: false
   gem 'byebug'
   gem 'web-console', '~> 2.0'
-  gem 'annotate'
-  gem 'hirb'
+  gem 'annotate'  
   #gem 'spring'
 end
-
-gem 'rails_12factor', group: :production
-
-ruby "2.2.0"
