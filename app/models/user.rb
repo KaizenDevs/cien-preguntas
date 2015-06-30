@@ -15,8 +15,11 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+<<<<<<< HEAD
 #  name                   :string
 #  lastname               :string
+=======
+>>>>>>> Add notices and alerts to home page
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
