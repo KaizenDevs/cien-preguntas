@@ -17,6 +17,7 @@ gem 'rails_12factor', group: :production
 gem "puma"
 gem 'hirb'
 gem 'mandrill-api', '~> 1.0.53'
+gem 'faker', '~> 1.4.3'
 
 
 group :development, :test do
