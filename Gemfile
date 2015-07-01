@@ -9,7 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
-gem "font-awesome-rails"
+gem 'font-awesome-sass'
 gem 'devise'
 gem "figaro"
 gem 'pg'
