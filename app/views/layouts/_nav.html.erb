@@ -12,7 +12,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Iniciar Sesión", new_user_session_path %></li>
           <li><%= link_to "Crea una cuenta", new_user_registration_path %></li>
