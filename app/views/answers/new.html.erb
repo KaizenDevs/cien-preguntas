@@ -11,7 +11,7 @@
       <div class="form-group">
         <div class="help-block">
         ¿Quieres que tu respuestas sea pública?
-          <%= f.check_box :public , "data-on-text": "si" , "data-off-text": "no", "class": "my-checkbox", "data-size": "mini" %>
+          <%= f.check_box :public , data: { "on-text" => "si" , "off-text" => "no" , "size" => "mini" }, class: "my-checkbox" %>
           <span class="social-btns">
             <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
             <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>

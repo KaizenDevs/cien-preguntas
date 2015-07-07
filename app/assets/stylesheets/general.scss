@@ -64,3 +64,30 @@ html {
 }
 
 .social-btns {display: none;}
+
+// ALERTS
+.alertOffset {
+    /*margin-bottom: 0;*/
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 5000;
+  opacity: 0.85;
+  /*padding-top: 80px;*/
+}
+
+.alert { }
+
+span.right-text { float: right; }
+
+.alertOffset span{
+  cursor: pointer;
+  border-radius: 50%;
+  display: inline-block;
+  background: rgba(0,0,0,0.07);
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  float: right;
+}

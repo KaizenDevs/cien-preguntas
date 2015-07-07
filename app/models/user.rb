@@ -15,14 +15,12 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-<<<<<<< HEAD
-#  name                   :string
-#  lastname               :string
-=======
->>>>>>> df8fbac84aeb19d100af004558be1ed04c6565b8
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
+#  name                   :string
+#  lastname               :string
+#  last_sent_question     :integer
 #
 
 class User < ActiveRecord::Base
