@@ -1,2 +1,11 @@
-<h1>Answers#show</h1>
-<p>Find me in app/views/answers/show.html.erb</p>
+<section class="section">
+  <div class="row">
+    <div class="container">
+      <div class="col-lg-12">
+        <h1><%= @answer.question.question %></h1>
+        <p><%= @answer.answer %></p>
+        <p><%= @answer.public %></p>
+      </div>
+    </div>
+  </div>
+</section>
