@@ -1,0 +1,55 @@
+<section class="section new-answer">
+  <div class="container">
+    <div class="col-lg-6 col-md-offset-3">
+      <h2 class="text-muted"><%= @question.question %></h2>
+      <hr/>
+
+      <%= form_for [@question, @answer] do |f| %>
+      <h5>Respuesta: <span class="word-counter pull-right">Letras: 0</span></h5>
+
+      <%= f.text_area :answer, class: "form-control", rows: "3" %><br/>
+      <div class="form-group">
+        <div class="help-block">
+        ¿Quieres que tu respuestas sea pública?
+          <%= f.check_box :public , "data-on-text": "si" , "data-off-text": "no", "class": "my-checkbox", "data-size": "mini" %>
+          <span class="social-btns">
+            <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+            <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+          </span>
+        </div>
+      </div>
+      <%= f.submit "Enviar respuesta", class: "btn btn-default" %>
+      <% end %>
+      <div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $("[class='my-checkbox']").bootstrapSwitch();
+
+  $(document).ready(function() {
+    $('input[class="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+      console.log(state);
+      if (state){
+        $('.social-btns').fadeIn()
+      }else{
+        $('.social-btns').fadeOut()
+      }
+    });
+  });
+
+  function wordCount( val ){
+    return {
+      charactersNoSpaces : val.replace(/\s+/g, '').length,
+      characters         : val.length,
+      words              : val.match(/\S+/g).length,
+      lines              : val.split(/\r*\n/).length
+    }
+  }
+
+  $('.new-answer form textarea').on('input', function(){
+    var c = wordCount( this.value );
+    $('.word-counter').text( "Words: "+ c.words );
+  });
+</script>
