@@ -10,7 +10,32 @@
 </head>
 <body>
   <%= render 'layouts/nav' %>
+
+  <div class="alerts">
+    <% if flash[:alert] %>
+      <div class="alertOffset">
+          <div class="alert alert-danger text-center" role="alert">
+            <%=flash[:alert]%>
+            <span class="right-text text-right">X</span>
+        </div>
+      </div>
+    <%end%>
+
+    <% if flash[:notice] %>
+      <div class="alertOffset">
+          <div class="alert alert-success text-center" role="alert">
+            <%=flash[:notice]%>
+            <span class="text-right">X</span>
+          </div>
+      </div>
+    <%end%>
+  </div>
+
   <%= yield %>
   <%= render 'layouts/footer' %>
 </body>
 </html>
+<script>
+  $(".alert").fadeIn(500).css("opacity","0.85").delay( 6000 ).fadeOut( 1000 );
+  $('.alerts').on('click','.alert',function(){ $(this).remove() });
+</script>
