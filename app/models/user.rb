@@ -31,4 +31,9 @@ class User < ActiveRecord::Base
 
   has_many :answers
   has_many :questions, through: :answers
+
+  protected
+	  def confirmation_required?
+	    false
+	  end
 end
