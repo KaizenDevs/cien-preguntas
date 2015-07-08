@@ -70,7 +70,7 @@
         </figure>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <h2 class="text-center" style="color: #D84A33"><%= @user.name + " " + @user.lastname %></h2>
+        <h2 class="text-center" style="color: #D84A33"><%= @user.name + " " %><%= @user.lastname if @user.lastname  %></h2>
         <div class="row">
           <div class="col-xs-12 col-sm-6 text-center">
             <h3 style="margin-bottom: 0"><%= @user.answers.count %></h3>
@@ -103,7 +103,7 @@
               <% end %>
             </li>
             <li class="divider"></li>
-            <li><a href="#"><span class="fa fa-warning pull-right"></span> Cancelar cuenta  </a></li>
+            <li><%= link_to "<span class='fa fa-warning pull-right'></span> Cancelar cuenta  ".html_safe, registration_path(@user), data: { confirm: "Estas seguro que deseas cancelar tu cuenta?" }, method: :delete %></li>
           </ul>
         </div>
       </div>
