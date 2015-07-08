@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
 
   has_many :answers
   has_many :questions, through: :answers
-  
+  enum role: [:cliente, :admin]
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
