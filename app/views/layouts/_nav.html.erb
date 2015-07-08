@@ -16,8 +16,7 @@
           <li><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Iniciar Sesión", new_user_session_path %></li>
-          <li><%= link_to "Iniciar Sesión con Facebook", user_omniauth_authorize_path(:facebook) %></li>
-          <li><%= link_to "Iniciar Sesión con Twitter", user_omniauth_authorize_path(:twitter) %></li>
+          <li><%= link_to "Iniciar Sesión con Facebook", user_omniauth_authorize_path(:facebook) %></li>          
           <li><%= link_to "Crea una cuenta", new_user_registration_path %></li>
         <% end %>
       </ul>
