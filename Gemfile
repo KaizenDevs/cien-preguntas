@@ -19,6 +19,7 @@ gem 'hirb'
 gem 'mandrill-api', '~> 1.0.53'
 gem 'faker', '~> 1.4.3'
 gem "bootstrap-switch-rails"
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'guard'

@@ -9,30 +9,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1660814297468391',
+        xfbml      : true,
+        version    : 'v2.3'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
   <%= render 'layouts/nav' %>
 
-  <div class="alerts">
-    <% if flash[:alert] %>
-      <div class="alertOffset">
-          <div class="alert alert-danger text-center" role="alert">
-            <%=flash[:alert]%>
-            <span class="right-text text-right">X</span>
-        </div>
-      </div>
-    <%end%>
-
-    <% if flash[:notice] %>
-      <div class="alertOffset">
-          <div class="alert alert-success text-center" role="alert">
-            <%=flash[:notice]%>
-            <span class="text-right">X</span>
-          </div>
-      </div>
-    <%end%>
-  </div>
+  <%= render 'layouts/alerts' %>
 
   <%= yield %>
+
   <%= render 'layouts/footer' %>
+
 </body>
 </html>
 <script>
