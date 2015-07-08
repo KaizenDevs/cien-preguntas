@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'pages/profile'
+
   resources :questions do
     resources :answers
   end
