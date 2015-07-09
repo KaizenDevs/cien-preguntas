@@ -12,6 +12,22 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar Usuarios <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Ver todos los usuarios</a></li>
+                <li><a href="#">Estadísticas de Usuarios</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar Preguntas <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Todas las preguntas', questions_path %></li>
+                <li><%= link_to 'Agregar Pregunta', new_question_path %></li>
+              </ul>
+            </li>
+          <% end %>
           <li><%= link_to 'Mi Perfil', pages_profile_path %></li>
           <li><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
         <% else %>
