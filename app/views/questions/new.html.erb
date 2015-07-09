@@ -1,12 +1,15 @@
 <div class="container">
+  <h1>Nueva Pregunta</h1>
+
   <%= form_for @question do |f| %>
     <p>
       <%= f.label :question %> <br>
-      <%= f.text_field :question %>
+      <%= f.text_area :question %>
     </p>
 
     <p>
       <%= f.submit %>
     </p>
   <% end %>
+
 </div>

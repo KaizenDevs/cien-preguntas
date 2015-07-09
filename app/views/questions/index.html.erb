@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Preguntas</h1>
+  <%= link_to new_question_path do %>
+    <button class="btn btn-primary pull-right"> <span class="fa fa-plus-square"></span> New Question</button>
+  <% end %>
+  <table class="table">
+    <tr>
+      <th>Question</th>
+    </tr>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.question %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
