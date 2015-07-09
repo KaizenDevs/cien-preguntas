@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 20150707173323) do
     t.string   "name"
     t.string   "lastname"
     t.integer  "last_sent_question"
+    t.integer  "role"
     t.string   "provider"
     t.string   "uid"
-    t.integer  "role"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

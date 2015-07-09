@@ -18,6 +18,11 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def import
+    Question.import(params[:file])
+    redirect_to questions_path, notice: "Se han importado las preguntas."
+  end
+
   private
   def question_params
     params.require(:question).permit(:question)
