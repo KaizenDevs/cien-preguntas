@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'pages/profile'
-  get 'edit_user' => 'users#edit'
+  resources :user, :controller => "user"
   resources :questions do
     resources :answers
   end
