@@ -1,21 +1,35 @@
+<style>
+  .questions-table {
+    margin-top: 20px
+  }
+</style>
+
 <div class="container">
-  <h1>Preguntas</h1>
+  <h1 id="title">Preguntas</h1>
   <%= link_to new_question_path do %>
     <button class="btn btn-primary pull-right"> <span class="fa fa-plus-square"></span> Nueva Pregunta</button>
   <% end %>
-  <h2>Import Products</h2>
   <%= form_tag import_questions_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import" %>
+    <div class="col-md-3">
+      <%= file_field_tag :file, :class => 'question-upload' %>
+    </div>
+    <%= submit_tag "Import", :class => "btn btn-default" %>
   <% end %>
-  <table class="table">
+  <table class="table questions-table">
     <tr>
+      <th>Id</th>
       <th>Question</th>
     </tr>
     <% @questions.each do |question| %>
       <tr>
+        <td><%= question.id %></td>
         <td><%= question.question %></td>
       </tr>
     <% end %>
   </table>
 </div>
+
+<script>
+  $(".question-upload").filestyle({icon: false});
+  $('#input01').filestyle()
+</script>

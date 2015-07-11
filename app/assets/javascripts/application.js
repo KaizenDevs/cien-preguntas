@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require bootstrap-switch
 //= require social-share-button
+//= require bootstrap-filestyle.min.js
 //= require_tree .

@@ -32,6 +32,7 @@
 
   .concept {
     font-size: 16px;
+    margin-top: 20px;
   }
 
   .price {
@@ -115,8 +116,8 @@
       <table class="table" style="margin-top: 10px">
         <tr>
           <td class="tdate grey text-center"><%= answer.created_at.strftime("%b") %> <span class="date"><%= answer.created_at.strftime("%d") %></span></td>
-          <td><span class="tconcept grey"><%= answer.question.question %></span><br><span class="concept"><%= answer.answer %></span></td>
-          <td class="text-center price"><span class="fa fa-angle-up"></span><p class="votes">16</p></td>
+          <td><span class="tconcept grey"><%= answer.question.question %></span><br>
+            <p class="concept"><%= answer.answer %></p></td>
         </tr>
       </table>
 

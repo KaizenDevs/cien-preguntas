@@ -20,7 +20,11 @@ class QuestionsController < ApplicationController
 
   def import
     Question.import(params[:file])
-    redirect_to questions_path, notice: "Se han importado las preguntas."
+    if params.has_key?(:file)
+      redirect_to questions_path, notice: "Se han importado las preguntas."
+    else
+      redirect_to questions_path, alert: "Debe agregar un archivo primero."
+    end
   end
 
   private
