@@ -25,8 +25,8 @@
       <tr>
         <td><%= question.id %></td>
         <td><%= question.question %></td>
-        <td><%= link_to "<span class='fa fa-pencil'></span>".html_safe %></td>
-        <td><%= link_to "<span class='fa fa-trash'></span>".html_safe %></td>
+        <td><%= link_to "<span class='fa fa-pencil'></span>".html_safe, edit_question_path(question) %></td>
+        <td><%= link_to "<span class='fa fa-trash'></span>".html_safe, question_path(question), method: :delete, data: { confirm: '¿Esta seguro que desea elminar esta pregunta?' } %></td>
       </tr>
     <% end %>
   </table>
