@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(version: 20150708165509) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
-    t.string   "lastname"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "name"
+    t.string   "lastname"
     t.integer  "last_sent_question"
     t.string   "provider"
     t.string   "uid"
