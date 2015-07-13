@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'pages/profile'
-
+  resources :user, :controller => "user"
   resources :questions do
     resources :answers
   end

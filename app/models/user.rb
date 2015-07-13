@@ -15,8 +15,11 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+<<<<<<< HEAD
 #  name                   :string
 #  lastname               :string
+=======
+>>>>>>> a855e71e795f310ce5d1d251432dc75fa9849885
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
@@ -33,6 +36,7 @@ class User < ActiveRecord::Base
 
   has_many :answers
   has_many :questions, through: :answers
+<<<<<<< HEAD
   
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -50,6 +54,9 @@ class User < ActiveRecord::Base
       end
     end
   end
+=======
+  enum role: [:cliente, :admin]
+>>>>>>> a855e71e795f310ce5d1d251432dc75fa9849885
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
