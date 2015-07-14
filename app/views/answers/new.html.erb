@@ -11,12 +11,7 @@
       <div class="form-group">
         <div class="help-block">
         ¿Quieres que tu respuestas sea pública?
-          <%= f.check_box :public , data: { "on-text" => "si" , "off-text" => "no" , "size" => "mini" }, class: "my-checkbox" %>
-          <span class="social-btns">
-            <%= social_share_button_tag("Con toda", :url => "https://mardiniii.github.io") %>
-            <!-- <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
-            <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a> -->
-          </span>
+          <%= f.check_box :public , data: { "on-text" => "si" , "off-text" => "no" , "size" => "mini" }, class: "my-checkbox" %>          
         </div>
       </div>
       <%= f.submit "Enviar respuesta", class: "btn btn-default" %>
@@ -36,7 +31,6 @@
   twitterButton.html('<i class="fa fa-twitter"></i>');
   twitterButton.removeClass("social-share-button-twitter");
   twitterButton.addClass("btn btn-social-icon btn-twitter");
-
 
   $(document).ready(function() {
     $('input[class="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {

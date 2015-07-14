@@ -5,7 +5,21 @@
         <h1><%= @answer.question.question %></h1>
         <p><%= @answer.answer %></p>
         <p><%= @answer.public %></p>
+        <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas!", url: "/questions/#{@answer.question.id}/answers/#{@answer.id}", :via => "100preguntas" ) %>
+          <!-- <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+          		<a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a> -->        
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  var facebookButton = $("a.social-share-button-facebook");
+  var twitterButton = $("a.social-share-button-twitter");
+  facebookButton.html('<i class="fa fa-facebook"></i>');
+  facebookButton.removeClass("social-share-button-facebook");
+  facebookButton.addClass("btn btn-social-icon btn-facebook");
+  twitterButton.html('<i class="fa fa-twitter"></i>');
+  twitterButton.removeClass("social-share-button-twitter");
+  twitterButton.addClass("btn btn-social-icon btn-twitter");
+</script>
