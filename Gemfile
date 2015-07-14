@@ -20,6 +20,7 @@ gem 'mandrill-api', '~> 1.0.53'
 gem 'faker', '~> 1.4.3'
 gem "bootstrap-switch-rails"
 gem 'omniauth-facebook'
+gem 'social-share-button', '~> 0.1.8', git: 'https://github.com/cuterxy/social-share-button.git'
 
 group :development, :test do
   gem 'guard'

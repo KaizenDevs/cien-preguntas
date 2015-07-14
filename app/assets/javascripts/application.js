@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-switch
+//= require social-share-button
 //= require_tree .
