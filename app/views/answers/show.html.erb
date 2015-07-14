@@ -5,7 +5,7 @@
         <h1><%= @answer.question.question %></h1>
         <p><%= @answer.answer %></p>
         <p><%= @answer.public %></p>
-        <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas!", url: "/questions/#{@answer.question.id}/answers/#{@answer.id}", :via => "100preguntas" ) %>
+        <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas!", url: "https://vibrant-chaise-6979.herokuapp.com/questions/1/answers/1", :via => "100preguntas" ) %>
           <!-- <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
           		<a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a> -->        
       </div>
