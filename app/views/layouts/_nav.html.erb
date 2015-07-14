@@ -13,6 +13,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <% if current_user.admin? %>
+            <li><%= link_to "Metricas", pages_metrics_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar Usuarios <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -32,7 +33,7 @@
           <li><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Iniciar Sesión", new_user_session_path %></li>
-          <li><%= link_to "Iniciar Sesión con Facebook", user_omniauth_authorize_path(:facebook) %></li>          
+          <li><%= link_to "Iniciar Sesión con Facebook", user_omniauth_authorize_path(:facebook) %></li>
           <li><%= link_to "Crea una cuenta", new_user_registration_path %></li>
         <% end %>
       </ul>

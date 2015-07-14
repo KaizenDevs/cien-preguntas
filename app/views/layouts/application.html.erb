@@ -6,6 +6,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= render 'layouts/favicons_links' %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -41,3 +43,5 @@
   $(".alert").fadeIn(500).css("opacity","0.85").delay( 6000 ).fadeOut( 1000 );
   $('.alerts').on('click','.alert',function(){ $(this).remove() });
 </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
