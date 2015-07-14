@@ -13,14 +13,8 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <% if current_user.admin? %>
-            <li><%= link_to "Metricas", pages_metrics_path %></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar Usuarios <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Ver todos los usuarios</a></li>
-                <li><a href="#">Estadísticas de Usuarios</a></li>
-              </ul>
-            </li>
+            <li><%= link_to "Métricas", pages_metrics_path %></li>
+            <li><%= link_to "Todos los Usuarios", user_index_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar Preguntas <span class="caret"></span></a>
               <ul class="dropdown-menu">

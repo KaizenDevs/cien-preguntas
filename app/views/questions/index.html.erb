@@ -1,4 +1,8 @@
 <style>
+  .info-paragraph {
+    color: gray;
+  }
+
   .questions-table {
     margin-top: 20px
   }
@@ -6,6 +10,8 @@
 
 <div class="container">
   <h1 id="title">Preguntas</h1>
+  <p class="info-paragraph">Puedes agregar las preguntas a través de un archivo CSV. Lo único que debes hacer es escrbir 'question' (sin comillas) en la primera línea y las preguntas que deseas agregar en cada línea consecutiva. Las preguntas serán enviadas a los usuarios en el orden que fueron agregadas (según su Id).</p>
+  <hr>
   <%= link_to new_question_path do %>
     <button class="btn btn-primary pull-right"> <span class="fa fa-plus-square"></span> Nueva Pregunta</button>
   <% end %>

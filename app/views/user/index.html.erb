@@ -1,0 +1,29 @@
+<style>
+  .user-table {
+    margin-top: 30px;
+  }
+</style>
+
+<div class="container">
+  <h1>Usuarios Registrados</h1>
+  <table class="table user-table">
+    <tr>
+      <th>Nombre Completo</th>
+      <th>Usuario desde</th>
+      <th>Último ingreso</th>
+      <th>Respuestas completadas</th>
+      <th>Días Consecutivos</th>
+      <th></th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= "#{user.name} #{user.lastname}" %></td>
+        <td><%= user.created_at.strftime("%b %d, %Y") %> </td>
+        <td><%= user.last_sign_in_at.strftime("%b %d, %Y") %> </td>
+        <td><%= user.answers.count %> </td>
+        <td>0</td>
+        <td><%= link_to "Ver perfil", pages_profile_path %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
