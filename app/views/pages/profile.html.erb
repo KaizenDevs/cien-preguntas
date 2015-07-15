@@ -88,7 +88,7 @@
       <div class="col-xs-6 col-sm-3 text-center">
         <h3 style="background-color: #D84A33; font-size: 15px; padding: 10px 0; margin-top: 10px; color: white; border-radius: 2px"><span class="fa fa-stack-exchange"></span> Respuestas</h3>
       </div>
-
+      <% if @user == current_user %>
       <div class="col-xs-6 col-sm-3 pull-right user-edit">
         <div class="btn-group dropup btn-block">
           <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Opciones </button>
@@ -108,6 +108,7 @@
           </ul>
         </div>
       </div>
+      <% end %>
 
     </div>
 

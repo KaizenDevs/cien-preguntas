@@ -3,7 +3,7 @@ class UserController < ApplicationController
 	include ApplicationHelper
 
 	def index
-		@users = User.all
+		@users = User.where(role: 0)
 	end
 
 	def edit
