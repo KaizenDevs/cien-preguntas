@@ -1,16 +1,44 @@
+<style>
+  .info-paragraph {
+    color: gray;
+  }
+
+  .questions-table {
+    margin-top: 20px
+  }
+</style>
+
 <div class="container">
-  <h1>Preguntas</h1>
+  <h1 id="title">Preguntas</h1>
+  <p class="info-paragraph">Puedes agregar las preguntas a través de un archivo CSV. Lo único que debes hacer es escrbir 'question' (sin comillas) en la primera línea y las preguntas que deseas agregar en cada línea consecutiva. Las preguntas serán enviadas a los usuarios en el orden que fueron agregadas (según su Id).</p>
+  <hr>
   <%= link_to new_question_path do %>
-    <button class="btn btn-primary pull-right"> <span class="fa fa-plus-square"></span> New Question</button>
+    <button class="btn btn-primary pull-right"> <span class="fa fa-plus-square"></span> Nueva Pregunta</button>
   <% end %>
-  <table class="table">
+  <%= form_tag import_questions_path, multipart: true do %>
+    <div class="col-md-3">
+      <%= file_field_tag :file, :class => 'question-upload' %>
+    </div>
+    <%= submit_tag "Import", :class => "btn btn-default" %>
+  <% end %>
+  <table class="table questions-table">
     <tr>
+      <th>Id</th>
       <th>Question</th>
+      <th colspan="2"></th>
     </tr>
     <% @questions.each do |question| %>
       <tr>
+        <td><%= question.id %></td>
         <td><%= question.question %></td>
+        <td><%= link_to "<span class='fa fa-pencil'></span>".html_safe, edit_question_path(question) %></td>
+        <td><%= link_to "<span class='fa fa-trash'></span>".html_safe, question_path(question), method: :delete, data: { confirm: '¿Esta seguro que desea elminar esta pregunta?' } %></td>
       </tr>
     <% end %>
   </table>
 </div>
+
+<script>
+  $(".question-upload").filestyle({icon: false});
+  $('#input01').filestyle()
+</script>

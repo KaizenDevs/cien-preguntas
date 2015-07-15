@@ -2,8 +2,12 @@ class UserController < ApplicationController
 	before_filter :authenticate_user!
 	include ApplicationHelper
 
-	def edit 
-		@user = current_user		
+	def index
+		@users = User.where(role: 0)
+	end
+
+	def edit
+		@user = current_user
 		render "edit"
 	end
 

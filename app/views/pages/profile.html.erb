@@ -32,6 +32,7 @@
 
   .concept {
     font-size: 16px;
+    margin-top: 20px;
   }
 
   .price {
@@ -87,7 +88,7 @@
       <div class="col-xs-6 col-sm-3 text-center">
         <h3 style="background-color: #D84A33; font-size: 15px; padding: 10px 0; margin-top: 10px; color: white; border-radius: 2px"><span class="fa fa-stack-exchange"></span> Respuestas</h3>
       </div>
-
+      <% if @user == current_user %>
       <div class="col-xs-6 col-sm-3 pull-right user-edit">
         <div class="btn-group dropup btn-block">
           <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Opciones </button>
@@ -107,6 +108,7 @@
           </ul>
         </div>
       </div>
+      <% end %>
 
     </div>
 
@@ -115,8 +117,8 @@
       <table class="table" style="margin-top: 10px">
         <tr>
           <td class="tdate grey text-center"><%= answer.created_at.strftime("%b") %> <span class="date"><%= answer.created_at.strftime("%d") %></span></td>
-          <td><span class="tconcept grey"><%= answer.question.question %></span><br><span class="concept"><%= answer.answer %></span></td>
-          <td class="text-center price"><span class="fa fa-angle-up"></span><p class="votes">16</p></td>
+          <td><span class="tconcept grey"><%= answer.question.question %></span><br>
+            <p class="concept"><%= answer.answer %></p></td>
         </tr>
       </table>
 

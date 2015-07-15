@@ -63,4 +63,12 @@ class Question < ActiveRecord::Base
     end
   end
 
+  def self.import(file)
+    if file != nil
+      CSV.foreach(file.path, headers: true) do |row|
+        Product.create! row.to_hash
+      end
+    end
+  end
+
 end

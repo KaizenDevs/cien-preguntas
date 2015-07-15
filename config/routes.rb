@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   get 'pages/profile'
   resources :user, :controller => "user"
+  get 'pages/metrics'
+  get 'pages/daily_concepts'
+
   resources :questions do
+    collection { post :import }
     resources :answers
   end
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
