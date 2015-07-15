@@ -11,7 +11,7 @@
       <div class="form-group">
         <div class="help-block">
         ¿Quieres que tu respuestas sea pública?
-          <%= f.check_box :public , data: { "on-text" => "si" , "off-text" => "no" , "size" => "mini" }, class: "my-checkbox" %>          
+          <%= f.check_box :public_answer , data: { "on-text" => "si" , "off-text" => "no" , "size" => "mini" }, class: "my-checkbox" %>
         </div>
       </div>
       <%= f.submit "Enviar respuesta", class: "btn btn-default" %>
@@ -34,8 +34,8 @@
 
   $(document).ready(function() {
     $('input[class="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
-      console.log(state);      
-      if (state){        
+      console.log(state);
+      if (state){
         $('.social-btns').fadeIn()
       }else{
         $('.social-btns').fadeOut()

@@ -15,12 +15,15 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  lastname               :string
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
-#  name                   :string
-#  lastname               :string
 #  last_sent_question     :integer
+#  role                   :integer
+#  provider               :string
+#  uid                    :string
 #
 
 require 'test_helper'
