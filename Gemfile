@@ -22,6 +22,7 @@ gem "bootstrap-switch-rails"
 gem 'omniauth-facebook'
 gem 'social-share-button', '~> 0.1.8', git: 'https://github.com/cuterxy/social-share-button.git'
 gem 'bootstrap_form'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'guard'
