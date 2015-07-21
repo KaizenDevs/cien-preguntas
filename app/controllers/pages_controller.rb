@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:profile]
   before_action :admin_only, only: [:metrics]
   respond_to :html, :json
+  include ApplicationHelper
 
 	def home
 	end
@@ -14,6 +15,17 @@ class PagesController < ApplicationController
     end
   end
 
+  def streak_tooltip
+    user = User.find(params[:user])
+    streak_array = PagesHelper.day_streak(user)
+    streak_array.map { |a|
+      a[:question] = a[:answer].first.question.question
+      a[:question_id] = a[:answer].first.question.id
+      a[:answer] = a[:answer].first.id
+    }
+    render json: streak_array.to_json, status: 201
+  end
+
   def metrics
     @answers = Answer.all
     @users = User.where(role: 0)
@@ -24,7 +36,7 @@ class PagesController < ApplicationController
     ((Date.today - 1.month)..Date.today).map do |date|
       daily_array.push({
         day: date.strftime(),
-        answer: Answer.where(created_at: date.beginning_of_day..date.end_of_day).count
+        answer: Answer.where(created_at: date.beginning_of_day..date.end_of_day).count,
       })
     end
     render json: daily_array.to_json, status: 201

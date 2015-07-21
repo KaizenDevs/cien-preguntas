@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :user, :controller => "user"
   get 'pages/metrics'
   get 'pages/daily_concepts'
+  get 'pages/streak_tooltip'
 
   resources :questions do
     collection { post :import }
