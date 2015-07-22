@@ -2,6 +2,38 @@
 
   /*top-container*/
 
+  .top-container {
+    background-color: #F9F9F9;
+    border: 1px solid #E2E2E2;
+    padding: 10px 20px;
+  }
+
+  .secondary-container {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E2E2;
+    border-top: 0;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 5px 0px rgba(244,244,244,1);
+    z-index: 2;
+  }
+
+  .answer-button {
+    background-color: #D84A33;
+    font-size: 15px;
+    padding: 10px 0;
+    margin-top: 10px;
+    color: white;
+    border-radius: 2px
+  }
+
+  .answer-list {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E2E2;
+    border-top: 0;
+    padding: 10px 20px;
+    z-index: 1
+  }
+
   .user-edit {
     margin: 10px 0;
   }
@@ -72,7 +104,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-xs-12 col-sm-8 col-md-offset-2 .top-container" style="background-color: #F9F9F9; border: 1px solid #E2E2E2; padding: 10px 20px;">
+    <div class="col-xs-12 col-sm-8 col-md-offset-2 top-container">
       <div class="col-xs-12 col-sm-4 text-center">
         <figure>
           <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive" style="width: 80%">
@@ -100,9 +132,9 @@
     </div>
 
 
-    <div class="col-xs-12 col-sm-8 col-md-offset-2" style="background-color: #FFFFFF; border: 1px solid #E2E2E2; border-top: 0; padding: 10px 20px; box-shadow: 0px 4px 5px 0px rgba(244,244,244,1);; z-index: 2;">
+    <div class="col-xs-12 col-sm-8 col-md-offset-2 secondary-container">
       <div class="col-xs-6 col-sm-3 text-center">
-        <h3 style="background-color: #D84A33; font-size: 15px; padding: 10px 0; margin-top: 10px; color: white; border-radius: 2px"><span class="fa fa-stack-exchange"></span> Respuestas</h3>
+        <h3 class="answer-button"><span class="fa fa-stack-exchange"></span> Respuestas</h3>
       </div>
       <% if @user == current_user %>
       <div class="col-xs-6 col-sm-3 pull-right user-edit">
@@ -128,7 +160,7 @@
 
     </div>
 
-    <div class="col-xs-12 col-sm-8 col-md-offset-2" style="background-color: #FFFFFF; border: 1px solid #E2E2E2; border-top: 0; padding: 10px 20px; z-index: 1">
+    <div class="col-xs-12 col-sm-8 col-md-offset-2 answer-list">
       <% @user.answers.sort_by(&:created_at).reverse.each do |answer| %>
       <table class="table" style="margin-top: 10px">
         <tr>
@@ -146,6 +178,7 @@
 
 <script>
 $(document).ready(function() {
+  console.log("<%= @user.name %>")
   $.getJSON( "/pages/streak_tooltip?user=" +  "<%= @user.id %>" ).done(function( response ) {
     console.log(response)
     // $('.' + '<%=  %>')
@@ -162,5 +195,4 @@ $(document).ready(function() {
       console.log( "Request Failed: " + err );
   });
 });
-// http://localhost:3000/questions/234/answers/35
 </script>
