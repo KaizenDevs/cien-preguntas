@@ -11,8 +11,12 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.user_id = current_user.id
     @answer.question_id = params[:question_id]
-    @answer.save
-    redirect_to [@question, @answer]
+    if @answer.save
+      redirect_to [@question, @answer]
+    else
+      flash[:alert] = "La respuesta no puede estar vacía."
+      render 'new'
+    end
   end
 
   def edit

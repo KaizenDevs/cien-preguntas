@@ -5,6 +5,7 @@
       <hr/>
 
       <%= form_for [@question, @answer] do |f| %>
+
       <h5>Respuesta: <span class="word-counter pull-right">Letras: 0</span></h5>
 
       <%= f.text_area :answer, class: "form-control", rows: "3" %>
