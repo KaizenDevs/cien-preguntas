@@ -21,6 +21,7 @@ class PagesController < ApplicationController
     streak_array.map { |a|
       a[:question] = a[:answer].first.question.question
       a[:question_id] = a[:answer].first.question.id
+      a[:public_answer] = a[:answer].first.public_answer
       a[:answer] = a[:answer].first.id
     }
     render json: streak_array.to_json, status: 201
