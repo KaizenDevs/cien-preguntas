@@ -61,15 +61,25 @@
     </div>
 
     <div class="col-xs-12 col-sm-8 col-md-offset-2 answer-list">
+      <table class="table" style="margin-top: 10px">
       <% @user.answers.sort_by(&:created_at).reverse.each do |answer| %>
-        <table class="table" style="margin-top: 10px">
-          <tr>
-            <td class="tdate grey text-center"><%= answer.created_at.strftime("%b") %> <span class="date"><%= answer.created_at.strftime("%d") %></span></td>
-            <td><span class="tconcept grey"><%= answer.question.question %></span><br>
-              <p class="concept"><%= markdown answer.answer %></p></td>
-          </tr>
-        </table>
+        <tr class="answer">
+          <td class="tdate grey text-center">
+            <%= answer.created_at.strftime("%b") %>
+            <span class="date"><%= answer.created_at.strftime("%d") %></span><br>
+            <%= link_to '<span class="fa fa-edit"></span>'.html_safe, edit_question_answer_path(answer.question, answer) %><br>
+            <%= link_to '<span class="fa fa-trash"></span>'.html_safe, question_answer_path(answer.question, answer), method: :delete, data: { confirm: '¿Está seguro que desea eliminar la respuesta?' } %><br>
+            <% if answer.public_answer == true %>
+              <span class="fa fa-users green"></span>
+            <% else %>
+              <span class="fa fa-users red"></span>
+            <% end %>
+          </td>
+          <td><span class="tconcept grey"><%= answer.question.question %></span><br>
+            <p class="concept"><%= markdown answer.answer %></p></td>
+        </tr>
       <% end %>
+      </table>
     </div>
 
   </div>

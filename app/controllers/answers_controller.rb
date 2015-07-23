@@ -1,6 +1,9 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
+  def index
+  end
+
   def new
     @question = Question.find(params[:question_id])
     @answer = Answer.new
@@ -28,7 +31,10 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
   end
 
-  def index
+  def destroy
+    @answer = Answer.find(params[:id])
+    @answer.destroy
+    redirect_to pages_profile_path
   end
 
   private
