@@ -43,6 +43,18 @@ class PagesController < ApplicationController
     render json: daily_array.to_json, status: 201
   end
 
+  def public_private_switch
+    answer = Answer.find(params[:answer_id])
+    if answer.public_answer == true
+      answer.update(public_answer: false)
+      response = {response: "updated to false"}
+    else
+      answer.update(public_answer: true)
+      response = {response: "updated to true"}
+    end
+    render json: response, status: 201
+  end
+
   private
   def admin_only
     unless current_user.admin?

@@ -70,9 +70,9 @@
             <%= link_to '<span class="fa fa-edit"></span>'.html_safe, edit_question_answer_path(answer.question, answer) %><br>
             <%= link_to '<span class="fa fa-trash"></span>'.html_safe, question_answer_path(answer.question, answer), method: :delete, data: { confirm: '¿Está seguro que desea eliminar la respuesta?' } %><br>
             <% if answer.public_answer == true %>
-              <span class="fa fa-users green"></span>
+              <span class="fa fa-users green"><div class="hidden"><%= answer.id %></div></span>
             <% else %>
-              <span class="fa fa-users red"></span>
+              <span class="fa fa-users red"><div class="hidden"><%= answer.id %></div></span>
             <% end %>
           </td>
           <td><span class="tconcept grey"><%= answer.question.question %></span><br>
@@ -87,7 +87,6 @@
 
 <script>
 $(document).ready(function() {
-  console.log("<%= @user.name %>")
   $.getJSON( "/pages/streak_tooltip?user=" +  "<%= @user.id %>" ).done(function( response ) {
     console.log(response)
     // $('.' + '<%=  %>')
@@ -109,5 +108,30 @@ $(document).ready(function() {
       var err = textStatus + ", " + error;
       console.log( "Request Failed: " + err );
   });
+
+  $('span.fa-users').on('click', function() {
+    var className = $(this).hasClass('green');
+    var answer_id = $(this).find('div').text();
+    if (className == true) {
+      console.log("De verde a rojo")
+      $.getJSON( "/pages/public_private_switch?answer_id=" +  answer_id ).done(function( response ) {
+        $('.fa-users').removeClass('green')
+        $('.fa-users').addClass('red')
+      }).fail(function( jqxhr, textStatus, error ) {
+          var err = textStatus + ", " + error;
+          console.log( "Request Failed: " + err );
+      });
+    } else {
+      console.log("De rojo a verde")
+      $.getJSON( "/pages/public_private_switch?answer_id=" +  answer_id ).done(function( response ) {
+        $('.fa-users').removeClass('red')
+        $('.fa-users').addClass('green')
+      }).fail(function( jqxhr, textStatus, error ) {
+          var err = textStatus + ", " + error;
+          console.log( "Request Failed: " + err );
+      });
+    }
+  })
+
 });
 </script>
