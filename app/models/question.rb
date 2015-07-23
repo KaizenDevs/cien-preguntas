@@ -66,7 +66,7 @@ class Question < ActiveRecord::Base
   def self.import(file)
     if file != nil
       CSV.foreach(file.path, headers: true) do |row|
-        Product.create! row.to_hash
+        Question.create! row.to_hash
       end
     end
   end
