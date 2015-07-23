@@ -18,7 +18,8 @@ class AnswersController < ApplicationController
   def show
     @answer = Answer.find(params[:id])
     if @answer.public_answer
-      @answers = Answer.where(question_id: @answer.question.id, public_answer: true).shuffle
+      # Call all the public answers for the same question unless the answer from the user_id from @answer
+      @answers = Answer.where(question_id: @answer.question.id, public_answer: true).where.not(user_id:@answer.user_id).shuffle      
     end
   end
 
