@@ -87,27 +87,31 @@
 
 <script>
 $(document).ready(function() {
-  $.getJSON( "/pages/streak_tooltip?user=" +  "<%= @user.id %>" ).done(function( response ) {
-    console.log(response)
-    // $('.' + '<%=  %>')
-    for(i = 0; i < response.length; i++) {
-      var public_answer_content = function() {
-        var public_answer = response[i].public_answer
-        if(public_answer == true) {
-          return '<span>Esta respuesta es <strong>pública</strong>.</span>'
-        } else {
-          return '<span>Esta respuesta es <strong>privada</strong>.</span>'
+  var addStreakTooltip = function() {
+    $.getJSON( "/pages/streak_tooltip?user=" +  "<%= @user.id %>" ).done(function( response ) {
+      console.log(response)
+      // $('.' + '<%=  %>')
+      for(i = 0; i < response.length; i++) {
+        var public_answer_content = function() {
+          var public_answer = response[i].public_answer
+          if(public_answer == true) {
+            return '<span>Esta respuesta es <strong>pública</strong>.</span>'
+          } else {
+            return '<span>Esta respuesta es <strong>privada</strong>.</span>'
+          }
         }
+        $('.' + response[i].answer + '.tooltip').tooltipster({
+          content: $(' <span><strong>Pregunta: </strong>' + response[i].question + '</span><br><span><strong>Fecha: </strong>' + response[i].day + '</span> <br>' + public_answer_content() + '<br><span>Para ver tu respuesta haz click </span> <a href="/questions/' + response[i].question_id + '/answers/'+ response[i].answer +'">aquí.</a>'),
+          interactive: true
+        })
       }
-      $('.' + response[i].answer + '.tooltip').tooltipster({
-        content: $(' <span><strong>Pregunta: </strong>' + response[i].question + '</span><br><span><strong>Fecha: </strong>' + response[i].day + '</span> <br>' + public_answer_content() + '<br><span>Para ver tu respuesta haz click </span> <a href="/questions/' + response[i].question_id + '/answers/'+ response[i].answer +'">aquí.</a>'),
-        interactive: true
-      })
-    }
-  }).fail(function( jqxhr, textStatus, error ) {
-      var err = textStatus + ", " + error;
-      console.log( "Request Failed: " + err );
-  });
+    }).fail(function( jqxhr, textStatus, error ) {
+        var err = textStatus + ", " + error;
+        console.log( "Request Failed: " + err );
+    });
+  }
+
+  addStreakTooltip();
 
   $('span.fa-users').on('click', function() {
     var className = $(this).hasClass('green');
@@ -117,6 +121,10 @@ $(document).ready(function() {
       $.getJSON( "/pages/public_private_switch?answer_id=" +  answer_id ).done(function( response ) {
         $('.fa-users').removeClass('green')
         $('.fa-users').addClass('red')
+        $('*').filter(function() {
+            return $(this).data('tooltipsterNs');
+        }).tooltipster('destroy');
+        addStreakTooltip();
       }).fail(function( jqxhr, textStatus, error ) {
           var err = textStatus + ", " + error;
           console.log( "Request Failed: " + err );
@@ -126,6 +134,10 @@ $(document).ready(function() {
       $.getJSON( "/pages/public_private_switch?answer_id=" +  answer_id ).done(function( response ) {
         $('.fa-users').removeClass('red')
         $('.fa-users').addClass('green')
+        $('*').filter(function() {
+            return $(this).data('tooltipsterNs');
+        }).tooltipster('destroy');
+        addStreakTooltip();
       }).fail(function( jqxhr, textStatus, error ) {
           var err = textStatus + ", " + error;
           console.log( "Request Failed: " + err );
