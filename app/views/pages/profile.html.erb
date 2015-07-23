@@ -157,19 +157,17 @@
         </div>
       </div>
       <% end %>
-
     </div>
 
     <div class="col-xs-12 col-sm-8 col-md-offset-2 answer-list">
       <% @user.answers.sort_by(&:created_at).reverse.each do |answer| %>
-      <table class="table" style="margin-top: 10px">
-        <tr>
-          <td class="tdate grey text-center"><%= answer.created_at.strftime("%b") %> <span class="date"><%= answer.created_at.strftime("%d") %></span></td>
-          <td><span class="tconcept grey"><%= answer.question.question %></span><br>
-            <p class="concept"><%= answer.answer %></p></td>
-        </tr>
-      </table>
-
+        <table class="table" style="margin-top: 10px">
+          <tr>
+            <td class="tdate grey text-center"><%= answer.created_at.strftime("%b") %> <span class="date"><%= answer.created_at.strftime("%d") %></span></td>
+            <td><span class="tconcept grey"><%= answer.question.question %></span><br>
+              <p class="concept"><%= markdown answer.answer %></p></td>
+          </tr>
+        </table>
       <% end %>
     </div>
 
