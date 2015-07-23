@@ -9,6 +9,16 @@ class AnswersController < ApplicationController
     @answer = Answer.new
   end
 
+
+  def edit
+    @answer = Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+  end
+
+  def show
+    @answer = Answer.find(params[:id])
+  end
+
   def create
     @question = Question.find(params[:question_id])
     @answer = Answer.new(answer_params)
@@ -24,11 +34,16 @@ class AnswersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def show
+  def update
     @answer = Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+    if @answer.update(answer_params)
+      flash[:notice] = "La respuesta ha sido actualizada exitosamente!"
+      redirect_to pages_profile_path
+    else
+      flash[:alert] = "La respuesta no ha sido, actualizada. La respuesta no puede estar vacía"
+      render 'edit'
+    end
   end
 
   def destroy
