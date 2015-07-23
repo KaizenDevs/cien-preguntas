@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
+  before_filter :has_answer?, :only => [:new,:create]
 
   def index
   end
@@ -59,5 +60,11 @@ class AnswersController < ApplicationController
   private
     def answer_params
       params.require(:answer).permit(:answer, :public_answer)
+    end
+
+    def has_answer?
+      if Answer.where(user_id: current_user.id,question_id: @question_id)
+        redirect_to root_path, :alert => "Lo sentimos, usted ya ha respondido esta pregunta, dirijase a su página de perfil si desea editar la respuesta"
+      end
     end
 end
