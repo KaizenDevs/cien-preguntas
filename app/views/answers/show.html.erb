@@ -37,7 +37,6 @@ div.social-share-button{
     <div class="container">
       <div class="col-lg-12">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
-
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
             
@@ -72,15 +71,6 @@ div.social-share-button{
             <span class="sr-only">Next</span>
           </a>
         </div>
-<!-- 
-
-
-        <h1 class="text-center"><%= @answer.question.question %></h1>
-        <%= markdown @answer.answer %>
-        <% if @answer.public_answer %>
-        	<p>Haz marcado como publica tu respuesta compartela en redes sociales:</p>
-        	<%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas!", url: "https://vibrant-chaise-6979.herokuapp.com/questions/#{@answer.question.id}/answers/#{@answer.id}", :via => "cienpreguntas" ) %>
-        <% end %> -->
           <!-- <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
           		<a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a> -->
       </div>
