@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'pages/metrics'
   get 'pages/daily_concepts'
   get 'pages/streak_tooltip'
+  get 'pages/public_private_switch'
 
   resources :questions do
     collection { post :import }

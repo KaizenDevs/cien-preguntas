@@ -1,2 +1,30 @@
-<h1>Answers#edit</h1>
-<p>Find me in app/views/answers/edit.html.erb</p>
+<section class="section new-answer">
+  <div class="container">
+    <div class="col-lg-6 col-md-offset-3">
+      <h2 class="text-muted"><%= @question.question %></h2>
+      <hr/>
+
+      <%= form_for [@question, @answer] do |f| %>
+
+      <h5>Respuesta: <span class="word-counter pull-right">Letras: 0</span></h5>
+
+      <%= f.text_area :answer, class: "form-control", rows: "3" %><br/>
+      <div class="form-group">
+        <div class="help-block">
+        ¿Quieres que tu respuestas sea pública?
+          <%= f.check_box :public_answer , data: { "on-text" => "si" , "off-text" => "no" , "size" => "mini" }, class: "my-checkbox" %>
+        </div>
+      </div>
+      <%= f.submit "Editar respuesta", class: "btn btn-default" %>
+      <% end %>
+      <div>
+      </div>
+    </div>
+  </div>
+</section>
+<%= render 'social_switch' %>
+<style>
+  div.social-share-button {
+    display: inline-block;
+  }
+</style>
