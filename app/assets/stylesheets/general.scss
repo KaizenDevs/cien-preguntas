@@ -91,3 +91,103 @@ span.right-text { float: right; }
   line-height: 25px;
   float: right;
 }
+
+// USER PROFILE CSS PROPERTIES
+/*top-container*/
+
+.top-container {
+  background-color: #F9F9F9;
+  border: 1px solid #E2E2E2;
+  padding: 10px 20px;
+}
+
+.secondary-container {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E2E2;
+  border-top: 0;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 5px 0px rgba(244,244,244,1);
+  z-index: 2;
+}
+
+.answer-button {
+  background-color: #D84A33;
+  font-size: 15px;
+  padding: 10px 0;
+  margin-top: 10px;
+  color: white;
+  border-radius: 2px
+}
+
+.answer-list {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E2E2;
+  border-top: 0;
+  padding: 10px 20px;
+  z-index: 1
+}
+
+.user-edit {
+  margin: 10px 0;
+}
+
+.grey {
+  color: grey;
+}
+
+
+.tdate {
+  padding-top: 5px;
+  width:10px;
+}
+
+.table>tbody>tr>td {
+  line-height: 18px;
+}
+
+.date {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.tconcept {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.concept {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.price {
+  font-size: 18px;
+}
+
+#daily-streak {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  height: 72px;
+  width: 72px;
+  border-radius: 10px;
+}
+
+#shadow {
+    background-color: #3D668F;
+    height: 50px;
+    width: 80px;
+    -webkit-box-shadow: 0px 10px 5px 0px rgba(244,244,244,1);
+    -moz-box-shadow: 0px 10px 5px 0px rgba(244,244,244,1);
+    box-shadow: 0px 10px 5px 0px rgba(244,244,244,1);
+}
+
+.fa-angle-up {
+  font-weight: bold;
+}
+
+.votes {
+  font-weight: bold;
+  font-size: 16px;
+}
