@@ -50,9 +50,11 @@ div.social-share-button{
                 <span>Usuario: <%= @answer.user.name %> <%= @answer.user.lastname %></span> /
                 <span>Fecha de creación: <%= @answer.created_at.strftime("%d") %> - <%= @answer.created_at.strftime("%b") %> - <%= @answer.created_at.year %></span>
                 <!-- Allow to share in social networks only if the answer is public -->
-                <% if @answer.public_answer %>
-                  <span>Comparte en:</span>
-                  <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas!", url: "https://vibrant-chaise-6979.herokuapp.com/questions/#{@answer.question.id}/answers/#{@answer.id}", :via => "cienpreguntas" ) %>
+                <% if @answer.public_answer && user_signed_in? %>
+                  <% if current_user.id == @answer.user_id %>
+                    <span>Comparte en:</span>
+                    <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas!", url: "https://vibrant-chaise-6979.herokuapp.com/questions/#{@answer.question.id}/answers/#{@answer.id}", :via => "cienpreguntas" ) %>
+                  <% end %>
                 <% end %>
               </div>
             </div>
