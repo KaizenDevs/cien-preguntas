@@ -53,12 +53,22 @@ div.social-share-button{
                 <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas!", url: "https://vibrant-chaise-6979.herokuapp.com/questions/#{@answer.question.id}/answers/#{@answer.id}", :via => "cienpreguntas" ) %>
               </div>
             </div>
-
-            <div class="item">
-              <!-- <img src="http://i592.photobucket.com/albums/tt5/Mardini03/h1.jpg" alt="..."> -->
-              <div class="carousel-caption">
-              </div>
-            </div>
+            
+            <% if @answer.public_answer %>
+              <% @answers.each do |answer| %>
+                <div class="item">
+                  <!-- <img src="http://i592.photobucket.com/albums/tt5/Mardini03/h1.jpg" alt="..."> -->
+                  <h2 class="question-text"><%= answer.question.question %></h2>
+                  <div class="answer-box text-left">
+                    <%= markdown answer.answer %>
+                  </div>  
+                  <div class="carousel-caption">
+                    <span>Usuario: <%= answer.user.name %> <%= answer.user.lastname %></span> /
+                    <span>Fecha de creación: <%= answer.created_at.strftime("%d") %> - <%= answer.created_at.strftime("%b") %> - <%= answer.created_at.year %></span>                  
+                  </div>
+                </div>
+              <% end %>
+            <% end %>            
           </div>
 
           <!-- Controls -->
