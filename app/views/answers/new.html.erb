@@ -7,9 +7,10 @@
       <%= form_for [@question, @answer] do |f| %>
       <h5>Respuesta: <span class="word-counter pull-right">Letras: 0</span></h5>
 
-      <%= f.text_area :answer, class: "form-control", rows: "3" %><br/>
+      <%= f.text_area :answer, class: "form-control", rows: "3" %>
       <div class="form-group">
         <div class="help-block">
+        Puedes usar markdown para contestar la pregunta, aprende <a href="https://geekytheory.com/que-es-markdown-y-como-utilizarlo/" target="_blank">aqui</a><br><br>
         ¿Quieres que tu respuestas sea pública?
           <%= f.check_box :public_answer , data: { "on-text" => "si" , "off-text" => "no" , "size" => "mini" }, class: "my-checkbox" %>
         </div>
