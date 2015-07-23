@@ -18,7 +18,7 @@ class AnswersController < ApplicationController
   def show
     @answer = Answer.find(params[:id])
     if @answer.public_answer
-      @answers = Answer.where(question_id: @answer.question.id).shuffle
+      @answers = Answer.where(question_id: @answer.question.id, public_answer: true).shuffle
     end
   end
 

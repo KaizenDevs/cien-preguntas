@@ -1,3 +1,37 @@
+<style>
+.item{
+  background: #333;    
+  text-align: center;
+  height: 550px !important;
+}
+h2.question-text{
+  margin: 0;     
+  color: #666;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 52px;   
+}
+/*Properties for div answer-box (answer text)*/
+div.answer-box {
+  background-color: white;
+  height: 73%;
+  overflow-y: scroll;
+  padding: 0 0 5px 5px;
+}
+div.carousel-caption {
+  padding: 25px 0 0 0;
+}
+/*Change display property for social share icons*/
+div.social-share-button{
+  display: inline-block;
+}
+/*Remove gradient from bootstrap carousel controls*/
+.carousel-control.right, .carousel-control.left {
+  background-image:none;
+}
+</style>
+
+
 <section class="section">
   <div class="row">
     <div class="container">
@@ -6,14 +40,22 @@
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
-
+            
             <div class="item active">
-              <img src="http://i592.photobucket.com/albums/tt5/Mardini03/h1.jpg" alt="...">
+              <!-- <img src="http://i592.photobucket.com/albums/tt5/Mardini03/h1.jpg" alt="..."> -->
+              <h2 class="question-text"><%= @answer.question.question %></h2>
+              <div class="answer-box text-left">
+                <%= markdown @answer.answer %>
+              </div>  
               <div class="carousel-caption">
+                <span>Usuario: <%= @answer.user.name %> <%= @answer.user.lastname %></span> /
+                <span>Fecha de creación: <%= @answer.created_at.strftime("%d") %> - <%= @answer.created_at.strftime("%b") %> - <%= @answer.created_at.year %></span>
+                <span>Comparte en:</span>
+                <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas!", url: "https://vibrant-chaise-6979.herokuapp.com/questions/#{@answer.question.id}/answers/#{@answer.id}", :via => "cienpreguntas" ) %>
               </div>
             </div>
             <div class="item">
-              <img src="http://i592.photobucket.com/albums/tt5/Mardini03/h1.jpg" alt="...">
+              <!-- <img src="http://i592.photobucket.com/albums/tt5/Mardini03/h1.jpg" alt="..."> -->
               <div class="carousel-caption">
               </div>
             </div>
@@ -29,7 +71,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-
+<!-- 
 
 
         <h1 class="text-center"><%= @answer.question.question %></h1>
@@ -37,7 +79,7 @@
         <% if @answer.public_answer %>
         	<p>Haz marcado como publica tu respuesta compartela en redes sociales:</p>
         	<%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas!", url: "https://vibrant-chaise-6979.herokuapp.com/questions/#{@answer.question.id}/answers/#{@answer.id}", :via => "cienpreguntas" ) %>
-        <% end %>
+        <% end %> -->
           <!-- <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
           		<a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a> -->
       </div>
