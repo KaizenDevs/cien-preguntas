@@ -19,6 +19,7 @@ class Question < ActiveRecord::Base
         # Send congratulation email!
         puts "Congratulations!!!!"
       else
+        puts "I enter here!"
         if user.last_sent_question == nil
           mail_hash[user.id] = Question.first.id
           user.update(last_sent_question: Question.first.id)
@@ -59,6 +60,7 @@ class Question < ActiveRecord::Base
 
   def self.deliver_mail(mail_hash)
     mail_hash.each do |user_id, question_id|
+      puts "delivering question_id: #{question_id} to user_id: #{user_id}"
       UserMailer.daily_question(user_id, question_id).deliver_now
     end
   end

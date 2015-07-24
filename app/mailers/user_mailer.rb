@@ -6,7 +6,8 @@ class UserMailer < BaseMandrillMailer
     merge_vars = {
       "NAME" => user.name,
       "QUESTION_NUMBER" => question.id,
-      "QUESTION" => question.question
+      "QUESTION" => question.question,
+      "ANSWER_URL" => new_question_answer_url(question.id)
     }
     body = mandrill_template("cienpreguntas_questions", merge_vars)
 
