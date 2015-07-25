@@ -7,6 +7,7 @@ module PagesHelper
   end
 
   def self.day_streak(user)
+    return [] if user.answers.count == 0
     start = user.answers.order("created_at").first.created_at
     streak_array = []
     (Time.zone.today).downto(start.to_date).map do |date|
