@@ -17,6 +17,16 @@
   background: RGBA(78, 93, 107, 1);
   padding:14em 0;
   margin: 0;
+  p {
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    span{
+      background: white;
+      color: #4E5D6A;
+      padding: 0.1em 0.3em;
+    }
+  }
 }
 .btn-white{
   border: 1px solid white;
@@ -92,6 +102,7 @@ span.right-text { float: right; }
   float: right;
 }
 
+<<<<<<< HEAD
 // USER PROFILE CSS PROPERTIES
 /*top-container*/
 
@@ -206,4 +217,27 @@ span.right-text { float: right; }
 
 .red {
   color: red;
+}
+
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+
 }
