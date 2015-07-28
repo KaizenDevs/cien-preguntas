@@ -63,7 +63,7 @@ class AnswersController < ApplicationController
     end
 
     def has_answer?
-      if Answer.where(user_id: current_user.id,question_id: @question_id)
+      if current_user.questions.include?(Question.find(params[:question_id]))
         redirect_to root_path, :alert => "Lo sentimos, usted ya ha respondido esta pregunta, dirijase a su página de perfil si desea editar la respuesta"
       end
     end
