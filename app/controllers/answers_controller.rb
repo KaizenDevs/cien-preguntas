@@ -16,12 +16,30 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
   end
 
-  def show
+  def show    
     @answer = Answer.find(params[:id])
-    if @answer.public_answer
-      # Call all the public answers for the same question unless the answer from the user_id from @answer
-      @answers = Answer.where(question_id: @answer.question.id, public_answer: true).where.not(user_id:@answer.user_id).shuffle      
-    end
+    @answers = Answer.where(question_id: @answer.question.id, public_answer: true).where.not(user_id:@answer.user_id).shuffle
+    # Filter if the user is loged in or not
+    # if user_signed_in?
+    #   if @answer.public_answer
+    #     # If the user is loged in and the answer is public show the answer
+    #     @answer = Answer.find(params[:id])
+    #     if current_user.questions.include?(Question.find(params[:question_id]))
+    #       # # If the user is loged in, the answer is public and the user has and answer as public for this question call all the public answers for the same question unless the answer from the user_id from @answer
+    #       @answers = Answer.where(question_id: @answer.question.id, public_answer: true).where.not(user_id:@answer.user_id).shuffle
+    #     end              
+    #   elsif @answer.public_answer == false
+    #     # If the user is private don't show answer and redirect to 
+    #     redirect_to root_path, :alert => "Lo sentimos, no puedes acceder al contenido de una respuesta privada"
+    #   end    
+    # else 
+    #   if @answer.public_answer
+    #     # If the user is not loged in and the answer is public show just this answer
+    #     @answer = Answer.find(params[:id])
+    #   elsif @answer.public_answer == false
+    #     redirect_to root_path, :alert => "Lo sentimos, no puedes acceder al contenido de una respuesta privada"
+    #   end
+    # end
   end
 
   def create
