@@ -1,5 +1,8 @@
 // --  fix size of logo of navbar --
 .navbar{
+  font-family: 'Roboto Slab', serif;
+  letter-spacing: 0.3px;
+  font-size: 1.25em;
   margin-bottom: 0;
   border: 0;
   border-bottom: 4px solid RGBA(43, 62, 80, 1);
@@ -12,21 +15,68 @@
     }
   }
 }
-// -- END fix size of logo of navbar --
-.hero-unit{
-  background: RGBA(78, 93, 107, 1);
-  padding:14em 0;
-  margin: 0;
-  p {
-    color: white;
-    font-size: 2em;
-    text-align: center;
-    span{
-      background: white;
-      color: #4E5D6A;
-      padding: 0.1em 0.3em;
-    }
+.nav-home{
+   background: image-url('header-bg.png');
+   border-bottom: 0;
+  a {
+    color: white !important;
+  &:hover{
+    text-decoration: underline !important;
   }
+  }
+   .btn-default{
+    font-size: 16px;
+    padding: 0.5em 1.5em;
+    font-weight: 300;
+    background: white !important;
+    border:none !important;
+    color: #00BF69 !important;
+   }
+}
+// -- END fix size of logo of navbar --
+
+#home{
+  .hero-unit{
+    font-family: 'Roboto', sans-serif;
+    .home-kid{
+      left: 100px;
+      margin: 80px;
+      width: 350px;
+      img{  width: 100% }
+    }
+    .bg-wrapper{
+      background: image-url('header-bg.png');
+      height: 400px;
+    }
+
+    margin: 0;
+
+    p.home-puch-text{
+      position: relative;
+      display: block;
+      margin-top: 150px;
+      color: white;
+      font-size: 1.75em;
+      line-height: 1.25em;
+      text-transform: uppercase;
+      text-align: center;
+      span {
+       font-weight: 100;
+       letter-spacing: 0.5px;
+       font-size: 22px;
+     }
+   }
+
+  }
+}
+.habilidades-siglo {
+  display: block;
+  padding-top: 140px;
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 100;
+  color: #999999;
+  strong{ color: #383838}
 }
 .btn-white{
   border: 1px solid white;
@@ -78,11 +128,11 @@ html {
 // ALERTS
 .alertOffset {
     /*margin-bottom: 0;*/
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 5000;
-  opacity: 0.85;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 5000;
+    opacity: 0.85;
   /*padding-top: 80px;*/
 }
 
@@ -100,144 +150,4 @@ span.right-text { float: right; }
   text-align: center;
   line-height: 25px;
   float: right;
-}
-
-<<<<<<< HEAD
-// USER PROFILE CSS PROPERTIES
-/*top-container*/
-
-.top-container {
-  background-color: #F9F9F9;
-  border: 1px solid #E2E2E2;
-  padding: 10px 20px;
-}
-
-.secondary-container {
-  background-color: #FFFFFF;
-  border: 1px solid #E2E2E2;
-  border-top: 0;
-  padding: 10px 20px;
-  box-shadow: 0px 4px 5px 0px rgba(244,244,244,1);
-  z-index: 2;
-}
-
-.answer-button {
-  background-color: #D84A33;
-  font-size: 15px;
-  padding: 10px 0;
-  margin-top: 10px;
-  color: white;
-  border-radius: 2px
-}
-
-.answer-list {
-  background-color: #FFFFFF;
-  border: 1px solid #E2E2E2;
-  border-top: 0;
-  padding: 10px 20px;
-  z-index: 1
-}
-
-.user-edit {
-  margin: 10px 0;
-}
-
-.grey {
-  color: grey;
-}
-
-
-.tdate {
-  padding-top: 5px;
-  width:10px;
-}
-
-.table>tbody>tr>td {
-  line-height: 18px;
-}
-
-.date {
-  font-size: 22px;
-  font-weight: 500;
-}
-
-.tconcept {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.concept {
-  font-size: 16px;
-  margin-top: 20px;
-}
-
-.price {
-  font-size: 18px;
-}
-
-#daily-streak {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  background-color: white;
-  height: 72px;
-  width: 72px;
-  border-radius: 10px;
-}
-
-#shadow {
-    background-color: #3D668F;
-    height: 50px;
-    width: 80px;
-    -webkit-box-shadow: 0px 10px 5px 0px rgba(244,244,244,1);
-    -moz-box-shadow: 0px 10px 5px 0px rgba(244,244,244,1);
-    box-shadow: 0px 10px 5px 0px rgba(244,244,244,1);
-}
-
-.answer .fa {
-  visibility: hidden;
-}
-
-.answer:hover .fa {
-  visibility: visible;
-}
-
-.fa-angle-up {
-  font-weight: bold;
-}
-
-.votes {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.green {
-  color: green;
-}
-
-.red {
-  color: red;
-}
-
-.typed-cursor{
-    opacity: 1;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
-}
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-webkit-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-moz-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-
 }
