@@ -9,3 +9,7 @@
 100.times do |x|
   Question.create(question: Faker::Hacker.say_something_smart)
 end
+
+30.times do |x|
+	User.create(email: Faker::Internet.email,password: "12345678",name: Faker::Name.first_name, lastname: Faker::Name.last_name, role: 0)
+end
