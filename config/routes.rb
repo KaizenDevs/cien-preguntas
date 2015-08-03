@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
 
   get 'pages/profile'
+  get '/answers/:id', to: 'answers#show' , as: "answers"
   resources :user, :controller => "user"
   get 'pages/metrics'
   get 'pages/daily_concepts'
   get 'pages/streak_tooltip'
   get 'pages/public_private_switch'
 
+
+
+  match '/404', to: 'errors#not_found', via: :all
+  match '/422', to: 'errors#unprocessable', via: :all
+  match '/500', to: 'errors#internal_server_error', via: :all
+
   resources :questions do
     collection { post :import }
-    resources :answers
+    resources :answers , except: :show
   end
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.

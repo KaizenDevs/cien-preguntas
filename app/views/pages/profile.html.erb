@@ -74,6 +74,8 @@
             <% else %>
               <span class="fa fa-users red"><div class="hidden"><%= answer.id %></div></span>
             <% end %>
+            <%= link_to '<span class="fa fa-eye"></span>'.html_safe, answers_path(answer.id) %><br>
+
           </td>
           <td><span class="tconcept grey"><%= answer.question.question %></span><br>
             <p class="concept"><%= markdown answer.answer %></p></td>

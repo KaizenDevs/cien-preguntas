@@ -16,8 +16,18 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
   end
 
-  def show    
+  def show
     @answer = Answer.find(params[:id])
+    @question_id = @answer.question.id
+    @answer_owner_id =  @answer.user.id
+    if user_signed_in?
+      raise ActionController::RoutingError.new('Not Found') if  @answer_owner_id  != current_user.id && @answer.public_answer == false
+    else
+      raise ActionController::RoutingError.new('Not Found')  if @answer.public_answer == false
+    end
+
+
+
     @answers = Answer.where(question_id: @answer.question.id, public_answer: true).where.not(user_id:@answer.user_id).shuffle
     # Filter if the user is loged in or not
     # if user_signed_in?
@@ -27,12 +37,12 @@ class AnswersController < ApplicationController
     #     if current_user.questions.include?(Question.find(params[:question_id]))
     #       # # If the user is loged in, the answer is public and the user has and answer as public for this question call all the public answers for the same question unless the answer from the user_id from @answer
     #       @answers = Answer.where(question_id: @answer.question.id, public_answer: true).where.not(user_id:@answer.user_id).shuffle
-    #     end              
+    #     end
     #   elsif @answer.public_answer == false
-    #     # If the user is private don't show answer and redirect to 
+    #     # If the user is private don't show answer and redirect to
     #     redirect_to root_path, :alert => "Lo sentimos, no puedes acceder al contenido de una respuesta privada"
-    #   end    
-    # else 
+    #   end
+    # else
     #   if @answer.public_answer
     #     # If the user is not loged in and the answer is public show just this answer
     #     @answer = Answer.find(params[:id])

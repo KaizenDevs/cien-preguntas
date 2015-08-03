@@ -52,4 +52,7 @@ Rails.application.configure do
       port: "587",
       user_name: ENV.fetch("SMTP_USERNAME")
     }
+    # ENABLE BELOW LINE TO PREVIEW ERROR PAGES IN DEVELOPMENT
+    config.consider_all_requests_local = false
+
 end
