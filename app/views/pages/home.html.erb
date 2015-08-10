@@ -1,34 +1,20 @@
-<!-- <div class="hero-unit">
-  <div class="container text-center">
-    <div class="row">
-      <%= link_to "Crear respuesta", new_question_answer_path(rand(Question.first.id..Question.last.id)), class: 'btn btn-white' %>
-    </div>
-  </div>
-</div> -->
 <div id="home">
   <%= render 'layouts/navhome' %>
   <div class="hero-unit">
-
     <div class="svg-line-top dotted-hide-show">
 
-      <div style="width:24%; height:80px; border-right: 1px dotted #FFF;"></div>
-      <div style="margin-left:24%;width:26.5%;  border-bottom: 1px dotted #FFF;"></div>
-      <div style="width:50.5%; height:50px; border-right: 1px dotted #FFF;"></div>
+      <div style="margin-width:35%; height:60px; border-right: 1px dotted #FFF;"></div>
+      <div style="margin-left:35%;width:15.5%;  border-bottom: 1px dotted #FFF;"></div>
+      <div style="width:50.5%; height:68px; border-right: 1px dotted #FFF;"></div>
       <div style="width:50.5%; height:225px; border-right: 1px dotted #AEAEAE;"></div>
-
     </div>
-
     <div class="bg-wrapper">
-
       <div class="container text-center">
-
         <div class="row">
-          <div class="col-lg-4 col-md-6 col-xs-7">
+          <div class="col-lg-4 col-lg-offset-1 col-md-5  col-xs-6">
             <p class="home-puch-text">Como le explicarias a un niño de 12 años<br><span>¿?</span></p>
           </div>
-
-
-          <div class="col-lg-4 col-md-4 col-md-offset-2 col-lg-offset-3 col-xs-5">
+          <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-3 col-xs-5 col-xs-offset-1">
             <figure class="home-kid">
               <%= image_tag "kid.png" %>
             </figure>
@@ -40,44 +26,105 @@
   <section class="section century-skills">
     <h2><strong>Responde una pregunta al día</strong> y aprende las habilidates más importantes del siglo XXI</h2>
     <div  style="margin-top:20px; width:50.5%; height:40px; border-right: 1px dotted #AEAEAE;"></div>
-
     <h2><strong>¿Cómo funciona?</strong></h2>
     <div class="dotted-hide-show" style="width:50.5%; height:100px; border-right: 1px dotted #AEAEAE;"></div>
+    <div class="dotted-hide-show" style="margin-left:26.5%; width:47.5%; border-bottom: 1px dotted #AEAEAE;"></div>
   </section>
   <section class="section">
     <div class="container how-works">
-      <figure>
-        <%= image_tag "how-works.png" %>
-      </figure>
-    </div>
-  </section>
-  <section class="section faq">
-    <h2><strong>Preguntas Frecuentes</strong></h2>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <h3>¿Qué hace a Cien Preguntas diferente?</h3>
-          <p>Make it Real es un programa muy estructurado, apoyado de mentores y una comunidad de estudiantes que trabajan de la mano, pero con la flexibilidad horaria y la dedicación que más te convenga.
-            <br><br>Hemos diseñado cuidadosamente el programa para que aprendas las habilidades que se requieren para convertirte en Desarrollador Web y puedas construir y desplegar aplicaciones complejas y robustas.</p>
-            <h3>¿Me van a ayudar a encontrar empleo?</h3>
-            <p>Es posible que publiquemos algunas ofertas para los alumnos más avanzados pero no hay ninguna garantía. Es cierto que la demanda de programadores sigue creciendo, así que entre más duro trabajes por crear tu portafolio, más probable es que consiguas un empleo.</p>
-          </div>
-          <div class="col-sm-6">
-            <h3>¿Cómo sé si este programa es para mi?</h3>
-            <p>Si sientes que el programa no es para ti y te retiras en los primeros 15 días, recibirás un reembolso completo. Si cancelas después, recibirás un reembolso parcial según tu avance en la plataforma. Cero riesgo</p>
-            <h3>¿Cuáles son los requerimientos?</h3>
-            <p>Lo único que necesitas es un computador (con cualquier sistema operativo) y una buena conexión a Internet para ver los videos. <strong>Una advertencia:</strong> la mayoría de recursos están en Inglés. Es preferible si al menos lo entiendes escrito. Pero si no, no te preocupes, puedes usar un traductor si es necesario y buscar otros recursos por tu cuenta.</p>
-          </div>
-        </div>
+      <div class="col-lg-3 col-md-3 col-xs-6">
+        <figure>
+          <svg version="1.1" x="0px" y="0px" width="152.2px" height="152.2px" viewBox="0 0 152.2 152.2" enable-background="new 0 0 152.2 152.2" xml:space="preserve">
+            <path fill="#00BF69" d="M76.1,152.2c-41.4,0-75.6-33.7-76.1-75.2C-0.2,56.7,7.4,37.5,21.6,23S54.8,0.3,75.2,0l1,0
+            c41.4,0,75.6,33.7,76.1,75.2c0.3,20.3-7.4,39.5-21.6,54.1c-14.2,14.6-33.2,22.7-53.5,23L76.1,152.2z M76.1,1.3l-1,0
+            c-20,0.2-38.7,8.3-52.6,22.6C8.6,38.2,1.1,57.1,1.3,77.1c0.5,40.7,34.1,73.9,74.8,73.9l1,0c20-0.2,38.7-8.3,52.6-22.6
+            c14-14.3,21.5-33.2,21.3-53.2C150.4,34.4,116.9,1.3,76.1,1.3z M100.5,55.5v3.9L76.1,74.7L51.7,59.4v-3.9H100.5 M101.8,54.2h-1.3
+            H51.7h-1.3v1.3v3.9v0.7l0.6,0.4l24.4,15.3l0.7,0.4l0.7-0.4l24.4-15.3l0.6-0.4v-0.7v-3.9V54.2L101.8,54.2z M100.5,63.4v24.7H51.7
+            V63.4l24.4,15.2L100.5,63.4 M101.8,61.1l-2,1.2L76.1,77.1L52.4,62.3l-2-1.2v2.3v24.7v1.3h1.3h48.8h1.3v-1.3V63.4V61.1L101.8,61.1z"/>
+          </svg>
+        </figure>
+        <h3><strong>1. </strong>Recibe una pregunta al día</h3>
+      </div>
+      <div class="col-lg-3 col-md-3 col-xs-6">
+        <figure>
+          <svg version="1.1" x="0px" y="0px" width="152.2px" height="152.2px" viewBox="0 0 152.2 152.2" enable-background="new 0 0 152.2 152.2" xml:space="preserve">
+            <path fill="#00BF69" d="M76.1,152.2c-41.4,0-75.6-33.7-76.1-75.2C-0.2,56.7,7.4,37.5,21.6,23S54.8,0.3,75.2,0l1,0
+            c41.4,0,75.6,33.7,76.1,75.2c0.3,20.3-7.4,39.5-21.6,54.1c-14.2,14.6-33.2,22.7-53.5,23L76.1,152.2z M76.1,1.3l-1,0
+            c-20,0.2-38.7,8.3-52.6,22.6C8.6,38.2,1.1,57.1,1.3,77.1c0.5,40.7,34.1,73.9,74.8,73.9l1,0c20-0.2,38.7-8.3,52.6-22.6
+            c14-14.3,21.5-33.2,21.3-53.2C150.4,34.4,116.9,1.3,76.1,1.3z M106.5,89.8h-26c-1.6,0-2.8-1.3-2.8-2.8V72.4h-3V87
+            c0,1.6-1.3,2.8-2.8,2.8h-26c-1.6,0-2.8-1.3-2.8-2.8V74.6h-4.3v-7.8h4.3v-1.5c0-1.6,1.3-2.8,2.8-2.8h26c1.6,0,2.8,1.3,2.8,2.8v1.5h3
+            v-1.5c0-1.6,1.3-2.8,2.8-2.8h26c1.6,0,2.8,1.3,2.8,2.8v1.5h4.3v7.8h-4.3V87C109.3,88.5,108,89.8,106.5,89.8z M73.3,71.1h5.6V87
+            c0,0.8,0.7,1.5,1.5,1.5h26c0.8,0,1.5-0.7,1.5-1.5V73.3h4.3v-5.2H108v-2.8c0-0.8-0.7-1.5-1.5-1.5h-26c-0.8,0-1.5,0.7-1.5,1.5v2.8
+            h-5.6v-2.8c0-0.8-0.7-1.5-1.5-1.5h-26c-0.8,0-1.5,0.7-1.5,1.5v2.8h-4.3v5.2h4.3V87c0,0.8,0.7,1.5,1.5,1.5h26c0.8,0,1.5-0.7,1.5-1.5
+            V71.1z M102.1,85.5H84.8c-1.6,0-2.8-1.3-2.8-2.8v-13c0-1.6,1.3-2.8,2.8-2.8h17.3c1.6,0,2.8,1.3,2.8,2.8v13
+            C105,84.2,103.7,85.5,102.1,85.5z M84.8,68.1c-0.8,0-1.5,0.7-1.5,1.5v13c0,0.8,0.7,1.5,1.5,1.5h17.3c0.8,0,1.5-0.7,1.5-1.5v-13
+            c0-0.8-0.7-1.5-1.5-1.5H84.8z M67.4,85.5H50.1c-1.6,0-2.8-1.3-2.8-2.8v-13c0-1.6,1.3-2.8,2.8-2.8h17.3c1.6,0,2.8,1.3,2.8,2.8v13
+            C70.3,84.2,69,85.5,67.4,85.5z M50.1,68.1c-0.8,0-1.5,0.7-1.5,1.5v13c0,0.8,0.7,1.5,1.5,1.5h17.3c0.8,0,1.5-0.7,1.5-1.5v-13
+            c0-0.8-0.7-1.5-1.5-1.5H50.1z"/>
+          </svg>
+        </figure>
+        <h3><strong>2. </strong>Busca en internet</h3>
+      </div>
+      <div class="col-lg-3 col-md-3 col-xs-6">
+        <figure>
+          <svg version="1.1" x="0px" y="0px" width="152.2px" height="152.2px" viewBox="0 0 152.2 152.2" enable-background="new 0 0 152.2 152.2" xml:space="preserve">
+            <path fill="#00BF69" d="M76.1,152.2c-41.4,0-75.6-33.7-76.1-75.2C-0.5,35.1,33.2,0.5,75.2,0l1,0c41.4,0,75.6,33.7,76.1,75.2
+            c0.5,42-33.2,76.5-75.2,77.1L76.1,152.2z M76.1,1.3l-1,0C33.9,1.8,0.8,35.8,1.3,77.1c0.5,40.7,34.1,73.9,74.8,73.9l0.9,0
+            c41.3-0.5,74.4-34.5,73.9-75.7C150.4,34.4,116.9,1.3,76.1,1.3z M108.7,99.5H43.6c-2.8,0-5-2.2-5-5V52.7h75v41.9
+            C113.6,97.3,111.4,99.5,108.7,99.5z M39.9,54v40.6c0,2,1.7,3.7,3.7,3.7h65.1c2,0,3.7-1.7,3.7-3.7V54H39.9z M107.1,93h-7.8v-7.8h7.8
+            V93z M100.6,91.7h5.2v-5.2h-5.2V91.7z M96.3,93H56v-7.8h40.3V93z M57.3,91.7H95v-5.2H57.3V91.7z M52.9,93h-7.8v-7.8h7.8V93z
+            M46.4,91.7h5.2v-5.2h-5.2V91.7z M107.1,82.2h-7.8v-7.8h7.8V82.2z M100.6,80.9h5.2v-5.2h-5.2V80.9z M96.3,82.2h-7.8v-7.8h7.8V82.2z
+            M89.8,80.9H95v-5.2h-5.2V80.9z M85.5,82.2h-7.8v-7.8h7.8V82.2z M78.9,80.9h5.2v-5.2h-5.2V80.9z M74.6,82.2h-7.8v-7.8h7.8V82.2z
+            M68.1,80.9h5.2v-5.2h-5.2V80.9z M63.8,82.2H56v-7.8h7.8V82.2z M57.3,80.9h5.2v-5.2h-5.2V80.9z M52.9,82.2h-7.8v-7.8h7.8V82.2z
+            M46.4,80.9h5.2v-5.2h-5.2V80.9z M107.1,71.4h-7.8v-7.8h7.8V71.4z M100.6,70.1h5.2v-5.2h-5.2V70.1z M96.3,71.4h-7.8v-7.8h7.8V71.4z
+            M89.8,70.1H95v-5.2h-5.2V70.1z M85.5,71.4h-7.8v-7.8h7.8V71.4z M78.9,70.1h5.2v-5.2h-5.2V70.1z M74.6,71.4h-7.8v-7.8h7.8V71.4z
+            M68.1,70.1h5.2v-5.2h-5.2V70.1z M63.8,71.4H56v-7.8h7.8V71.4z M57.3,70.1h5.2v-5.2h-5.2V70.1z M52.9,71.4h-7.8v-7.8h7.8V71.4z
+            M46.4,70.1h5.2v-5.2h-5.2V70.1z"/>
+          </svg>
+        </figure>
+        <h3><strong>3. </strong>Responde la pregunta</h3>
+      </div>
+      <div class="col-lg-3 col-md-3 col-xs-6">
+        <figure>
+          <svg version="1.1" x="0px" y="0px" width="152.2px" height="152.2px" viewBox="0 0 152.2 152.2" enable-background="new 0 0 152.2 152.2" xml:space="preserve">
+            <path fill="#00BF69" d="M76.1,152.2c-41.4,0-75.6-33.7-76.1-75.2C-0.2,56.7,7.4,37.5,21.6,23S54.8,0.3,75.2,0l1,0
+            c41.4,0,75.6,33.7,76.1,75.2c0.3,20.3-7.4,39.5-21.6,54.1c-14.2,14.6-33.2,22.7-53.5,23L76.1,152.2z M76.1,1.3l-1,0
+            c-20,0.2-38.7,8.3-52.6,22.6C8.6,38.2,1.1,57.1,1.3,77.1c0.5,40.7,34.1,73.9,74.8,73.9l1,0c20-0.2,38.7-8.3,52.6-22.6
+            c14-14.3,21.5-33.2,21.3-53.2C150.4,34.4,116.9,1.3,76.1,1.3z M91,52L64.6,76.3l-13-7L91,52 M98.4,47.2L48.4,69.1L64.8,78L98.4,47.2
+            L98.4,47.2z M96.4,52.3l-7.9,36.8l-17.3-9.3L96.4,52.3 M98.9,47.4L68.8,80.2l20.7,11.1L98.9,47.4L98.9,47.4z M63.4,95.8V80.6
+            l12.8,6.9L63.4,95.8z M64.9,83v10.1l8.5-5.5L64.9,83z"/>
+          </svg>
+        </figure>
+        <h3><strong>4. </strong>Comparte tu pregunta</h3>
       </div>
     </section>
-  </div>
-  <script>
-    $(function(){
-      $(".hero-unit p span").typed({
-        strings: ["¿Qué es memoria RAM?", "¿Qué es internet?", "¿Qué es programación?"],
-        typeSpeed: 100,
-        backDelay: 500
+    <section class="section faq">
+      <h2><strong>Preguntas Frecuentes</strong></h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>¿Qué hace a Cien Preguntas diferente?</h3>
+            <p>Make it Real es un programa muy estructurado, apoyado de mentores y una comunidad de estudiantes que trabajan de la mano, pero con la flexibilidad horaria y la dedicación que más te convenga.
+              <br><br>Hemos diseñado cuidadosamente el programa para que aprendas las habilidades que se requieren para convertirte en Desarrollador Web y puedas construir y desplegar aplicaciones complejas y robustas.</p>
+              <h3>¿Me van a ayudar a encontrar empleo?</h3>
+              <p>Es posible que publiquemos algunas ofertas para los alumnos más avanzados pero no hay ninguna garantía. Es cierto que la demanda de programadores sigue creciendo, así que entre más duro trabajes por crear tu portafolio, más probable es que consiguas un empleo.</p>
+            </div>
+            <div class="col-sm-6">
+              <h3>¿Cómo sé si este programa es para mi?</h3>
+              <p>Si sientes que el programa no es para ti y te retiras en los primeros 15 días, recibirás un reembolso completo. Si cancelas después, recibirás un reembolso parcial según tu avance en la plataforma. Cero riesgo</p>
+              <h3>¿Cuáles son los requerimientos?</h3>
+              <p>Lo único que necesitas es un computador (con cualquier sistema operativo) y una buena conexión a Internet para ver los videos. <strong>Una advertencia:</strong> la mayoría de recursos están en Inglés. Es preferible si al menos lo entiendes escrito. Pero si no, no te preocupes, puedes usar un traductor si es necesario y buscar otros recursos por tu cuenta.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script>
+      $(function(){
+        $(".hero-unit p span").typed({
+          strings: ["¿Qué es memoria RAM?", "¿Qué es internet?", "¿Qué es programación?"],
+          typeSpeed: 100,
+          backDelay: 500
+        });
       });
-    });
-  </script>
+    </script>

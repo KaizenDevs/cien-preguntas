@@ -9,6 +9,8 @@
   border-radius: 0;
   .navbar-brand{
     padding: 0;
+    background: none;
+    border: none;
     .logo{
       margin-top: 5px;
       width: 120px;
@@ -31,6 +33,16 @@
     background: white !important;
     border:none !important;
     color: #00BF69 !important;
+  }
+  .icon-bar{
+    background: white !important;
+  }
+  @media (max-width: 767px) {
+    text-align: center;
+    a{
+     background: rgba(0,0,0, 0.05);
+     border-bottom: 1px solid rgba(0,0,0, 0.05);
+    }
   }
 }
 .dotted-hide-show  {
@@ -61,13 +73,12 @@
       }
     }
 
-
     .home-kid{
       img{ width: 100% }
     }
     .bg-wrapper{
       background: image-url('header-bg.png');
-      height: 300px;
+      padding-bottom:1em;
     }
 
     p.home-puch-text{
@@ -79,19 +90,25 @@
       text-align: center;
       margin-top: 2.4em;
       font-size: 1.5em;
-      span {
+      span{
         font-weight: 100;
-        letter-spacing: 0.5px;
-        font-size: 1.2em;
+          letter-spacing: 0.5px;
       }
     }
     @media (min-width: 640px) {
+      .bg-wrapper{
+        height: 300px;
+      }
       p.home-puch-text{
-      margin-top: 70px;
-      font-size: 1.75em;
-      width: 100%;
+        margin-top: 70px;
+        font-size: 1.75em;
+        width: 100%;
+        span {
+
+          font-size: 1em;
+        }
+      }
     }
-  }
 
   }
 }
@@ -114,14 +131,25 @@
   }
 }
 .how-works{
-  padding:0;
+  padding:0 0 6em 0;
+
   figure{
     width: 100%;
+    text-align: center;
+    margin: 0 auto;
     img{width: 100%}
+  }
+  h3{
+
+    text-align: center;
+    font-weight: 300;
+    font-family: 'Roboto Slab', serif;
+    color: #7C7C7C;
+    strong{ color: #383838; font-weight: 600;}
   }
 }
 .faq{
-  margin: 3em 0 0 0;
+  margin-bottom: 0 !important;
   padding: 4em  0;
   font-family: 'Roboto Slab', serif;
   h2{
@@ -162,21 +190,24 @@ html {
   min-height: 100%;
 }
 .footer {
-  position: absolute;
+  // position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px;
   background-color: #f5f5f5;
   left: 0;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top:1.2em;
+  padding: 0 3em;
+  line-height: 3em;
+
+
   background:#222;
   color:#999999;
   a { color: #999999;}
+  p {margin-top: 1em;}
+  figure{display: inline-block; padding: 0.5em;}
+
 }
 #footer-clear{
-  margin-bottom: 50px;
+  margin-bottom: 0 auto 50px auto;
 }
 // STICKY FOOTER END
 .section {margin: 3em 0;}
