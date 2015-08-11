@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'pages/profile'
-  get '/answers/:id', to: 'answers#show' , as: "answers"
+  get '/answers/:id', to: 'answers#show' , as: "answer"
   resources :user, :controller => "user"
   get 'pages/metrics'
   get 'pages/daily_concepts'

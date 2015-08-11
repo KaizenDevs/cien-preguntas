@@ -58,7 +58,7 @@ div.social-share-button{
                   <% end %>
                   <% if User.find(current_user.id).questions.include?(Question.find(@question_id)) %>
                     <% if @answer_owner_id != current_user.id %>
-                      <h2>ya la respondio <%= link_to "ver mi respuesta", answers_path(Answer.where(user_id: current_user.id).first) %></h2>
+                      <h2>ya la respondio <%= link_to "ver mi respuesta", answer_path(Answer.where(user_id: current_user.id).first) %></h2>
                       <% end %>
                   <% else %>
                     <h2>no la ha respondido</h2>
