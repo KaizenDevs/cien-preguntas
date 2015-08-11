@@ -60,7 +60,7 @@ class AnswersController < ApplicationController
     if @answer.save
       streak = PagesHelper.day_streak(current_user).count
       current_user.update(max_streak: streak) if current_user.max_streak < streak
-      redirect_to [@question, @answer]
+      redirect_to [ @answer]
     else
       flash[:alert] = "La respuesta no puede estar vacía."
       render 'new'
