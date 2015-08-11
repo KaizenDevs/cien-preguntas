@@ -42,8 +42,8 @@
     a{
      background: rgba(0,0,0, 0.05);
      border-bottom: 1px solid rgba(0,0,0, 0.05);
-    }
-  }
+   }
+ }
 }
 .dotted-hide-show  {
   display: none;
@@ -92,7 +92,7 @@
       font-size: 1.5em;
       span{
         font-weight: 100;
-          letter-spacing: 0.5px;
+        letter-spacing: 0.5px;
       }
     }
     @media (min-width: 640px) {
@@ -104,12 +104,10 @@
         font-size: 1.75em;
         width: 100%;
         span {
-
           font-size: 1em;
         }
       }
     }
-
   }
 }
 .century-skills {
@@ -140,11 +138,11 @@
     img{width: 100%}
   }
   h3{
-
     text-align: center;
     font-weight: 300;
     font-family: 'Roboto Slab', serif;
     color: #7C7C7C;
+    font-size: 19px;
     strong{ color: #383838; font-weight: 600;}
   }
 }
@@ -190,24 +188,21 @@ html {
   min-height: 100%;
 }
 .footer {
-  // position: absolute;
-  bottom: 0;
+  position: absolute;
+  bottom:0;
+
   width: 100%;
   background-color: #f5f5f5;
   left: 0;
-  padding: 0 3em;
-  line-height: 3em;
-
-
   background:#222;
   color:#999999;
   a { color: #999999;}
-  p {margin-top: 1em;}
-  figure{display: inline-block; padding: 0.5em;}
-
+  p {margin-top: 2em;}
+  figure{display: inline-block; padding: 0.5em; text-align: center; margin: 0 auto;}
 }
 #footer-clear{
-  margin-bottom: 0 auto 50px auto;
+
+  margin: 0 auto 70px auto;
 }
 // STICKY FOOTER END
 .section {margin: 3em 0;}
@@ -218,13 +213,13 @@ html {
 .social-btns {display: none;}
 // ALERTS
 .alertOffset {
-/*margin-bottom: 0;*/
+
 position: fixed;
 top: 15px;
 right: 15px;
 z-index: 5000;
 opacity: 0.85;
-/*padding-top: 80px;*/
+
 }
 .alert { }
 span.right-text { float: right; }
