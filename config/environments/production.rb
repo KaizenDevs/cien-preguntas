@@ -88,4 +88,6 @@ Rails.application.configure do
       port: "587",
       user_name: ENV.fetch("SMTP_USERNAME")
     }
+
+    config.consider_all_requests_local = false
 end
