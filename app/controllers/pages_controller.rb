@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   include ApplicationHelper
 
 	def home
+     render :layout => 'application_home'
 	end
 
   def profile

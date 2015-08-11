@@ -9,6 +9,8 @@
   border-radius: 0;
   .navbar-brand{
     padding: 0;
+    background: none;
+    border: none;
     .logo{
       margin-top: 5px;
       width: 120px;
@@ -16,67 +18,157 @@
   }
 }
 .nav-home{
-   background: image-url('header-bg.png');
-   border-bottom: 0;
+  background: image-url('header-bg.jpg');
+  border-bottom: 0;
   a {
     color: white !important;
-  &:hover{
-    text-decoration: underline !important;
+    &:hover{
+      text-decoration: underline !important;
+    }
   }
-  }
-   .btn-default{
+  .btn-default{
     font-size: 16px;
     padding: 0.5em 1.5em;
     font-weight: 300;
     background: white !important;
     border:none !important;
     color: #00BF69 !important;
+  }
+  .icon-bar{
+    background: white !important;
+  }
+  @media (max-width: 767px) {
+    text-align: center;
+    a{
+     background: rgba(0,0,0, 0.05);
+     border-bottom: 1px solid rgba(0,0,0, 0.05);
    }
+ }
+}
+.dotted-hide-show  {
+  display: none;
+}
+@media (min-width: 640px) {
+  .dotted-hide-show {
+    display: block;
+  }
 }
 // -- END fix size of logo of navbar --
-
 #home{
   .hero-unit{
     font-family: 'Roboto', sans-serif;
+    margin: 0;
+    br{display: block;}
+    .svg-line-top{
+      margin-top: 170px;
+      position: absolute;
+      width: 100%;
+      padding: 0;
+      svg{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+      }
+    }
+
     .home-kid{
-      left: 100px;
-      margin: 80px;
-      width: 350px;
-      img{  width: 100% }
+      img{ width: 100% }
     }
     .bg-wrapper{
       background: image-url('header-bg.png');
-      height: 400px;
+      padding-bottom:1em;
     }
-
-    margin: 0;
 
     p.home-puch-text{
       position: relative;
       display: block;
-      margin-top: 150px;
       color: white;
-      font-size: 1.75em;
       line-height: 1.25em;
       text-transform: uppercase;
       text-align: center;
-      span {
-       font-weight: 100;
-       letter-spacing: 0.5px;
-       font-size: 22px;
-     }
-   }
-
+      margin-top: 2.4em;
+      font-size: 1.5em;
+      span{
+        font-weight: 100;
+        letter-spacing: 0.5px;
+      }
+    }
+    @media (min-width: 640px) {
+      .bg-wrapper{
+        height: 300px;
+      }
+      p.home-puch-text{
+        margin-top: 70px;
+        font-size: 1.75em;
+        width: 100%;
+        span {
+          font-size: 1em;
+        }
+      }
+    }
   }
 }
-.habilidades-siglo {
+.century-skills {
   display: block;
-  padding-top: 140px;
+  @media (min-width: 640px) {
+    padding: 140px 0 0 0;
+  }
   text-align: center;
   font-family: 'Roboto Slab', serif;
+  font-size: 28px;
   font-weight: 100;
-  color: #999999;
+  color: #555;
   strong{ color: #383838}
+  @media (min-width: 860px) {
+    h2{ padding: 0 25%; }
+  }
+  @media (max-width: 859px) {
+    h2{ padding: 0 10%; }
+  }
+}
+.how-works{
+  padding:0 0 6em 0;
+
+  figure{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    img{width: 100%}
+  }
+  h3{
+    text-align: center;
+    font-weight: 300;
+    font-family: 'Roboto Slab', serif;
+    color: #7C7C7C;
+    font-size: 19px;
+    strong{ color: #383838; font-weight: 600;}
+  }
+}
+.faq{
+  margin-bottom: 0 !important;
+  padding: 4em  0;
+  font-family: 'Roboto Slab', serif;
+  h2{
+    color: white;
+    text-align: center;
+    margin-bottom: 2em;
+    font-size: 28px;
+  }
+  h3{
+    margin-bottom: 1.5em;
+    letter-spacing: 0.5px;
+    font-weight: 100;
+    font-size: 22px;
+    color: #00BF69 !important;
+  }
+  p {
+    color: #FFF;
+    font-size: 16px;
+    line-height: 21px;
+  }
+  background: #282828;
 }
 .btn-white{
   border: 1px solid white;
@@ -91,55 +183,46 @@
   }
 }
 // STICKY FOOTER
-
 html {
   position: relative;
   min-height: 100%;
 }
-
 .footer {
   position: absolute;
-  bottom: 0;
+  bottom:0;
+
   width: 100%;
-  height: 60px;
   background-color: #f5f5f5;
   left: 0;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top:1.2em;
   background:#222;
   color:#999999;
   a { color: #999999;}
+  p {margin-top: 2em;}
+  figure{display: inline-block; padding: 0.5em; text-align: center; margin: 0 auto;}
 }
 #footer-clear{
-  margin-bottom: 8em;
-}
 
+  margin: 0 auto 70px auto;
+}
 // STICKY FOOTER END
 .section {margin: 3em 0;}
-
 .icon {
   font-size: 6em;
   display: block;
 }
-
 .social-btns {display: none;}
-
 // ALERTS
 .alertOffset {
-    /*margin-bottom: 0;*/
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 5000;
-    opacity: 0.85;
-  /*padding-top: 80px;*/
+
+position: fixed;
+top: 15px;
+right: 15px;
+z-index: 5000;
+opacity: 0.85;
+
 }
-
 .alert { }
-
 span.right-text { float: right; }
-
 .alertOffset span{
   cursor: pointer;
   border-radius: 50%;
