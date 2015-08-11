@@ -76,7 +76,7 @@
             <% else %>
             <span class="fa fa-users red"><div class="hidden"><%= answer.id %></div></span>
             <% end %>
-            <%= link_to '<span class="fa fa-eye"></span>'.html_safe, answers_path(answer.id) %><br>
+            <%= link_to '<span class="fa fa-eye"></span>'.html_safe, answer_path(answer.id) %><br>
 
           </td>
           <td><span class="tconcept grey"><%= answer.question.question %></span><br>
@@ -105,7 +105,7 @@
           }
         }
         $('.' + response[i].answer + '.tooltip').tooltipster({
-          content: $(' <span><strong>Pregunta: </strong>' + response[i].question + '</span><br><span><strong>Fecha: </strong>' + response[i].day + '</span> <br>' + public_answer_content() + '<br><span>Para ver tu respuesta haz click </span> <a href="/questions/' + response[i].question_id + '/answers/'+ response[i].answer +'">aquí.</a>'),
+          content: $(' <span><strong>Pregunta: </strong>' + response[i].question + '</span><br><span><strong>Fecha: </strong>' + response[i].day + '</span> <br>' + public_answer_content() + '<br><span>Para ver tu respuesta haz click </span> <a href="/answers/'+ response[i].answer +'">aquí.</a>'),
           interactive: true
         })
       }
