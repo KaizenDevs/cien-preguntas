@@ -7,7 +7,7 @@ class UserMailer < BaseMandrillMailer
       "NAME" => user.name,
       "QUESTION_NUMBER" => question.id,
       "QUESTION" => question.question,
-      "ANSWER_URL" => new_question_answer_url(question.id)
+      "ANSWER_URL" => "#{new_question_answer_url(question.id)}?token=" + "#{user.auth_token}"
     }
     body = mandrill_template("cienpreguntas_questions", merge_vars)
 

@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :questions, through: :answers
   enum role: [:cliente, :admin]
+  before_create :set_token
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -52,8 +53,27 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.change_token
+    puts "I entered the method"
+    User.all.each do |user|
+      new_token = user.generated_token
+      if user.auth_token != new_token
+        user.update(auth_token: user.generated_token)
+      end
+    end
+  end
+
+  def generated_token
+    SecureRandom.hex
+  end
+
   protected
 	  def confirmation_required?
 	    false
 	  end
+
+    def set_token
+      return if auth_token.present?
+      self.auth_token = generated_token
+    end
 end
