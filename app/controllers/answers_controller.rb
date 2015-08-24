@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_action :token_authentication, only: [:new]
   before_action :authenticate_user!, except: [:show]
   before_filter :has_answer?, :only => [:new,:create]
 
@@ -93,6 +94,17 @@ class AnswersController < ApplicationController
     def has_answer?
       if current_user.questions.include?(Question.find(params[:question_id]))
         redirect_to root_path, :alert => "Lo sentimos, usted ya ha respondido esta pregunta, dirijase a su página de perfil si desea editar la respuesta"
+      end
+    end
+
+    def token_authentication
+      if params[:token]
+        user = User.find_by(auth_token: params[:token])
+        if user == nil
+          redirect_to root_path
+        else
+          sign_in user
+        end
       end
     end
 end
