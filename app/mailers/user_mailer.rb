@@ -13,4 +13,15 @@ class UserMailer < BaseMandrillMailer
 
     send_mail(user.email, subject, body)
   end
+
+  def congratulations_email(user_id)
+    user = User.find(user_id)
+    subject = "Felicitaciones de 100 Preguntas"
+    merge_vars = {
+      "NAME" => user.name,
+    }
+    body = mandrill_template("cienpreguntas_congratulations", merge_vars)
+
+    send_mail(user.email, subject, body)
+  end
 end
