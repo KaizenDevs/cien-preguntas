@@ -1,23 +1,18 @@
 <section class="section devise-form">
   <div class="container">
     <div class="row">
-      <div class="col-lg-7 col-lg-offset-3 well">
-        <div class="col-lg-7">
-          <h2>Log in</h2>
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="well">
+          <h2>Ingresar</h2>
           <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <%= f.email_field :email, autofocus: true %>
-            <%= f.password_field :password, autocomplete: "off" %>
+          <%= f.email_field :email, autofocus: true %>
+          <%= f.password_field :password, autocomplete: "off" %>
           <% if devise_mapping.rememberable? -%>
-            <%= f.check_box :remember_me %>
+          <%= f.check_box :remember_me %>
           <% end -%>
-            <%= f.submit "Log in" %>
+          <%= f.submit "Log in" %>
           <% end %>
-        </div>
-        <div class="col-lg-1">
-
-        </div>
-        <div class="col-lg-5">
-        <div style=" left-boder:1px solid rgba(255,255,255,0.2);margin-top:6em;">
+          <div class='form-group'>
             <%= render "devise/shared/links" %>
           </div>
         </div>
