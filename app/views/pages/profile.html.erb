@@ -18,16 +18,14 @@
 
         <!-- <p class="options pull-right"><a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href=""><i class="fa fa-cog"></i></a><span></span></p> -->
 
-        <div style="margin:20px 20px 0 0;" class="dropup pull-right">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropup
-            <span class="caret"></span>
+        <div class="dropdown dropdown-container pull-right">
+          <button class="btn btn-default dropdown-toggle" type="button" id="menu-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-cog"></i>
+            <!-- <span class="caret"></span> -->
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li><a href="#">Separated link</a></li>
+          <ul class="dropdown-menu" aria-labelledby="menu-options">
+            <li class="text-right"><%= link_to " Editar Datos  <span class='fa fa-pencil'></span>".html_safe , edit_user_path(current_user)  %></li>
+            <li class="text-right"><%= link_to " Cancelar cuenta  <span class='fa fa-warning'></span>".html_safe, registration_path(@user), data: { confirm: "Estas seguro que deseas cancelar tu cuenta?" }, method: :delete %></li>
           </ul>
         </div>
         <p class="pull-right"><%= @user.answers.count %><span>respuestas</span></p>
@@ -35,20 +33,20 @@
     </div>
   </div>
 </div>
+
+<% if  day_streak(@user).count > 0%>
 <div class="row">
   <h2 class="text-center"><strong>Días seguidos</strong></h2>
   <div class="dotted-hide-show" style="width:50.5%; height:100px; border-right: 1px dotted #AEAEAE;"></div>
   <div class="col-lg-6 col-lg-offset-3">
     <ul class="streak-squares">
-
       <% day_streak(@user).each_with_index do |answer, index| %>
       <li><a href="#" class="<%= answer[:answer].first.id %> tooltip"><%= index + 1 %></a></li>
       <% end %>
-
     </ul>
   </div>
 </div>
-
+<% end %>
 
 <h2 class="text-center"><strong>respuestas</strong></h2>
 <div class="dotted-hide-show" style="width:50.5%; height:100px; border-right: 1px dotted #AEAEAE;"></div>

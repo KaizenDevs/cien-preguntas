@@ -1,11 +1,21 @@
-body{
-  background: #EEEEED;
-}
-.section-profile{
+$color-green: #00C166;
 
-  .profile-photo-name{
-    margin-top:2em;
+body{ background: #EEEEED;}
+
+.section-profile{
+  h2{
+    color: $color-green;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 28px;
+    font-weight: 100;
+    color: #555;
+    strong{ color: #383838}
   }
+  margin-top: 0 !important;
+  .container:first-child{padding-top:3em;}
+  .container{background: white;}
+  .profile-photo-name{padding-top:2em;}
 
   figure img {
     z-index:100;
@@ -23,9 +33,7 @@ body{
     transform: rotate(-45deg);
     overflow: hidden;
   }
-  // .mask{
-  //   display: none;
-  // }
+
   .square  {
     margin-left: 20px;
     border: 10px solid #333;
@@ -39,21 +47,36 @@ body{
   }
 
   .right-block{
+    button{
+      background: none;
+      color: #00C166;
+      border: 2px solid #00C166;
+      padding:8px 12px;
+    }
+    button:hover, button:focus{
+      background: #00C166 !important;
+      border: 2px solid #00C166 !important;
+      color: white;
+    }
+    .dropdown-container{
+      margin:20px 20px 0 0;
+    }
     top:-80px;
     color: white;
     z-index:10;
     width:100%;
     box-sizing: border-box;
-    border-left: 50px solid #EEEEED;
-    border-right: 20px solid #EEEEED;
+    border-left: 50px solid white;
+    border-right: 20px solid white;
 
     position:relative;
     display:inline-block;
     background:#333;
     height:80px;
+
     h3{
       line-height: 80px;
-      color: white;
+      color: $color-green;
       margin: 0 0 0 80px;
       display: inline-block;
     }
@@ -68,7 +91,7 @@ body{
       font-weight: 800;
       line-height: 15px;
       display: block;
-      color: white;
+      color: $color-green;
       padding-left:15px;
       height: 30px;
       span{
@@ -128,8 +151,8 @@ body{
   @media (max-width: 640px) {
 
     .right-block{
-      border-left: 5px solid #EEEEED;
-      border-right: 5px solid #EEEEED;
+      border-left: 5px solid white;
+      border-right: 5px solid white;
       // overflow: hidden;
     }
     .square  {
