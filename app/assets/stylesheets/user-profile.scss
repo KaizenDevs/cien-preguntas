@@ -1,115 +1,148 @@
-// USER PROFILE CSS PROPERTIES
-/*top-container*/
+body{
+  background: #EEEEED;
+}
+.section-profile{
 
-.top-container {
-  background-color: #F9F9F9;
-  border: 1px solid #E2E2E2;
-  padding: 10px 20px;
+  .profile-photo-name{
+    margin-top:2em;
+  }
+
+  figure img {
+    z-index:100;
+    position:absolute;
+    left:-20px;
+    top:-20px;
+    clip-path:  polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -ms-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -webkit-clip-path:  polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: url(#clip);
+    width:100px;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    overflow: hidden;
+  }
+  // .mask{
+  //   display: none;
+  // }
+  .square  {
+    margin-left: 20px;
+    border: 10px solid #333;
+    height:80px;
+    width:80px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: 100;
+    position: relative;
+  }
+
+  .right-block{
+    top:-80px;
+    color: white;
+    z-index:10;
+    width:100%;
+    box-sizing: border-box;
+    border-left: 50px solid #EEEEED;
+    border-right: 20px solid #EEEEED;
+
+    position:relative;
+    display:inline-block;
+    background:#333;
+    height:80px;
+    h3{
+      line-height: 80px;
+      color: white;
+      margin: 0 0 0 80px;
+      display: inline-block;
+    }
+
+    p{
+      margin-top:30px;
+      margin-right: 25px;
+      display: inline-block;
+      border-left: 1px dotted #585858;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 15px;
+      display: block;
+      color: white;
+      padding-left:15px;
+      height: 30px;
+      span{
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        display: block;
+        margin-top: 2px;
+      }
+    }
+    p:last-child{border:none;}
+    .options{
+      a{
+
+        background:#00C166;
+        color: white;
+        padding:3px 5px;
+        font-size: 14px;
+        border-radius: 5px;
+        margin-bottom:15px;
+      }
+      span{margin-top:5px;}
+      margin-top:25px !important;
+    }
+  }
+
+  ul.streak-squares{
+    margin:0;
+    padding:0 30px;
+    background:url(asset_path("profile/horizontal-line.png"));
+
+    li{
+      display: inline-block;
+      list-style: none;
+      margin-top: 10px;
+      margin-left: 10px;
+      a{
+        z-index: 900;
+        display: inline-block;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        background:url(asset_path("profile/l-square.png"));
+        color: #23ca7b;
+        font-size: 12px;
+        font-weight:300;
+      }
+      a:hover{
+        color: white;
+        background-position: 30px 0;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+
+    .right-block{
+      border-left: 5px solid #EEEEED;
+      border-right: 5px solid #EEEEED;
+      // overflow: hidden;
+    }
+    .square  {
+      margin: 0 auto 110px auto;
+    }
+    h3{
+      margin: 0 0 0 20px !important;
+      font-size: 17px;
+    }
+  }
+
 }
 
-.secondary-container {
-  background-color: #FFFFFF;
-  border: 1px solid #E2E2E2;
-  border-top: 0;
-  padding: 10px 20px;
-  box-shadow: 0px 4px 5px 0px rgba(244,244,244,1);
-  z-index: 2;
-}
-
-.answer-button {
-  background-color: #D84A33;
-  font-size: 15px;
-  padding: 10px 0;
-  margin-top: 10px;
-  color: white;
-  border-radius: 2px
-}
-
-.answer-list {
-  background-color: #FFFFFF;
-  border: 1px solid #E2E2E2;
-  border-top: 0;
-  padding: 10px 20px;
-  z-index: 1
-}
-
-.user-edit {
-  margin: 10px 0;
-}
-
-.grey {
-  color: grey;
-}
 
 
-.tdate {
-  padding-top: 5px;
-  width:10px;
-}
 
-.table>tbody>tr>td {
-  line-height: 18px;
-}
-
-.date {
-  font-size: 22px;
-  font-weight: 500;
-}
-
-.tconcept {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.concept {
-  font-size: 16px;
-  margin-top: 20px;
-}
-
-.price {
-  font-size: 18px;
-}
-
-#daily-streak {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  background-color: white;
-  height: 72px;
-  width: 72px;
-  border-radius: 10px;
-}
-
-#shadow {
-  background-color: #3D668F;
-  height: 50px;
-  width: 80px;
-  -webkit-box-shadow: 0px 10px 5px 0px rgba(244,244,244,1);
-  -moz-box-shadow: 0px 10px 5px 0px rgba(244,244,244,1);
-  box-shadow: 0px 10px 5px 0px rgba(244,244,244,1);
-}
-
-.answer .fa {
-  visibility: hidden;
-}
-
-.answer:hover .fa {
-  visibility: visible;
-}
-
-.fa-angle-up {
-  font-weight: bold;
-}
-
-.votes {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.green {
-  color: green;
-}
-
-.red {
-  color: red;
-}

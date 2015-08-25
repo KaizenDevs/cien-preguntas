@@ -1,99 +1,66 @@
-<div class="container">
-  <div class="row">
+<section class="section section-profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="profile-photo-name">
+          <div class="square">
+            <figure>
+             <%= image_tag "profile/profile-test.jpg" %>
+             <!-- <svg>
+             <clipPath id="clip">
+             <polygon points="50 0, 100 50, 50 100, 0 50"></polygon>
+             </clipPath>
+           </svg> -->
+         </figure>
+       </div>
+       <div class="right-block">
+        <h3><%= @user.first_name %></h3>
 
-    <div class="col-xs-12 col-sm-8 col-md-offset-2 top-container">
-      <div class="col-xs-12 col-sm-4 text-center">
-        <figure>
-          <img src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png" alt="" class="img-circle img-responsive" style="width: 80%">
-        </figure>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <h2 class="text-center" style="color: #D84A33"><%= @user.name + " " %><%= @user.lastname if @user.lastname  %></h2>
-        <div class="row">
-          <div class="col-xs-12 col-sm-4 text-center">
-            <h3 style="margin-bottom: 0"><%= @user.answers.count %></h3>
-            <p>Respuestas</p>
-          </div>
-          <div class="col-xs-12 col-sm-4 text-center">
-            <h3 style="margin-bottom: 0"><%= day_streak(@user).count %></h3>
-            <p>Cadena Actual</p>
-          </div>
-          <div class="col-xs-12 col-sm-4 text-center">
-            <h3 style="margin-bottom: 0"><%= @user.max_streak %></h3>
-            <p>Cadena Máx.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+        <!-- <p class="options pull-right"><a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href=""><i class="fa fa-cog"></i></a><span></span></p> -->
 
-   <%= render 'pages/welcome' %>
-
-    <div class="col-md-8 col-md-offset-2 col-xs-12" style="background-color: black; padding: 4px 5px 0 8px">
-      <% day_streak(@user).each do |answer| %>
-      <div id="daily-streak" class="<%= answer[:answer].first.id %> tooltip"></div>
-      <% end %>
-    </div>
-
-
-    <div class="col-xs-12 col-sm-8 col-md-offset-2 secondary-container">
-      <div class="col-xs-6 col-sm-3 text-center">
-        <h3 class="answer-button"><span class="fa fa-stack-exchange"></span> Respuestas</h3>
-      </div>
-      <% if @user == current_user %>
-      <div class="col-xs-6 col-sm-3 pull-right user-edit">
-        <div class="btn-group dropup btn-block">
-          <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Opciones </button>
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <div style="margin:20px 20px 0 0;" class="dropup pull-right">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropup
             <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
           </button>
-          <ul class="dropdown-menu text-left" role="menu">
-            <li>
-              <%= link_to edit_user_path(current_user) do %>
-              Editar Datos
-              <span class="fa fa-pencil pull-right"></span>
-              <% end %>
-            </li>
-            <li class="divider"></li>
-            <li><%= link_to "<span class='fa fa-warning pull-right'></span> Cancelar cuenta  ".html_safe, registration_path(@user), data: { confirm: "Estas seguro que deseas cancelar tu cuenta?" }, method: :delete %></li>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li><a href="#">Separated link</a></li>
           </ul>
         </div>
+        <p class="pull-right"><%= @user.answers.count %><span>respuestas</span></p>
       </div>
-      <% end %>
-    </div>
-
-    <div class="col-xs-12 col-sm-8 col-md-offset-2 answer-list">
-      <table class="table" style="margin-top: 10px">
-        <% @user.answers.sort_by(&:created_at).reverse.each do |answer| %>
-        <tr class="answer">
-          <td class="tdate grey text-center">
-            <%= answer.created_at.strftime("%b") %>
-            <span class="date"><%= answer.created_at.strftime("%d") %></span><br>
-            <%= link_to '<span class="fa fa-edit"></span>'.html_safe, edit_question_answer_path(answer.question, answer) %><br>
-            <%= link_to '<span class="fa fa-trash"></span>'.html_safe, question_answer_path(answer.question, answer), method: :delete, data: { confirm: '¿Está seguro que desea eliminar la respuesta?' } %><br>
-            <% if answer.public_answer == true %>
-            <span class="fa fa-users green"><div class="hidden"><%= answer.id %></div></span>
-            <% else %>
-            <span class="fa fa-users red"><div class="hidden"><%= answer.id %></div></span>
-            <% end %>
-            <%= link_to '<span class="fa fa-eye"></span>'.html_safe, answer_path(answer.id) %><br>
-
-          </td>
-          <td><span class="tconcept grey"><%= answer.question.question %></span><br>
-            <p class="concept"><%= markdown answer.answer %></p></td>
-          </tr>
-          <% end %>
-        </table>
-      </div>
-
     </div>
   </div>
+</div>
+<div class="row">
+  <h2 class="text-center"><strong>Días seguidos</strong></h2>
+  <div class="dotted-hide-show" style="width:50.5%; height:100px; border-right: 1px dotted #AEAEAE;"></div>
+  <div class="col-lg-6 col-lg-offset-3">
+    <ul class="streak-squares">
 
-  <script>
-    $(document).ready(function() {
-      var addStreakTooltip = function() {
-        $.getJSON( "/pages/streak_tooltip?user=" +  "<%= @user.id %>" ).done(function( response ) {
-          console.log(response)
+      <% day_streak(@user).each_with_index do |answer, index| %>
+      <li><a href="#" class="<%= answer[:answer].first.id %> tooltip"><%= index + 1 %></a></li>
+      <% end %>
+
+    </ul>
+  </div>
+</div>
+
+
+<h2 class="text-center"><strong>respuestas</strong></h2>
+<div class="dotted-hide-show" style="width:50.5%; height:100px; border-right: 1px dotted #AEAEAE;"></div>
+</div>
+</section>
+
+
+<script>
+  $(document).ready(function() {
+    var addStreakTooltip = function() {
+      $.getJSON( "/pages/streak_tooltip?user=" +  "<%= @user.id %>" ).done(function( response ) {
+        console.log(response)
       // $('.' + '<%=  %>')
       for(i = 0; i < response.length; i++) {
         var public_answer_content = function() {
