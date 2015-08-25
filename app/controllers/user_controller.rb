@@ -1,5 +1,6 @@
 class UserController < ApplicationController
-	before_filter :authenticate_user!
+	before_action :token_authentication, only: [:edit]
+	before_action :authenticate_user!
 	include ApplicationHelper
 
 	def index
@@ -30,5 +31,16 @@ class UserController < ApplicationController
 	private
 		def user_params
 		  params.require(:user).permit(:name, :lastname, :email, :password, :password_confirmation)
+		end
+
+		def token_authentication
+		  if params[:token]
+		    user = User.find_by(auth_token: params[:token])
+		    if user == nil
+		      redirect_to root_path
+		    else
+		      sign_in user
+		    end
+		  end
 		end
 end

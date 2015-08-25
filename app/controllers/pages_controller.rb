@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :token_authentication, only: [:profile]
   before_action :authenticate_user!, only: [:profile]
   before_action :admin_only, only: [:metrics]
   respond_to :html, :json
@@ -60,6 +61,17 @@ class PagesController < ApplicationController
   def admin_only
     unless current_user.admin?
       redirect_to root_path, :alert => "Acceso denegado, no posee permisos como administrador"
+    end
+  end
+
+  def token_authentication
+    if params[:token]
+      user = User.find_by(auth_token: params[:token])
+      if user == nil
+        redirect_to root_path
+      else
+        sign_in user
+      end
     end
   end
 end

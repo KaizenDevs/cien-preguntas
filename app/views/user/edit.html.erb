@@ -1,49 +1,39 @@
-Editar usuario! <%= @temp %>
-
-
-<h2>Edit <%= @user.name.humanize %></h2>
-
-<%= form_for(@user, :url => user_path(@user) ) do |f| %>
-	
-	<div class="field">
-	  <%= f.label :name, "Nombre" %><br />
-	  <%= f.text_field :name, autofocus: true %>
-	</div>
-
-	<div class="field">
-	  <%= f.label :lastname, "Apellidos" %><br />
-	  <%= f.text_field :lastname %>
-	</div>
-
-  <div class="field">
-    <%= f.label :email, "Correo Electrónico" %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <% if !facebook_user? %>
-    <div class="field">
-      <%= f.label :password, "Nueva Contraseña" %> <i>(Si no desesas cambiar la contraseña, deja este campo y el siguiente en blanco)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation, "Confirmar Nueva Contraseña" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-        <%= f.label :current_password, "Contraseña Actual" %> <i>(Ingresa la contraseña actual para que sean almacenados los anteriores cambios)</i><br />
-        <%= f.password_field :current_password, autocomplete: "off" %>
+<section class="section devise-form" style="padding-bottom: 0px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="well">
+          <h2>Editar <%= @user.name.humanize %></h2>
+          <%= bootstrap_form_for(@user, :url => user_path(@user) ) do |f| %>
+          <%= f.text_field :name, label: "Nombre",autofocus: true %>
+          <%= f.text_field :lastname, label: "Apellidos" %>
+          <%= f.email_field :email, label: "Correo electrónico" %>
+          <%= f.password_field :password, label: "Contraseña (Si no desesas cambiar la contraseña, deja este campo y el siguiente en blanco)",autocomplete: "off" %>
+          <%= f.password_field :password_confirmation, label: "Confirmar contraseña",autocomplete: "off" %>
+          <%= f.password_field :current_password, label: "Contraseña actual (Ingresa la contraseña actual para que sean almacenados los anteriores cambios)",autocomplete: "off" %>
+          <%= f.submit "Actualizar" %>
+          <% end %>
+        </div>
       </div>
-  <% end %>
-  
-  <div class="actions">
-    <%= f.submit "Update" %>
+    </div>
   </div>
-<% end %>
+</section>
 
-<h3>Cancelar mi cuenta</h3>
+<section class="section devise-form" style="padding-top: 0px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="well">
+          <h3>Cancelar mi cuenta</h3>
 
-<p>No estas a gusto? <%= button_to "Cancelar Cuenta", registration_path(@user), data: { confirm: "Estas seguro que deseas cancelar tu cuenta?" }, method: :delete %></p>
+          <p>No estas a gusto? <%= button_to "Cancelar Cuenta", registration_path(@user), data: { confirm: "Estas seguro que deseas cancelar tu cuenta?" }, method: :delete %></p>
+          <%= link_to "Regresar", :back %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<%= link_to "Regresar", :back %>
+<style>
+  body{ background:#00BE66; }
+</style>

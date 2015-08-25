@@ -1,39 +1,26 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  
-  <div class="field">
-    <%= f.label :name, "Nombre" %><br />
-    <%= f.text_field :name, autofocus: true %>
+<section class="section devise-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="well">
+          <h2>Registrarse</h2>
+          <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <%= f.text_field :name, label: "Nombre",autofocus: true %>
+          <%= f.text_field :lastname, label: "Apellidos" %>
+          <%= f.email_field :email, label: "Correo electrónico" %>
+          <%= f.password_field :password, label: "Contraseña (mínimo #{@minimum_password_length if @minimum_password_length} caracteres)",autocomplete: "off" %>
+          <%= f.password_field :password_confirmation, label: "Confirmar contraseña",autocomplete: "off" %>
+          <%= f.submit "Empezar" %>
+          <% end %>
+          <div class='form-group'>
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :lastname, "Apellidos" %><br />
-    <%= f.text_field :lastname %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email, "Correo electrónico" %><br />
-    <%= f.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "Contraseña" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmar contraseña" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
+<style>
+  body{ background:#00BE66; }
+</style>
