@@ -9,7 +9,8 @@ class UserMailer < BaseMandrillMailer
       "QUESTION" => question.question,
       "USER_URL" => "#{pages_profile_url(user_id: user.id)}?token=" + "#{user.auth_token}",
       "ANSWER_URL" => "#{new_question_answer_url(question.id)}?token=" + "#{user.auth_token}",
-      "ANSWER_NUMBER" => user.answers.count
+      "ANSWER_NUMBER" => user.answers.count,
+      "UNSUB" => "#{edit_user_url(user)}?token=" + "#{user.auth_token}"
     }
     body = mandrill_template("cienpreguntas_questions", merge_vars)
 
