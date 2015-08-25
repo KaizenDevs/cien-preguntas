@@ -9,9 +9,9 @@
           <%= f.email_field :email, autofocus: true %>
           <%= f.password_field :password, autocomplete: "off" %>
           <% if devise_mapping.rememberable? -%>
-          <%= f.check_box :remember_me %>
+          <%= f.check_box :remember_me, label: "Recordar" %>
           <% end -%>
-          <%= f.submit "Log in" %>
+          <%= f.submit "Ingresar" %>
           <% end %>
           <div class='form-group'>
             <%= render "devise/shared/links" %>
