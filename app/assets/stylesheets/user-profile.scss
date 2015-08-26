@@ -1,9 +1,42 @@
 $color-green: #00C166;
+$color-grey: #D3D3D3;
 $right-block-left: 50px;
 body{ background: #EEEEED;}
 
 .section-profile{
-  h2{
+
+  margin-top: 0 !important;
+  @media (max-width: 640px) {
+    margin-left: -20px !important;
+  }
+  .answer{
+
+    font-family: 'Roboto Slab', serif;
+
+    .number{
+      $black-diamond-size: 80px;
+      position:relative;
+      margin:30px auto;
+      text-align: center;
+
+      width: $black-diamond-size;
+      height: $black-diamond-size;
+      color: white;
+      line-height: $black-diamond-size;
+      font-size:24px;
+      font-weight: 400;
+
+      background:url(asset_path("profile/black-diamond.png"));
+    }
+    h3{
+      font-size:20px !important;
+      padding: 20px;
+      border:1px solid #d5d5d5;
+    }
+
+  }
+
+  h3{
     color: $color-green;
     text-align: center;
     font-family: 'Roboto Slab', serif;
@@ -12,10 +45,26 @@ body{ background: #EEEEED;}
     color: #555;
     strong{ color: #383838}
   }
-  margin-top: 0 !important;
+  .day-tip-container{
+    .tip{
+      display: inline-block;
+      padding:10px;
+      border-top: 1px solid $color-grey;
+      border-left: 1px solid $color-grey;
+      border-right: 1px solid $color-grey;
+    }
+    .box{
+      padding:30px;
+      border: 1px solid $color-grey;
+      box-sizing: border-box;
+
+    }
+  }
   .container:first-child{padding-top:3em;}
   .container{background: white;}
-  .profile-photo-name{padding-top:2em;}
+  .profile-photo-name{
+    padding-top:2em;
+  }
 
   figure img {
     z-index:100;
@@ -52,7 +101,8 @@ body{ background: #EEEEED;}
     top:-80px;
     color: white;
     z-index:10;
-    width:calc(100% - 50px);
+    width: calc(100% - #{$right-block-left});
+
     box-sizing: border-box;
     border-left: 50px solid white;
     border-right: 20px solid white;
@@ -78,12 +128,12 @@ body{ background: #EEEEED;}
       margin:20px 20px 0 0;
     }
 
-
     h3{
       line-height: 80px;
       color: $color-green;
       margin: 0 0 0 80px;
       display: inline-block;
+      margin-right: 20px;
     }
 
     p{

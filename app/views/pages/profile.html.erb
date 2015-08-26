@@ -1,7 +1,7 @@
 <section class="section section-profile">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
         <div class="profile-photo-name">
           <div class="square">
             <figure>
@@ -34,33 +34,50 @@
 
 <% if day_streak(@user).count > 0 %>
 <div class="row">
-  <div class="col-lg-4 col-lg-offset-1">
-    <div>
-      <p><strong>Responde una pregunta</strong> al día y aprende las habilidates más importantes del siglo XXI</p>
+  <div class="col-lg-4 col-sm-4 col-lg-offset-2 col-sm-offset-2">
+    <div class="day-tip-container">
+      <div class="tip">tip del día:</div class="tip">
+        <p class="box"><strong>Responde una pregunta</strong> al día y aprende las habilidates más importantes del siglo XXI</p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-4">
+      <h3 class="text-center"><strong>Días seguidos</strong></h3>
+      <ul class="streak-squares">
+        <% day_streak(@user).each_with_index do |answer, index| %>
+        <li><a href="#" class="<%= answer[:answer].first.id %> tooltip"><%= index + 1 %></a></li>
+        <% end %>
+      </ul>
     </div>
   </div>
-  <div class="col-lg-4 col-lg-offset-1">
-  <h2 class="text-center"><strong>Días seguidos</strong></h2>
-    <ul class="streak-squares">
-      <% day_streak(@user).each_with_index do |answer, index| %>
-      <li><a href="#" class="<%= answer[:answer].first.id %> tooltip"><%= index + 1 %></a></li>
-      <% end %>
-    </ul>
-  </div>
+  <% end %>
+  <br>
+
+  <h3 class="text-center"><strong>respuestas</strong></h3>
+  <div class="dotted-hide-show" style="margin-top:30px;width:50%; height:50px; border-right: 1px dotted #AEAEAE;"></div>
 </div>
-<% end %>
-<br>
+<div class="container">
 
-<h2 class="text-center"><strong>respuestas</strong></h2>
-<div class="dotted-hide-show" style="width:50.5%; height:100px; border-right: 1px dotted #AEAEAE;"></div>
-<!--
-  <div>
-
-    <div class="number">1</div>
-    <h3>¿Cómo se llama un café que acaba de salir de la cárcel? </h3>
+ <% @user.answers.sort_by(&:created_at).reverse.each_with_index do |answer, index| %>
+   <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="answer">
+        <div class="number"><%= index + 1 %></div>
+        <h3><%= answer.question.question %></h3>
+      </div>
+    </div>
   </div>
+  <% if answer != @user.answers.sort_by(&:created_at).reverse.last %>
+    <div class="dotted-hide-show" style="margin-top:30px;width:50%; height:50px; border-right: 1px dotted #AEAEAE;"></div>
+    <% else %>
+    <br><br>
+  <% end %>
 
-</div> -->
+<% end %>
+
+</div>
+
+
+
 </section>
 
 

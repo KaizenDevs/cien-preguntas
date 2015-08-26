@@ -16,7 +16,8 @@ Content.create(title: '¿Cuáles son los requerimientos?', content: 'Lo único q
 # 	User.create(email: Faker::Internet.email,password: "12345678",name: Faker::Name.first_name, lastname: Faker::Name.last_name, role: 0)
 # end
 
-answer_times = 20
+
+answer_times = 5
 
 answer_times.times do |x|
   x = x + 1
