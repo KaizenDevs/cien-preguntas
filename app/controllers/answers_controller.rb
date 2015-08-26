@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
   before_action :token_authentication, only: [:new]
   before_action :authenticate_user!, except: [:show]
   before_filter :has_answer?, :only => [:new,:create]
-
+  respond_to :html, :json
   def index
   end
 
@@ -83,28 +83,30 @@ class AnswersController < ApplicationController
   def destroy
     @answer = Answer.find(params[:id])
     @answer.destroy
-    redirect_to pages_profile_path
+    # redirect_to pages_profile_path
+    # render json: @answer
+    render json: @answer, status: 201
   end
 
   private
-    def answer_params
-      params.require(:answer).permit(:answer, :public_answer)
-    end
+  def answer_params
+    params.require(:answer).permit(:answer, :public_answer)
+  end
 
-    def has_answer?
-      if current_user.questions.include?(Question.find(params[:question_id]))
-        redirect_to root_path, :alert => "Lo sentimos, usted ya ha respondido esta pregunta, dirijase a su página de perfil si desea editar la respuesta"
+  def has_answer?
+    if current_user.questions.include?(Question.find(params[:question_id]))
+      redirect_to root_path, :alert => "Lo sentimos, usted ya ha respondido esta pregunta, dirijase a su página de perfil si desea editar la respuesta"
+    end
+  end
+
+  def token_authentication
+    if params[:token]
+      user = User.find_by(auth_token: params[:token])
+      if user == nil
+        redirect_to root_path
+      else
+        sign_in user
       end
     end
-
-    def token_authentication
-      if params[:token]
-        user = User.find_by(auth_token: params[:token])
-        if user == nil
-          redirect_to root_path
-        else
-          sign_in user
-        end
-      end
-    end
+  end
 end
