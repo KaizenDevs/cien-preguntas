@@ -24,7 +24,7 @@ answer_times.times do |x|
     answer: "respuestas número #{x} del seed",
     question_id: x, user_id: 1,
     public_answer: rand(2) == 1 ? true : false,
-    created_at: Date.today - (answer_times - x),
+    created_at: Date.today - (answer_times - x)
   )
 end
 

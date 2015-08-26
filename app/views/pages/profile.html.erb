@@ -16,15 +16,13 @@
        <div class="right-block">
         <h3><%= @user.first_name %></h3>
 
-        <!-- <p class="options pull-right"><a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href=""><i class="fa fa-cog"></i></a><span></span></p> -->
-
         <div class="dropdown dropdown-container pull-right">
           <button class="btn btn-default dropdown-toggle" type="button" id="menu-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-cog"></i>
             <!-- <span class="caret"></span> -->
           </button>
           <ul class="dropdown-menu" aria-labelledby="menu-options">
-            <li class="text-right"><%= link_to " Editar Datos  <span class='fa fa-pencil'></span>".html_safe , edit_user_path(current_user)  %></li>
+            <li class="text-right"><%= link_to " Editar datos  <span class='fa fa-pencil'></span>".html_safe , edit_user_path(current_user)  %></li>
             <li class="text-right"><%= link_to " Cancelar cuenta  <span class='fa fa-warning'></span>".html_safe, registration_path(@user), data: { confirm: "Estas seguro que deseas cancelar tu cuenta?" }, method: :delete %></li>
           </ul>
         </div>
@@ -34,11 +32,15 @@
   </div>
 </div>
 
-<% if  day_streak(@user).count > 0%>
+<% if day_streak(@user).count > 0 %>
 <div class="row">
+  <div class="col-lg-4 col-lg-offset-1">
+    <div>
+      <p><strong>Responde una pregunta</strong> al día y aprende las habilidates más importantes del siglo XXI</p>
+    </div>
+  </div>
+  <div class="col-lg-4 col-lg-offset-1">
   <h2 class="text-center"><strong>Días seguidos</strong></h2>
-  <div class="dotted-hide-show" style="width:50.5%; height:100px; border-right: 1px dotted #AEAEAE;"></div>
-  <div class="col-lg-6 col-lg-offset-3">
     <ul class="streak-squares">
       <% day_streak(@user).each_with_index do |answer, index| %>
       <li><a href="#" class="<%= answer[:answer].first.id %> tooltip"><%= index + 1 %></a></li>
@@ -47,10 +49,18 @@
   </div>
 </div>
 <% end %>
+<br>
 
 <h2 class="text-center"><strong>respuestas</strong></h2>
 <div class="dotted-hide-show" style="width:50.5%; height:100px; border-right: 1px dotted #AEAEAE;"></div>
-</div>
+<!--
+  <div>
+
+    <div class="number">1</div>
+    <h3>¿Cómo se llama un café que acaba de salir de la cárcel? </h3>
+  </div>
+
+</div> -->
 </section>
 
 
