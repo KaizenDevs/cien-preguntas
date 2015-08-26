@@ -18,4 +18,5 @@
 //= require social-share-button
 //= require bootstrap-filestyle.min.js
 //= require typed.js
+//= require sweetalert.min.js
 //= require_tree .

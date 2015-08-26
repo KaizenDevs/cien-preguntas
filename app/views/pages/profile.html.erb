@@ -58,11 +58,29 @@
 <div class="container">
 
  <% @user.answers.sort_by(&:created_at).reverse.each_with_index do |answer, index| %>
+
    <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="answer">
-        <div class="number"><%= index + 1 %></div>
-        <%= link_to "<h3>#{answer.question.question}</h3>".html_safe, answer_path(answer), target: "_blank" %>
+      <div class="options pull-left">
+        <ul class="list-inline">
+
+
+          <li><%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_question_answer_path(answer.question, answer) %></li>
+
+          <% if answer.public_answer == true %>
+            <li><a class="btn-toggle-1" href="#"><i class="public-private fa fa-unlock-alt"><div class="hidden"><%= answer.id %></div></i></a></li>
+          <% else %>
+            </li><a class="btn-toggle-1" href="#"><i class="public-private fa fa-lock"><div class="hidden"><%= answer.id %></div></i></a></li>
+          <% end %>
+
+          <li><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, question_answer_path(answer.question, answer), method: :delete, data: { confirm: '¿Está seguro que desea eliminar la respuesta?' } %></li>
+
+        </ul>
+      </div>
+      <div class="date pull-right"><span class="day"><%= answer.created_at.strftime("%d") %></span><span class="month"><%= answer.created_at.strftime("%B").first(3) %></span><span class="year"><%= answer.created_at.strftime("%Y") %></span></div>
+        <div class="number"><%= @user.answers.sort_by(&:created_at).reverse.count - index %></div>
+        <%= link_to "<h3>#{answer.answer }</h3>".html_safe, answer_path(answer), class: 'answer-link' %>
       </div>
     </div>
   </div>
@@ -109,14 +127,15 @@
 
   addStreakTooltip();
 
-  $('span.fa-users').on('click', function() {
-    var className = $(this).hasClass('green');
+  $('i.public-private').on('click', function() {
+    console.log('clicked');
+    var className = $(this).hasClass('fa-unlock-alt');
     var answer_id = $(this).find('div').text();
     if (className == true) {
       console.log("De verde a rojo")
       $.getJSON( "/pages/public_private_switch?answer_id=" +  answer_id ).done(function( response ) {
-        $('.fa-users').removeClass('green')
-        $('.fa-users').addClass('red')
+        $('.public-private').removeClass('fa-unlock-alt')
+        $('.public-private').addClass('fa-lock')
         $('*').filter(function() {
           return $(this).data('tooltipsterNs');
         }).tooltipster('destroy');
@@ -128,8 +147,8 @@
     } else {
       console.log("De rojo a verde")
       $.getJSON( "/pages/public_private_switch?answer_id=" +  answer_id ).done(function( response ) {
-        $('.fa-users').removeClass('red')
-        $('.fa-users').addClass('green')
+        $('.public-private').removeClass('fa-lock')
+        $('.public-private').addClass('fa-unlock-alt')
         $('*').filter(function() {
           return $(this).data('tooltipsterNs');
         }).tooltipster('destroy');
@@ -141,5 +160,8 @@
     }
   })
 
+});
+$( ".answer .options a.btn-toggle-1" ).on( "click", function( event ) {
+  event.preventDefault();
 });
 </script>

@@ -6,16 +6,69 @@ body{ background: #EEEEED;}
 .section-profile{
 
   margin-top: 0 !important;
+
   @media (max-width: 640px) {
     margin-left: -20px !important;
   }
+
   .answer{
-
+    margin-top: -70px;
     font-family: 'Roboto Slab', serif;
+    .options{
+      position:relative;
+      bottom: -84px;
+      left: 2px;
+      li{margin:0 1px; padding:0;}
+      i{
+        color: #13baba;
+        font-size: 11px;
+        padding:3px 5px;
+        display: inline-block;
+      }
+      i.fa-lock{
+        color: #F35200;
+      }
+      a{
+        padding:3px 5px;
 
+        margin:0;
+        display: inline-block;
+      }
+    }
+    .date{
+      text-transform: uppercase;
+      font-family: 'Roboto', 'Helvetiva Neue', sans-serif;
+      background: #181818;
+      color: white;
+      padding: 8px 5px;
+      position: relative;
+      bottom: -47px;
+
+      .day{
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 16px;
+      }
+      .month{
+        margin-top: 2px;
+        font-weight: 200;
+        font-size: 14px;
+        line-height: 18px;
+      }
+      .year{
+        line-height: 12px;
+        font-weight: 200;
+        font-size: 13px;
+      }
+      span{
+        display:block;
+        text-align: center;
+      }
+    }
     .number{
       $black-diamond-size: 80px;
-      position:relative;
+      position: relative;
+      bottom: -70px;
       margin:30px auto;
       text-align: center;
 
@@ -28,16 +81,25 @@ body{ background: #EEEEED;}
 
       background:url(asset_path("profile/black-diamond.png"));
     }
-    a{
-      padding: 20px;
+    a.answer-link{
+      padding: 60px 20px 40px 20px !important;
       border:1px solid #d5d5d5;
       display: block;
       margin:0 auto;
+      h3{
+        font-size:20px !important;
+        padding:0;
+        margin:0;
+      }
     }
-    h3{
-      font-size:20px !important;
+    a.answer-link:hover{
+      border:1px solid #d5d5d5;
+      background:#181818;
+      color: white;
+      h3{color:white;}
+    }
 
-    }
+
 
   }
 
@@ -166,7 +228,6 @@ body{ background: #EEEEED;}
     p:last-child{border:none;}
     .options{
       a{
-
         background:#00C166;
         color: white;
         padding:3px 5px;
