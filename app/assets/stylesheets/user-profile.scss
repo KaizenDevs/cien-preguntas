@@ -28,10 +28,15 @@ body{ background: #EEEEED;}
 
       background:url(asset_path("profile/black-diamond.png"));
     }
-    h3{
-      font-size:20px !important;
+    a{
       padding: 20px;
       border:1px solid #d5d5d5;
+      display: block;
+      margin:0 auto;
+    }
+    h3{
+      font-size:20px !important;
+
     }
 
   }

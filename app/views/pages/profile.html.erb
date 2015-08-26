@@ -62,7 +62,7 @@
     <div class="col-sm-6 col-sm-offset-3">
       <div class="answer">
         <div class="number"><%= index + 1 %></div>
-        <h3><%= answer.question.question %></h3>
+        <%= link_to "<h3>#{answer.question.question}</h3>".html_safe, answer_path(answer), target: "_blank" %>
       </div>
     </div>
   </div>
