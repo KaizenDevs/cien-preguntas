@@ -1,18 +1,1 @@
-<style>
-  button {
-    margin-top: 20px;
-  }
-</style>
-
-<div class="container">
-  <h1>Editar Pregunta</h1>
-
-  <%= bootstrap_form_for @question do |f| %>
-    <%= f.text_area :question %>
-    <%= f.submit "Editar Pregunta" %>
-  <% end %>
-
-  <%= link_to questions_path do %>
-      <button class="btn btn-default" type="submit"><span class="fa fa-arrow-left"></span> Regresar</button>
-  <% end %>
-</div>
+<%= render partial: 'form', locals: { form_submit: "Editar Pregunta", current_page: "Editar Pregunta" } %>

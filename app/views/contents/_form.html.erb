@@ -1,0 +1,16 @@
+<div class="container">
+  <h1><%= current_page %></h1>
+
+  <%= bootstrap_form_for @content do |f| %>
+    <%= render 'shared/error_messages', object: @content %>
+    <%= f.text_field :title, label: "FAQ" %>
+    <%= f.text_area :content, label: "Contenido" %>
+    <%= f.select :content_order, options_for_select(Content.content_orders.keys, @content.content_order), label: "Columna:" %>
+
+    <%= f.submit form_submit %>
+  <% end %>
+
+  <%= link_to contents_path do %>
+    <button class="btn btn-default" style = "margin-top: 20px">Volver</button>
+  <% end %>
+</div>
