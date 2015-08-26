@@ -1,0 +1,19 @@
+<style>
+  button {
+    margin-top: 20px;
+  }
+</style>
+<div class="container">
+  <h1><%= current_page %></h1>
+
+  <%= bootstrap_form_for @question do |f| %>
+    <%= render 'shared/error_messages', object: @question %>
+    <%= f.text_area :question %>
+
+    <%= f.submit form_submit %>
+  <% end %>
+
+  <%= link_to questions_path do %>
+      <button class="btn btn-default" type="submit"><span class="fa fa-arrow-left"></span> Regresar</button>
+  <% end %>
+</div>

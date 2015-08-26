@@ -9,6 +9,7 @@
 #
 
 class Question < ActiveRecord::Base
+  validates_presence_of :question
   has_many :answers
   has_many :users, through: :answers
 
