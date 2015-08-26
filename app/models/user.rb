@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def first_name
+    self.name.split(" ")[0]
+  end
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
