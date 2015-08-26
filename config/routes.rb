@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'contents/index'
+
+  get 'contents/new'
+
+  get 'contents/edit'
+
   get 'pages/profile'
   get '/answers/:id', to: 'answers#show' , as: "answer"
   resources :user, :controller => "user"
@@ -14,6 +20,7 @@ Rails.application.routes.draw do
   match '/422', to: 'errors#unprocessable', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
 
+  resources :contents
   resources :questions do
     collection { post :import }
     resources :answers , except: :show

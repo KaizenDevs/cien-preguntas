@@ -2,37 +2,32 @@
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">MENU</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+      <span class="sr-only">MENU</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><%= image_tag(asset_path('logo-white'), class: 'logo img-responsive') %></a>
+      <a class="navbar-brand" href="/"><%= image_tag(asset_path('logo-white.png'), class: 'logo img-responsive') %></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-        <% if current_user.admin? %>
-        <li><%= link_to "Métricas", pages_metrics_path %></li>
-        <li><%= link_to "Todos los Usuarios", user_index_path %></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar Preguntas <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to 'Todas las preguntas', questions_path %></li>
-            <li><%= link_to 'Agregar Pregunta', new_question_path %></li>
-          </ul>
-        </li>
-        <% end %>
-        <li><%= link_to 'Mi Perfil', pages_profile_path %></li>
-        <li><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
+          <% if current_user.admin? %>
+            <li><%= link_to "Métricas", pages_metrics_path %></li>
+            <li><%= link_to "Todos los Usuarios", user_index_path %></li>
+            <li><%= link_to 'Administrar Preguntas', questions_path %></li>
+            <li><%= link_to 'FAQs', contents_path %></li>
+          <% end %>
+          <li><%= link_to 'Mi Perfil', pages_profile_path %></li>
+          <li><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
         <% else %>
-        <li><%= link_to "Ingresar", new_user_session_path %></li>
-        <li><%= link_to "Ingresar con Facebook", user_omniauth_authorize_path(:facebook) %></li>
-        <li>
-          <p class="navbar-btn">
-            <%= link_to "Crea cuenta", new_user_registration_path, class: "btn btn-default" %>
-          </p>
-        </li>
+          <li><%= link_to "Ingresar", new_user_session_path %></li>
+          <li><%= link_to "Ingresar con Facebook", user_omniauth_authorize_path(:facebook) %></li>
+          <li>
+            <p class="navbar-btn">
+              <%= link_to "Crea cuenta", new_user_registration_path, class: "btn btn-default" %>
+            </p>
+          </li>
         <% end %>
       </ul>
     </div>

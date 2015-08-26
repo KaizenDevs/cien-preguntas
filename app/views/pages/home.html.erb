@@ -107,18 +107,17 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <h3>¿Qué hace a Cien Preguntas diferente?</h3>
-            <p>Make it Real es un programa muy estructurado, apoyado de mentores y una comunidad de estudiantes que trabajan de la mano, pero con la flexibilidad horaria y la dedicación que más te convenga.
-              <br><br>Hemos diseñado cuidadosamente el programa para que aprendas las habilidades que se requieren para convertirte en Desarrollador Web y puedas construir y desplegar aplicaciones complejas y robustas.</p>
-              <h3>¿Me van a ayudar a encontrar empleo?</h3>
-              <p>Es posible que publiquemos algunas ofertas para los alumnos más avanzados pero no hay ninguna garantía. Es cierto que la demanda de programadores sigue creciendo, así que entre más duro trabajes por crear tu portafolio, más probable es que consiguas un empleo.</p>
-            </div>
-            <div class="col-sm-6">
-              <h3>¿Cómo sé si este programa es para mi?</h3>
-              <p>Si sientes que el programa no es para ti y te retiras en los primeros 15 días, recibirás un reembolso completo. Si cancelas después, recibirás un reembolso parcial según tu avance en la plataforma. Cero riesgo</p>
-              <h3>¿Cuáles son los requerimientos?</h3>
-              <p>Lo único que necesitas es un computador (con cualquier sistema operativo) y una buena conexión a Internet para ver los videos. <strong>Una advertencia:</strong> la mayoría de recursos están en Inglés. Es preferible si al menos lo entiendes escrito. Pero si no, no te preocupes, puedes usar un traductor si es necesario y buscar otros recursos por tu cuenta.</p>
-            </div>
+            <% @content_column_1.each do |content| %>
+              <h3><%= content.title %></h3>
+              <p><%= markdown content.content %></p>
+            <% end %>
+          </div>
+          <div class="col-sm-6">
+            <% @content_column_2.each do |content| %>
+              <h3><%= content.title %></h3>
+              <p><%= markdown content.content %></p>
+            <% end %>
+          </div>
           </div>
         </div>
       </section>

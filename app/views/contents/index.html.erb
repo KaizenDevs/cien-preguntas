@@ -1,0 +1,29 @@
+<style>
+  .questions-table {
+    margin-top: 20px;
+  }
+</style>
+
+<div class="container">
+  <h1 id="title">FAQs</h1>
+  <hr>
+  <%= link_to new_content_path do %>
+    <button class="btn btn-primary pull-right"> <span class="fa fa-plus-square"></span> Nuevo FAQ</button>
+  <% end %>
+  <table class="table questions-table">
+    <tr>
+      <th>FAQ</th>
+      <th>Contenido</th>
+      <th colspan="2"></th>
+    </tr>
+    <% @contents.each do |content| %>
+      <tr>
+        <td><%= content.title %></td>
+        <td><%= content.content %></td>
+        <td><%= link_to "<span class='fa fa-pencil'></span>".html_safe, edit_content_path(content) %></td>
+        <td><%= link_to "<span class='fa fa-trash'></span>".html_safe, content_path(content), method: :delete, data: { confirm: '¿Esta seguro que desea elminar esta pregunta?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
