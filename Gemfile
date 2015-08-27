@@ -24,6 +24,7 @@ gem 'social-share-button', '~> 0.1.8', git: 'https://github.com/cuterxy/social-s
 gem 'bootstrap_form'
 gem 'redcarpet'
 gem 'sweetalert-rails'
+gem "paperclip", "~> 4.3"
 
 group :development, :test do
   gem 'guard'

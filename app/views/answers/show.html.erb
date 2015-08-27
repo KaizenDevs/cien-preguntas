@@ -131,10 +131,10 @@ div.social-share-button{
 
             <div class="item active">
               <!-- <img src="http://i592.photobucket.com/albums/tt5/Mardini03/h1.jpg" alt="..."> -->
-                  <div class="profile-photo-name" style="height: 100px">
+                  <div class="profile-photo-name" style="height: 100px; margin-top: 10px">
                     <div class="square">
                       <figure>
-                       <%= image_tag "profile/profile-test.jpg" %>
+                       <%= image_tag @answer.user.avatar %>
                        <!-- <svg>
                        <clipPath id="clip">
                        <polygon points="50 0, 100 50, 50 100, 0 50"></polygon>
@@ -166,7 +166,7 @@ div.social-share-button{
               <% @answers.each do |answer| %>
                 <div class="item">
                   <!-- Begin Profile block -->
-                      <div class="profile-photo-name" style="height: 100px">
+                      <div class="profile-photo-name" style="height: 100px; margin-top: 10px">
                         <div class="square">
                           <figure>
                            <%= image_tag "profile/profile-test.jpg" %>
