@@ -31,6 +31,8 @@
 
   $('.new-answer form textarea').on('input', function(){
     var c = wordCount( this.value );
-    $('.word-counter').text( "Words: "+ c.words );
+    $('.word-counter').text( c.words );
   });
+
+  $('#answer_answer').elastic();
 </script>
