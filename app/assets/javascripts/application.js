@@ -19,4 +19,5 @@
 //= require bootstrap-filestyle.min.js
 //= require typed.js
 //= require sweet-alert
+//= require autosize.js
 //= require_tree .
