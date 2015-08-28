@@ -8,6 +8,11 @@
           <%= f.text_field :name, label: "Nombre",autofocus: true %>
           <%= f.text_field :lastname, label: "Apellidos" %>
           <%= f.email_field :email, label: "Correo electrónico" %>
+          <div>
+            <label>Foto Actual</label> <br>
+            <%= image_tag @user.avatar(:thumb) %>
+          </div>
+          <%= f.file_field :avatar, label: "Cambia tu foto" %>
           <%= f.password_field :password, label: "Contraseña (Si no desesas cambiar la contraseña, deja este campo y el siguiente en blanco)",autocomplete: "off" %>
           <%= f.password_field :password_confirmation, label: "Confirmar contraseña",autocomplete: "off" %>
           <%= f.password_field :current_password, label: "Contraseña actual (Ingresa la contraseña actual para que sean almacenados los anteriores cambios)",autocomplete: "off" %>
