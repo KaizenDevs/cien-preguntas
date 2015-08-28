@@ -25,6 +25,7 @@ gem 'bootstrap_form'
 gem 'redcarpet'
 gem 'sweetalert-rails'
 gem "paperclip", "~> 4.3"
+gem 'autosize-rails'
 
 group :development, :test do
   gem 'guard'
