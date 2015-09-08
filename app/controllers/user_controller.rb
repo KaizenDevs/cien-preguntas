@@ -21,7 +21,7 @@ class UserController < ApplicationController
 	  if @user.update(user_params)
 	    flash[:notice] = "El usuario #{@user.email} fue actualizado con éxito"
 	    sign_in @user, :bypass => true
-	    redirect_to root_path(:id => @user.id)
+	    redirect_to pages_profile_path(:id => @user.id)
 	  else
 	    flash[:alert] = "Ha ocurrido un error y el usuario #{@user.email}, no ha sido actualizado"
 	    render :action => 'edit'
