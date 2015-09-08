@@ -80,7 +80,7 @@
     </div>
     <div class="date pull-right"><span class="day"><%= answer.created_at.strftime("%d") %></span><span class="month"><%= answer.created_at.strftime("%B").first(3) %></span><span class="year"><%= answer.created_at.strftime("%Y") %></span></div>
     <div class="number"><%= @user.answers.sort_by(&:created_at).reverse.count - index %></div>
-    <%= link_to "<h3>#{answer.answer }</h3>".html_safe, answer_path(answer), class: 'answer-link' %>
+    <%= link_to "<h3>#{  markdown answer.answer  }</h3>".html_safe, answer_path(answer), class: 'answer-link' %>
   </div>
 </div>
 </div>
