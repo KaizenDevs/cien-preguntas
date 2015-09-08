@@ -33,6 +33,18 @@ User.create(
   email: 'muygrafico@gmail.com',
   password: '12345678',
   name: 'Germán Hernández',
-  max_streak: answer_times
+  max_streak: answer_times,
+  last_sign_in_at: Date.today,
+  role: 1
 )
 
+
+User.create(
+  email: 'alejoescobac@gmail.com',
+  password: '12345678',
+  name: 'Alejandro Escobar',
+  max_streak: answer_times,
+  last_sign_in_at: Date.today - answer_times,
+  role: 0
+
+)
