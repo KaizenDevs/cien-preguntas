@@ -53,6 +53,6 @@ Rails.application.configure do
       user_name: ENV.fetch("SMTP_USERNAME")
     }
     # ENABLE BELOW LINE TO PREVIEW ERROR PAGES IN DEVELOPMENT
-    # config.consider_all_requests_local = false
+    config.consider_all_requests_local = false
 
 end
