@@ -5,11 +5,11 @@ module ApplicationHelper
 
   def markdown(text)
     render_options = {
-      # will remove from the output HTML tags inputted by user 
+      # will remove from the output HTML tags inputted by user
       filter_html:     true,
-      # will insert <br /> tags in paragraphs where are newlines 
+      # will insert <br /> tags in paragraphs where are newlines
       # (ignored by default)
-      hard_wrap:       true, 
+      hard_wrap:       true,
       # hash for extra link options, for example 'nofollow'
       link_attributes: { rel: 'nofollow' }
       # more
@@ -28,7 +28,7 @@ module ApplicationHelper
     extensions = {
       #will parse links without need of enclosing them
       autolink:           true,
-      # blocks delimited with 3 ` or ~ will be considered as code block. 
+      # blocks delimited with 3 ` or ~ will be considered as code block.
       # No need to indent.  You can provide language name too.
       # ```ruby
       # block of code
@@ -40,11 +40,16 @@ module ApplicationHelper
       no_intra_emphasis:  true,
       # will parse strikethrough from ~~, for example: ~~bad~~
       strikethrough:      true,
-      # will parse superscript after ^, you can wrap superscript in () 
+      # will parse superscript after ^, you can wrap superscript in ()
       superscript:        true
       # will require a space after # in defining headers
       # space_after_headers: true
     }
     Redcarpet::Markdown.new(renderer, extensions).render(text).html_safe
+  end
+  def my_ip
+   require 'socket'
+    ip=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
+    ip.ip_address if ip
   end
 end

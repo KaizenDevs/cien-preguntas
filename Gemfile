@@ -29,6 +29,8 @@ gem 'autosize-rails'
 
 group :development, :test do
   gem 'guard'
+  gem 'guard-compass'
+  gem 'guard-shell'
   gem 'guard-livereload', require: false
   gem 'byebug'
   gem 'web-console', '~> 2.0'

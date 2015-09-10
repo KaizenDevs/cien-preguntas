@@ -40,6 +40,10 @@
 
 </body>
 </html>
+
+ <!-- LIVE RELOAD SCRIPT TO RUN ON OTHER DEVICES | DELETE ON PRODUCTION -->
+ <script src="http://<%= my_ip %>:35729/livereload.js?snipver=1"></script>
+
 <script>
   $(".alert").fadeIn(500).css("opacity","0.85").delay( 6000 ).fadeOut( 1000 );
   $('.alerts').on('click','.alert',function(){ $(this).remove() });
