@@ -13,17 +13,19 @@
       <th>Último ingreso</th>
       <th>Respuestas completadas</th>
       <th>Días Consecutivos</th>
+      <th>Rol</th>
       <th></th>
     </tr>
     <% @users.each do |user| %>
-      <tr>
-        <td><%= "#{user.name} #{user.lastname}" %></td>
-        <td><%= user.created_at.strftime("%b %d, %Y") %> </td>
-        <td><%= user.last_sign_in_at.strftime("%b %d, %Y") %> </td>
-        <td><%= user.answers.count %> </td>
-        <td>0</td>
-        <td><%= link_to "Ver perfil", pages_profile_path(:user_id => user.id) %></td>
-      </tr>
+    <tr>
+      <td><%= "#{user.name} #{user.lastname}" %></td>
+      <td><%= user.created_at.strftime("%b %d, %Y") %> </td>
+      <td><%= user.last_sign_in_at.strftime("%b %d, %Y") %> </td>
+      <td><%= user.answers.count %> </td>
+      <td><%= day_streak(user).count %></td>
+      <td><%= user.role %></td>
+      <td><%= link_to "Ver perfil", pages_profile_path(:user_id => user.id) %></td>
+    </tr>
     <% end %>
   </table>
 </div>
