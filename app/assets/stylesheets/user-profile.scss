@@ -25,15 +25,14 @@ body{ background: #EEEEED;}
         padding:3px 5px;
         display: inline-block;
       }
-      i.fa-lock{
-        color: #F35200;
-      }
+      i.fa-lock{ color: #F35200}
       a{
         padding:3px 5px;
-
         margin:0;
         display: inline-block;
+
       }
+
     }
     .date{
       text-transform: uppercase;
@@ -71,14 +70,12 @@ body{ background: #EEEEED;}
       bottom: -70px;
       margin:30px auto;
       text-align: center;
-
       width: $black-diamond-size;
       height: $black-diamond-size;
       color: white;
       line-height: $black-diamond-size;
       font-size:24px;
       font-weight: 400;
-
       background:url(asset_path("profile/black-diamond.png"));
     }
     a.answer-link{
@@ -86,10 +83,11 @@ body{ background: #EEEEED;}
       border:1px solid #d5d5d5;
       display: block;
       margin:0 auto;
+      color: #333;
       h3{
         font-size:20px !important;
         padding:0;
-        margin:0;
+        margin:0 0 1em 0;
       }
     }
     a.answer-link:hover{
@@ -97,6 +95,9 @@ body{ background: #EEEEED;}
       background:#181818;
       color: white;
       h3{color:white;}
+    }
+    p{
+  text-align: center;
     }
 
 

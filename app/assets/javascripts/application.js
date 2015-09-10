@@ -20,4 +20,5 @@
 //= require typed.js
 //= require sweet-alert
 //= require jquery.autosize
+//= require cien-preguntas
 //= require_tree .
