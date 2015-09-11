@@ -17,17 +17,6 @@ Content.create(title: '¿Cuáles son los requerimientos?', content: 'Lo único q
 # end
 
 
-answer_times = 5
-
-answer_times.times do |x|
-  x = x + 1
-  Answer.create(
-    answer: "respuestas número #{x} del seed",
-    question_id: x, user_id: 1,
-    public_answer: rand(2) == 1 ? true : false,
-    created_at: Date.today - (answer_times - x)
-  )
-end
 
 User.create(
   email: 'muygrafico@gmail.com',
@@ -48,3 +37,16 @@ User.create(
   role: 0
 
 )
+
+answer_times = 5
+
+answer_times.times do |x|
+  x = x + 1
+  Answer.create!(
+    answer: "respuestas número #{x} del seed",
+    question_id: x,
+    user_id: User.first,
+    public_answer: rand(2) == 1 ? true : false,
+    created_at: Date.today - (answer_times - x)
+  )
+end

@@ -1,98 +1,6 @@
 <style>
 body{ background: white;}
 
-
-  h2 {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 600;
-  }
-
-  h3{
-    color: #00C166;
-    font-family: 'Roboto Slab', serif;
-    font-size: 20px;
-    font-weight: 100;
-    margin-left: 75px;
-    strong{ color: #383838}
-  }
-
-  p {
-    font-family: 'Roboto Slab', serif;
-    font-size: 22px;
-    font-weight: 300;
-  }
-
-  figure img {
-    z-index:100;
-    position:absolute;
-    left:-11px;
-    top:-11px;
-    clip-path:  polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    -ms-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    -moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    -webkit-clip-path:  polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    clip-path: url(#clip);
-    width:100px;
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    overflow: hidden;
-  }
-
-  .square  {
-    margin-left: 20px;
-    border: 1px solid #F3F3F3;
-    height:80px;
-    width:80px;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    z-index: 100;
-    position: relative;
-    background: white;
-
-  }
-
-  .right-block{
-    top:-80px;
-    color: white;
-    left: 45px;
-    z-index:10;
-    width: 90%;
-    box-sizing: border-box;
-    border-left: 50px solid white;
-    border-right: 20px solid white;
-    position: relative;
-    display: inline-block;
-    height:80px;
-    border:1px solid #F3F3F3;
- }
-
-.date{
-  text-transform: uppercase;
-  font-family: 'Roboto', 'Helvetiva Neue', sans-serif;
-  background: #181818;
-  color: white;
-  padding: 8px 5px;
-  position: relative;
-  bottom: -6px;
-}
-.day{
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 16px;
-}
-.month{
-  margin-top: 2px;
-  font-weight: 200;
-  font-size: 14px;
-  line-height: 18px;
-}
-.year{
-  line-height: 12px;
-  font-weight: 200;
-  font-size: 13px;
-}
 span{
   display:block;
   font-family: 'Roboto Slab', serif;
@@ -121,7 +29,7 @@ div.social-share-button{
 </style>
 
 
-<section class="section">
+<section class="section answer-show-section">
   <div class="row">
     <div class="container-fluid">
       <div class="col-lg-6 col-md-offset-3">
@@ -202,7 +110,7 @@ div.social-share-button{
                   <div style="height: 20px"></div>
                   <span>Comparte en:</span>
                   <div class="text-center">
-                    <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas!", url: "https://vibrant-chaise-6979.herokuapp.com/answers/#{@answer.id}", :via => "cienpreguntas" ) %>
+                    <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas! http://cienpreguntas.com/answers/#{@answer.id}", url: "cienpreguntas.com/answers/#{@answer.id}", :via => "cienpreguntas" ) %>
                   </div>
                 <% end %>
                 <% if User.find(current_user.id).questions.include?(Question.find(@question_id)) %>

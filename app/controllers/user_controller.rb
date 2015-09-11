@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 	before_action :token_authentication, only: [:edit]
 	before_action :authenticate_user!
+	before_action :admin_only, only: [:index]
 	include ApplicationHelper
 
 	def index
@@ -29,6 +30,12 @@ class UserController < ApplicationController
 	end
 
 	private
+		def admin_only
+		  unless current_user.admin?
+		    redirect_to root_path, :alert => "Acceso denegado, no posee permisos como administrador"
+		  end
+		end
+
 		def user_params
 		  params.require(:user).permit(:name, :lastname, :email, :password, :password_confirmation, :avatar)
 		end

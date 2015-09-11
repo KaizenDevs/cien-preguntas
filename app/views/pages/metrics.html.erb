@@ -43,7 +43,11 @@
     <div class="col-xs-6 col-md-3">
       <div class="panel status panel-info">
         <div class="panel-heading">
-          <h1 class="panel-title text-center"><%= average_answers_per_user %></h1>
+          <% if @answers.count > 0 %>
+            <h1 class="panel-title text-center"><%= average_answers_per_user %></h1>
+          <% else %>
+            <h1 class="panel-title text-center">0</h1>
+          <% end %>
         </div>
         <div class="panel-body text-center">
           <strong>Respuestas promedio por usuario</strong>

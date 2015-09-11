@@ -2,3 +2,165 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+section.new-answer {
+  h2 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+  }
+
+  p {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    color: #B3B3B3;
+  }
+
+  .answer {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    resize: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+
+    font-size: 22px;
+    font-family: 'Roboto Slab', serif;
+  }
+
+  .help-block {
+    font-family: 'Roboto Slab', serif;
+  }
+
+  .answer-social {
+    color: #B3B3B3;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .word-counter {
+    color: #B3B3B3;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+  }
+
+  .answer-submit {
+    border-color: #A8D9B1;
+    border-radius: 4px;
+    color: #53AE65;
+    font-family: 'Roboto Slab', serif;
+    outline: none;
+    padding: 10px 16px;
+  }
+
+  .answer-submit:hover {
+    background-color: white;
+    border-color: #53AE65;
+    color: #438D52;
+    -webkit-transition: border-color 0.5s ease-out,
+                        color 0.5s ease-out;
+    -moz-transition: border-color 0.5s ease-out,
+                     color 0.5s ease-out;
+    -o-transition: border-color 0.5s ease-out,
+                   color 0.5s ease-out;
+    transition: border-color 0.5s ease-out,
+                color 0.5s ease-out;
+  }
+}
+
+.answer-show-section {
+    h2 {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 600;
+    }
+
+    h3{
+      color: #00C166;
+      font-family: 'Roboto Slab', serif;
+      font-size: 20px;
+      font-weight: 100;
+      margin-left: 75px;
+      strong{ color: #383838}
+    }
+
+    p {
+      font-family: 'Roboto Slab', serif;
+      font-size: 22px;
+      font-weight: 300;
+    }
+
+    figure img {
+      z-index:100;
+      position:absolute;
+      left:-11px;
+      top:-11px;
+      clip-path:  polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      -ms-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      -moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      -webkit-clip-path:  polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      clip-path: url(#clip);
+      width:100px;
+      -ms-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      overflow: hidden;
+    }
+
+    .square  {
+      margin-left: 20px;
+      border: 1px solid #F3F3F3;
+      height:80px;
+      width:80px;
+      -ms-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      z-index: 100;
+      position: relative;
+      background: white;
+
+    }
+
+    .right-block{
+      top:-80px;
+      color: white;
+      left: 45px;
+      z-index:10;
+      width: 90%;
+      box-sizing: border-box;
+      border-left: 50px solid white;
+      border-right: 20px solid white;
+      position: relative;
+      display: inline-block;
+      height:80px;
+      border:1px solid #F3F3F3;
+   }
+
+  .date{
+    text-transform: uppercase;
+    font-family: 'Roboto', 'Helvetiva Neue', sans-serif;
+    background: #181818;
+    color: white;
+    padding: 8px 5px;
+    position: relative;
+    bottom: -6px;
+  }
+  .day{
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 16px;
+  }
+  .month{
+    margin-top: 2px;
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .year{
+    line-height: 12px;
+    font-weight: 200;
+    font-size: 13px;
+  }
+
+}
+
+
