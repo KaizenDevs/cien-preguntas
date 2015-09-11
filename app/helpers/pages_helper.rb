@@ -3,7 +3,11 @@ module PagesHelper
   def average_answers_per_user
     users = User.where(role: 0).count
     answers = Answer.all.count
-    answers/users
+    if users != 0
+      answers/users
+    else
+      0
+    end
   end
 
   def self.day_streak(user)
