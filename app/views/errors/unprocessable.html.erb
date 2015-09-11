@@ -1,2 +1,19 @@
-<h1>Errors#unprocessable</h1>
-<p>Find me in app/views/errors/unprocessable.html.erb</p>
+
+<section class="section-error">
+  <div class="container">
+    <div class="row">
+      <div class="well">
+        <div class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-4 text-center">
+          <figure>
+            <%= image_tag 'monster_422.png', class: 'img-responsive'%>
+          </figure>
+          <h1>Ups... parece que algo anda mal</h1>
+          <p>Pero no todo esta perdido, puedes unirte a la comunidad más grande de investigación y auto-aprendizaje</p>
+          <%= link_to "Crea una cuenta aquí", new_user_registration_path, class: "btn btn-primary" if !user_signed_in?  %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    body{background:#00BE66;}
+  </style>
