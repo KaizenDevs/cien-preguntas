@@ -5,41 +5,44 @@
         <div class="profile-photo-name">
           <div class="square">
             <figure>
-             <%= image_tag @user.avatar %>
-             <!-- <svg>
-             <clipPath id="clip">
-             <polygon points="50 0, 100 50, 50 100, 0 50"></polygon>
-             </clipPath>
-           </svg> -->
-         </figure>
-       </div>
-       <div class="right-block">
-        <h3><%= @user.first_name %></h3>
-
-        <div class="dropdown dropdown-container pull-right">
-          <button class="btn btn-default dropdown-toggle" type="button" id="menu-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-cog"></i>
-            <!-- <span class="caret"></span> -->
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="menu-options">
-            <li class="text-right"><%= link_to " Editar datos  <span class='fa fa-pencil'></span>".html_safe , edit_user_path(current_user)  %></li>
-            <li class="text-right"><%= link_to " Cancelar cuenta  <span class='fa fa-warning'></span>".html_safe, registration_path(@user), data: { confirm: "Estas seguro que deseas cancelar tu cuenta?" }, method: :delete %></li>
-          </ul>
+              <%= image_tag @user.avatar %>
+              <svg>
+               <clipPath id="clip">
+                 <polygon points="50 0, 100 50, 50 100, 0 50"></polygon>
+               </clipPath>
+             </svg>
+           </figure>
+         </div>
+         <div class="right-block">
+          <h3><%= @user.first_name %></h3>
+          <div class="dropdown dropdown-container pull-right">
+            <button class="btn btn-default dropdown-toggle"  id="menu-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-cog"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="menu-options">
+              <li class="text-right">
+                <%= link_to " Editar datos  <span class='fa fa-pencil'></span>".html_safe , edit_user_path(current_user)  %>
+              </li>
+              <li class="text-right">
+                <%= link_to "Cancelar cuenta  <span class='fa fa-warning'></span>".html_safe, registration_path(@user), data: { confirm: "Estas seguro que deseas cancelar tu cuenta?" }, method: :delete %>
+              </li>
+            </ul>
+          </div>
+          <p class="pull-right"><%= @user.answers.count %><span>respuestas</span></p>
         </div>
-        <p class="pull-right"><%= @user.answers.count %><span>respuestas</span></p>
       </div>
     </div>
   </div>
-</div>
+  <div class="row">
 
-<% if day_streak(@user).count > 0 %>
-<div class="row">
-  <div class="col-lg-4 col-sm-4 col-lg-offset-2 col-sm-offset-2">
-    <div class="day-tip-container">
-      <div class="tip">tip del día:</div class="tip">
+    <div class="col-lg-4 col-sm-4 col-lg-offset-2 col-sm-offset-2">
+      <div class="day-tip-container">
+        <div class="tip">tip del día:</div>
         <p class="box"><strong>Responde una pregunta</strong> al día y aprende las habilidates más importantes del siglo XXI</p>
       </div>
     </div>
+
+    <% if day_streak(@user).count > 0 %>
     <div class="col-lg-4 col-sm-4">
       <h3 class="text-center"><strong>Días seguidos</strong></h3>
       <ul class="streak-squares">
@@ -48,162 +51,87 @@
         <% end %>
       </ul>
     </div>
+    <% end %>
   </div>
-  <% end %>
-  <br>
 
   <h3 class="text-center"><strong>respuestas</strong></h3>
   <div class="dotted-hide-show" style="margin-top:30px;width:50%; height:50px; border-right: 1px dotted #AEAEAE;"></div>
-</div>
-<div class="container">
 
- <% @user.answers.sort_by(&:created_at).reverse.each_with_index do |answer, index| %>
-
- <div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <div class="answer">
-      <div class="options pull-left">
-        <ul class="list-inline">
-
-
-          <li><%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_question_answer_path(answer.question, answer) %></li>
-
-          <% if answer.public_answer == true %>
-          <li><a class="btn-toggle-1" href="#"><i class="public-private fa fa-unlock-alt"><div class="hidden"><%= answer.id %></div></i></a></li>
-          <% else %>
-        </li><a class="btn-toggle-1" href="#"><i class="public-private fa fa-lock"><div class="hidden"><%= answer.id %></div></i></a></li>
-        <% end %>
-
-        <li><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, question_answer_path(answer.question, answer), data: { behavior: 'delete' } %></li>
-
-      </ul>
+  <% @user.answers.sort_by(&:created_at).reverse.each_with_index do |answer, index| %>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="answer">
+        <div class="options pull-left">
+          <ul class="list-inline">
+            <li>
+              <%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_question_answer_path(answer.question, answer) %>
+            </li>
+            <% if answer.public_answer == true %>
+            <li>
+              <a class="btn-toggle-1" href="#"><i class="public-private fa fa-unlock-alt"><div class="hidden"><%= answer.id %></div></i></a>
+            </li>
+            <% else %>
+            <li>
+              <a class="btn-toggle-1" href="#">
+                <i class="public-private fa fa-lock"><div class="hidden"><%= answer.id %></div></i>
+              </a>
+            </li>
+            <% end %>
+            <li>
+              <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, question_answer_path(answer.question, answer), data: { behavior: 'delete' } %>
+            </li>
+          </ul>
+        </div>
+        <div class="date pull-right">
+          <span class="day"><%= answer.created_at.strftime("%d") %></span>
+          <span class="month"><%= answer.created_at.strftime("%B").first(3) %></span>
+          <span class="year"><%= answer.created_at.strftime("%Y") %></span>
+        </div>
+        <div class="number">
+          <%= @user.answers.sort_by(&:created_at).reverse.count - index %>
+        </div>
+        <%= link_to "<h3> #{  answer.question.question  }</h3>#{  markdown answer.answer  }".html_safe, answer_path(answer), class: 'answer-link' %>
+      </div>
     </div>
-    <div class="date pull-right"><span class="day"><%= answer.created_at.strftime("%d") %></span><span class="month"><%= answer.created_at.strftime("%B").first(3) %></span><span class="year"><%= answer.created_at.strftime("%Y") %></span></div>
-    <div class="number"><%= @user.answers.sort_by(&:created_at).reverse.count - index %></div>
-    <%= link_to "<h3>#{  markdown answer.answer  }</h3>".html_safe, answer_path(answer), class: 'answer-link' %>
   </div>
+  <% if answer != @user.answers.sort_by(&:created_at).reverse.last %>
+  <div class="dotted-hide-show" style="margin-top:30px;width:50%; height:50px; border-right: 1px dotted #AEAEAE;"></div>
+  <% else %>
+  <br><br>
+  <% end %>
+  <% end %>
 </div>
-</div>
-<% if answer != @user.answers.sort_by(&:created_at).reverse.last %>
-<div class="dotted-hide-show" style="margin-top:30px;width:50%; height:50px; border-right: 1px dotted #AEAEAE;"></div>
-<% else %>
-<br><br>
-<% end %>
-
-<% end %>
-
-</div>
-
-
-
 </section>
 
-
-<script>
-  $(document).ready(function() {
-    var addStreakTooltip = function() {
-      $.getJSON( "/pages/streak_tooltip?user=" +  "<%= @user.id %>" ).done(function( response ) {
-        console.log(response)
-      // $('.' + '<%=  %>')
-      for(i = 0; i < response.length; i++) {
-        var public_answer_content = function() {
-          var public_answer = response[i].public_answer
-          if(public_answer == true) {
-            return '<span>Esta respuesta es <strong>pública</strong>.</span>'
-          } else {
-            return '<span>Esta respuesta es <strong>privada</strong>.</span>'
-          }
-        }
-        $('.' + response[i].answer + '.tooltip').tooltipster({
-          content: $(' <span><strong>Pregunta: </strong>' + response[i].question + '</span><br><span><strong>Fecha: </strong>' + response[i].day + '</span> <br>' + public_answer_content() + '<br><span>Para ver tu respuesta haz click </span> <a href="/answers/'+ response[i].answer +'">aquí.</a>'),
-          interactive: true
-        })
-      }
-    }).fail(function( jqxhr, textStatus, error ) {
-      var err = textStatus + ", " + error;
-      console.log( "Request Failed: " + err );
-    });
+<style>
+   .profile-photo-name figure img {
+    z-index:100;
+    position:absolute;
+    left:-11px;
+    top:-11px;
+    clip-path:  polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -ms-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -webkit-clip-path:  polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: url(#clip);
+    width:100px;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    overflow: hidden;
   }
 
-  addStreakTooltip();
+  .square  {
+    margin-left: 20px;
+    border: 1px solid #F3F3F3;
+    height:80px;
+    width:80px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: 100;
+    position: relative;
+    background: white;
 
-  $('i.public-private').on('click', function() {
-    console.log('clicked');
-    var className = $(this).hasClass('fa-unlock-alt');
-    var answer_id = $(this).find('div').text();
-    if (className == true) {
-      console.log("De verde a rojo")
-      $.getJSON( "/pages/public_private_switch?answer_id=" +  answer_id ).done(function( response ) {
-        $('.public-private').removeClass('fa-unlock-alt')
-        $('.public-private').addClass('fa-lock')
-        $('*').filter(function() {
-          return $(this).data('tooltipsterNs');
-        }).tooltipster('destroy');
-        addStreakTooltip();
-      }).fail(function( jqxhr, textStatus, error ) {
-        var err = textStatus + ", " + error;
-        console.log( "Request Failed: " + err );
-      });
-    } else {
-      console.log("De rojo a verde")
-      $.getJSON( "/pages/public_private_switch?answer_id=" +  answer_id ).done(function( response ) {
-        $('.public-private').removeClass('fa-lock')
-        $('.public-private').addClass('fa-unlock-alt')
-        $('*').filter(function() {
-          return $(this).data('tooltipsterNs');
-        }).tooltipster('destroy');
-        addStreakTooltip();
-      }).fail(function( jqxhr, textStatus, error ) {
-        var err = textStatus + ", " + error;
-        console.log( "Request Failed: " + err );
-      });
-    }
-  })
-
-});
-$( ".answer .options a.btn-toggle-1" ).on( "click", function( event ) {event.preventDefault();});
-</script>
-
-<script>
-
-
-jQuery(function() {
-  return $("[data-behavior='delete']").on("click", function(e) {
-    e.preventDefault();
-    _this = $(this).attr('href');
-    console.log(_this);
-
-    return swal({
-      title: '¿ Estás seguro ?',
-      type: 'info',
-      showCancelButton: true,
-      confirmButtonColor: '#DD6B55',
-      confirmButtonText: 'Sí, borrar',
-      cancelButtonText: 'No',
-      closeOnConfirm: false,
-      closeOnCancel: true,
-      showLoaderOnConfirm: true,
-      allowOutsideClick: true
-    }, (function(_this) {
-      console.log(_this);
-      return function(confirmed) {
-        if (confirmed) {
-          $.ajax({
-            url: $(_this).attr("href"),
-            dataType: "JSON",
-            method: "DELETE",
-            success: function() {
-              location.reload();
-              // return swal( 'Tu respuesta ha sido borrada.');
-            }
-          });
-        } else {
-          swal('Tu respuesta no fue borrada.');
-        }
-      };
-    })(this));
-  });
-});
-
-
-</script>
+  }
+</style>
