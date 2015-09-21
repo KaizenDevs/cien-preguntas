@@ -1,0 +1,38 @@
+<script>
+  $("[class='my-checkbox']").bootstrapSwitch();
+  var facebookButton = $("a.social-share-button-facebook");
+  var twitterButton = $("a.social-share-button-twitter");
+  facebookButton.html('<i class="fa fa-facebook"></i>');
+  facebookButton.removeClass("social-share-button-facebook");
+  facebookButton.addClass("btn btn-social-icon btn-facebook");
+  twitterButton.html('<i class="fa fa-twitter"></i>');
+  twitterButton.removeClass("social-share-button-twitter");
+  twitterButton.addClass("btn btn-social-icon btn-twitter");
+
+  $(document).ready(function() {
+    $('input[class="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+      console.log(state);
+      if (state){
+        $('.social-btns').fadeIn()
+      }else{
+        $('.social-btns').fadeOut()
+      }
+    });
+  });
+
+  function wordCount( val ){
+    return {
+      charactersNoSpaces : val.replace(/\s+/g, '').length,
+      characters         : val.length,
+      words              : val.match(/\S+/g).length,
+      lines              : val.split(/\r*\n/).length
+    }
+  }
+
+  $('.new-answer form textarea').on('input', function(){
+    var c = wordCount( this.value );
+    $('.word-counter').text( c.words );
+  });
+
+  $('#answer_answer').autosize();
+</script>

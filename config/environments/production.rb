@@ -76,4 +76,41 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { :host => 'cien-preguntas.herokuapp.com' }
+
+  config.action_mailer.smtp_settings = {
+      address: ENV.fetch("SMTP_ADDRESS"),
+      authentication: :plain,
+      domain: ENV.fetch("SMTP_DOMAIN"),
+      enable_starttls_auto: true,
+      password: ENV.fetch("SMTP_PASSWORD"),
+      port: "587",
+      user_name: ENV.fetch("SMTP_USERNAME")
+    }
+
+  config.consider_all_requests_local = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: ENV["SMTP_DOMAIN"] }
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch("SMTP_ADDRESS"),
+    authentication: :plain,
+    domain: ENV.fetch("SMTP_DOMAIN"),
+    enable_starttls_auto: true,
+    password: ENV.fetch("SMTP_PASSWORD"),
+    port: "587",
+    user_name: ENV.fetch("SMTP_USERNAME")
+  }
+
+  # AWS Deploy
+   config.paperclip_defaults = {
+     :storage => :s3,
+     :url => ":s3_domain_url",
+     :path => '/:class/:attachment/:id_partition/:style/:filename',
+     :s3_credentials => {
+       :bucket => ENV['AWS_BUCKET'],
+       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+     }
+   }
 end

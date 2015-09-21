@@ -1,0 +1,109 @@
+<style>
+  .admin-dashboard {
+    margin-top: 10px;
+  }
+
+  .status {
+      font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .status .panel-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 54px;
+      font-weight: bold;
+      color: #fff;
+      line-height: 45px;
+      padding-top: 20px;
+      letter-spacing: -0.8px;
+  }
+</style>
+<div class="container admin-dashboard">
+  <h1>Dashboard de Administrador</h1>
+  <div class="row">
+    <div class="col-xs-6 col-md-3 col-md-offset-1">
+      <div class="panel status panel-success">
+        <div class="panel-heading">
+          <h1 class="panel-title text-center"><%= @answers.count %></h1>
+        </div>
+        <div class="panel-body text-center">
+          <strong>Respuestas Totales</strong>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <div class="panel status panel-success">
+        <div class="panel-heading">
+          <h1 class="panel-title text-center"><%= @users.count %></h1>
+        </div>
+        <div class="panel-body text-center">
+          <strong>Usuarios Registrados</strong>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <div class="panel status panel-info">
+        <div class="panel-heading">
+          <% if @answers.count > 0 %>
+            <h1 class="panel-title text-center"><%= average_answers_per_user %></h1>
+          <% else %>
+            <h1 class="panel-title text-center">0</h1>
+          <% end %>
+        </div>
+        <div class="panel-body text-center">
+          <strong>Respuestas promedio por usuario</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Número de Respuestas Diarias</h3>
+    </div>
+    <div class="panel-body">
+      <div id="myfirstchart" style="height: 250px;"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+  daily_data = function() {
+    $.ajax({
+            url: "/pages/daily_concepts",
+            type: "GET",
+          }).done( function(response) {
+            console.log(response[0])
+            return response
+          });
+  }
+
+  var render_map = function(daily_data) {
+    new Morris.Line({
+      // ID of the element in which to draw the chart.
+      element: 'myfirstchart',
+      // Chart data records -- each entry in this array corresponds to a point on
+      // the chart.
+      data: daily_data,
+      // The name of the data record attribute that contains x-values.
+      xkey: 'day',
+      xLabels: 'day',
+      // A list of names of data record attributes that contain y-values.
+      ykeys: ['answer'],
+      // Labels for the ykeys -- will be displayed when you hover over the
+      // chart.
+      labels: ['Answer']
+    });
+  }
+
+  $.getJSON( "/pages/daily_concepts" ).done(function( response ) {
+    console.log(response[30]);
+    render_map(response);
+  }).fail(function( jqxhr, textStatus, error ) {
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
+  });
+
+
+</script>

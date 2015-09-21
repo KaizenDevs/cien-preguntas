@@ -11,6 +11,14 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-switch
+//= require social-share-button
+//= require bootstrap-filestyle.min.js
+//= require typed.js
+//= require sweet-alert
+//= require jquery.autosize
+//= require cien-preguntas
 //= require_tree .

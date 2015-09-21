@@ -1,0 +1,43 @@
+<style>
+  body{ background: white;}
+</style>
+<script src="http://jquery-elastic.googlecode.com/svn/trunk/jquery.elastic.source.js"></script>
+<section class="section new-answer">
+  <div class="container-fluid">
+    <div class="col-lg-6 col-md-offset-3">
+      <p class="text-center">Puedes usar markdown para contestar la pregunta, aprende <a href="https://geekytheory.com/que-es-markdown-y-como-utilizarlo/" target="_blank">aqui</a></p>
+      <h2><%= @question.question %></h2>
+      <hr/>
+
+      <%= form_for [@question, @answer] do |f| %>
+
+      <h5><span class="word-counter pull-right">Palabras: 0</span></h5>
+      <%= f.text_area :answer, class: "answer", rows: "3", autofocus: true, placeholder: "Escribe aquí tu respuesta..." %>
+      <div class="form-group">
+        <div class="help-block text-center">
+        <div class="answer-social">
+          ¿Quieres que tu respuesta sea pública?
+        </div>
+          <%= f.check_box :public_answer , data: { "on-text" => "sí" , "off-text" => "no" , "size" => "mini" }, class: "my-checkbox" %>
+        </div>
+      </div>
+      <div class="text-center">
+        <%= f.submit "Publicar Respuesta", class: "btn btn-default answer-submit" %>
+      </div>
+      <% end %>
+      <div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="height: 30px"></div>
+<%= render 'social_switch' %>
+<style>
+  div.social-share-button {
+    display: inline-block;
+  }
+</style>
+
+<script>
+
+</script>

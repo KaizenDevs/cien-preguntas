@@ -8,6 +8,8 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
+  # Configure host for development
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -38,4 +40,19 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.action_mailer.default_url_options = { host: ENV["SMTP_DOMAIN"] }
+
+  config.action_mailer.smtp_settings = {
+      address: ENV.fetch("SMTP_ADDRESS"),
+      authentication: :plain,
+      domain: ENV.fetch("SMTP_DOMAIN"),
+      enable_starttls_auto: true,
+      password: ENV.fetch("SMTP_PASSWORD"),
+      port: "587",
+      user_name: ENV.fetch("SMTP_USERNAME")
+    }
+    # ENABLE BELOW LINE TO PREVIEW ERROR PAGES IN DEVELOPMENT
+    config.consider_all_requests_local = false
+
 end

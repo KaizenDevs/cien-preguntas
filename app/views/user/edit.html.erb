@@ -1,0 +1,46 @@
+<section class="section devise-form" style="padding-bottom: 0px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="well">
+          <h2>Editar <%= @user.name.humanize %></h2>
+          <%= bootstrap_form_for(@user, :url => user_path(@user) ) do |f| %>
+          <%= f.text_field :name, label: "Nombre",autofocus: true %>
+          <%= f.text_field :lastname, label: "Apellidos" %>
+          <%= f.email_field :email, label: "Correo electrónico" %>
+          <div>
+            <label>Foto Actual</label> <br>
+            <%= image_tag @user.avatar(:thumb) %>
+          </div>
+          <%= f.file_field :avatar, label: "Cambia tu foto" %>
+          <% if @user.provider != "facebook" %>
+            <%= f.password_field :password, label: "Contraseña (Si no desesas cambiar la contraseña, deja este campo y el siguiente en blanco)",autocomplete: "off" %>
+            <%= f.password_field :password_confirmation, label: "Confirmar contraseña",autocomplete: "off" %>
+            <%= f.password_field :current_password, label: "Contraseña actual (Ingresa la contraseña actual para que sean almacenados los anteriores cambios)",autocomplete: "off" %>
+          <% end %>
+          <%= f.submit "Actualizar" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section devise-form" style="padding-top: 0px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="well">
+          <h3>Cancelar mi cuenta</h3>
+
+          <p>No estas a gusto? <%= button_to "Cancelar Cuenta", registration_path(@user), data: { confirm: "Estas seguro que deseas cancelar tu cuenta?" }, method: :delete %></p>
+          <%= link_to "Regresar", :back %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  body{ background:#00BE66; }
+</style>

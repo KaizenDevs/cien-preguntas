@@ -1,0 +1,137 @@
+<section class="section section-profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+        <div class="profile-photo-name">
+          <div class="square">
+            <figure>
+              <%= image_tag @user.avatar %>
+              <svg>
+               <clipPath id="clip">
+                 <polygon points="50 0, 100 50, 50 100, 0 50"></polygon>
+               </clipPath>
+             </svg>
+           </figure>
+         </div>
+         <div class="right-block">
+          <h3><%= @user.first_name %></h3>
+          <div class="dropdown dropdown-container pull-right">
+            <button class="btn btn-default dropdown-toggle"  id="menu-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-cog"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="menu-options">
+              <li class="text-right">
+                <%= link_to " Editar datos  <span class='fa fa-pencil'></span>".html_safe , edit_user_path(current_user)  %>
+              </li>
+              <li class="text-right">
+                <%= link_to "Cancelar cuenta  <span class='fa fa-warning'></span>".html_safe, registration_path(@user), data: { confirm: "Estas seguro que deseas cancelar tu cuenta?" }, method: :delete %>
+              </li>
+            </ul>
+          </div>
+          <p class="pull-right"><%= @user.answers.count %><span>respuestas</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-lg-4 col-sm-4 col-lg-offset-2 col-sm-offset-2">
+      <div class="day-tip-container">
+        <div class="tip">tip del día:</div>
+        <p class="box"><strong>Responde una pregunta</strong> al día y aprende las habilidates más importantes del siglo XXI</p>
+      </div>
+    </div>
+
+    <% if day_streak(@user).count > 0 %>
+    <div class="col-lg-4 col-sm-4">
+      <h3 class="text-center"><strong>Días seguidos</strong></h3>
+      <ul class="streak-squares">
+        <% day_streak(@user).each_with_index do |answer, index| %>
+        <li><a href="#" class="<%= answer[:answer].first.id %> tooltip"><%= index + 1 %></a></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+
+  <h3 class="text-center"><strong>respuestas</strong></h3>
+  <div class="dotted-hide-show" style="margin-top:30px;width:50%; height:50px; border-right: 1px dotted #AEAEAE;"></div>
+
+  <% @user.answers.sort_by(&:created_at).reverse.each_with_index do |answer, index| %>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="answer">
+        <div class="options pull-left">
+          <ul class="list-inline">
+            <li>
+              <%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_question_answer_path(answer.question, answer) %>
+            </li>
+            <% if answer.public_answer == true %>
+            <li>
+              <a class="btn-toggle-1" href="#"><i class="public-private fa fa-unlock-alt"><div class="hidden"><%= answer.id %></div></i></a>
+            </li>
+            <% else %>
+            <li>
+              <a class="btn-toggle-1" href="#">
+                <i class="public-private fa fa-lock"><div class="hidden"><%= answer.id %></div></i>
+              </a>
+            </li>
+            <% end %>
+            <li>
+              <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, question_answer_path(answer.question, answer), data: { behavior: 'delete' } %>
+            </li>
+          </ul>
+        </div>
+        <div class="date pull-right">
+          <span class="day"><%= answer.created_at.strftime("%d") %></span>
+          <span class="month"><%= answer.created_at.strftime("%B").first(3) %></span>
+          <span class="year"><%= answer.created_at.strftime("%Y") %></span>
+        </div>
+        <div class="number">
+          <%= @user.answers.sort_by(&:created_at).reverse.count - index %>
+        </div>
+        <%= link_to "<h3> #{  answer.question.question  }</h3>#{  markdown answer.answer  }".html_safe, answer_path(answer), class: 'answer-link' %>
+      </div>
+    </div>
+  </div>
+  <% if answer != @user.answers.sort_by(&:created_at).reverse.last %>
+  <div class="dotted-hide-show" style="margin-top:30px;width:50%; height:50px; border-right: 1px dotted #AEAEAE;"></div>
+  <% else %>
+  <br><br>
+  <% end %>
+  <% end %>
+</div>
+</section>
+
+<style>
+   .profile-photo-name figure img {
+    z-index:100;
+    position:absolute;
+    left:-11px;
+    top:-11px;
+    clip-path:  polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -ms-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -webkit-clip-path:  polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: url(#clip);
+    width:100px;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    overflow: hidden;
+  }
+
+  .square  {
+    margin-left: 20px;
+    border: 1px solid #F3F3F3;
+    height:80px;
+    width:80px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: 100;
+    position: relative;
+    background: white;
+
+  }
+</style>
