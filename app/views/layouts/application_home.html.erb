@@ -37,7 +37,8 @@
   <%= yield %>
 
   <%= render 'layouts/footer' %>
-
+  <!-- LIVE RELOAD SCRIPT TO RUN ON OTHER DEVICES | DELETE ON PRODUCTION -->
+  <script src="http://<%= my_ip %>:35729/livereload.js?snipver=1"></script>
 </body>
 </html>
 <script>

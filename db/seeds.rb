@@ -16,7 +16,7 @@ Content.create(title: '¿Cuáles son los requerimientos?', content: 'Lo único q
 # 	User.create(email: Faker::Internet.email,password: "12345678",name: Faker::Name.first_name, lastname: Faker::Name.last_name, role: 0)
 # end
 
-
+answer_times = 5
 
 User.create(
   email: 'muygrafico@gmail.com',
@@ -38,14 +38,12 @@ User.create(
 
 )
 
-answer_times = 5
-
 answer_times.times do |x|
   x = x + 1
   Answer.create!(
     answer: "respuestas número #{x} del seed",
     question_id: x,
-    user_id: User.first,
+    user_id: 1,
     public_answer: rand(2) == 1 ? true : false,
     created_at: Date.today - (answer_times - x)
   )
