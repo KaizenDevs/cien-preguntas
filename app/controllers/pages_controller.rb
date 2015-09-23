@@ -8,7 +8,6 @@ class PagesController < ApplicationController
 	def home
      @content_column_1 = Content.where(content_order: 0)
      @content_column_2 = Content.where(content_order: 1)
-     render :layout => 'application_home'
 	end
 
   def profile

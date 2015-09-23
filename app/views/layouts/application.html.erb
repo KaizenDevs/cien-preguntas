@@ -22,25 +22,25 @@
     };
 
     (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
   </script>
 
   <%= render 'layouts/nav' %>
 
   <%= render 'layouts/alerts' %>
-
+  <%#= render 'layouts/navhome' %>
   <%= yield %>
 
   <%= render 'layouts/footer' %>
-
+  <!-- LIVE RELOAD SCRIPT TO RUN ON OTHER DEVICES | DELETE ON PRODUCTION -->
+  <script src="http://<%= my_ip %>:35729/livereload.js?snipver=1"></script>
 </body>
 </html>
-
 <script>
   $(".alert").fadeIn(500).css("opacity","0.85").delay( 6000 ).fadeOut( 1000 );
   $('.alerts').on('click','.alert',function(){ $(this).remove() });
