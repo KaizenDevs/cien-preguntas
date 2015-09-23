@@ -131,7 +131,7 @@ body{ background: #EEEEED;}
   .container:first-child{padding-top:3em;}
   .container{background: white;}
   .profile-photo-name{
-    padding-top:2em;
+    // padding-top:2em;
   }
 
   // figure img {
@@ -245,6 +245,8 @@ body{ background: #EEEEED;}
     margin:0;
     padding:0 30px;
     background:url(asset_path("profile/horizontal-line.png"));
+    position: relative;
+    z-index: 1000;
 
     li{
       display: inline-block;

@@ -39,7 +39,7 @@
         <h3 class="text-center"><strong>Días seguidos</strong></h3>
         <ul class="streak-squares">
           <% day_streak(@user).each_with_index do |answer, index| %>
-          <li><a href="#" class="<%= answer[:answer].first.id %> tooltip"><%= index + 1 %></a></li>
+          <li><a href="/answers/<%=  answer[:answer].first.id %>" class="<%= answer[:answer].first.id %> tooltip"><%= index + 1 %></a></li>
           <% end %>
         </ul>
       </div>
@@ -99,5 +99,5 @@
 
   </div>
 </section>
-<%= render 'pages/firefox__clippath_profile' %>
+<%= render 'pages/firefox_clippath_profile' %>
 <%= render 'pages/script_profile' %>
