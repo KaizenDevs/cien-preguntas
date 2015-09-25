@@ -38,3 +38,5 @@ group :development, :test do
   gem 'annotate'
   #gem 'spring'
 end
+
+ruby "2.1.2"
