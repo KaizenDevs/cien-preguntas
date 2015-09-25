@@ -2,8 +2,8 @@ require "mandrill"
 
 class BaseMandrillMailer < ActionMailer::Base
   default(
-    from: "German de 100Preguntas <germanescobarc@gmail.com>",
-    reply_to: "germanescobarc@gmail.com"
+    from: "German de 100Preguntas <german.escobar@makeitreal.camp>",
+    reply_to: "german.escobar@makeitreal.camp"
   )
 
   private
