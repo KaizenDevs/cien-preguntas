@@ -2,82 +2,85 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-6 col-md-8 col-md-offset-3">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <div class="profile-container">
-                <div style="background: url(<%= @answer.user.avatar.url(:thumb)  %>);" class="diamond white-edge" id="diamond-1"></div>
-                <div class="right-block">
-                  <div class="pull-left">
-                    <h3><%= @answer.user.first_name %></h3>
-                  </div>
-                  <div class="pull-right">
-                    <div class="date"><span class="day"><%= @answer.created_at.strftime("%d") %></span><span class="month"><%= @answer.created_at.strftime("%B").first(3) %></span><span class="year"><%= @answer.created_at.strftime("%Y") %></span></div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="question-text text-center"><%= @answer.question.question %></h2>
-              <hr>
-              <div class="answer-box text-left"><p><%= markdown @answer.answer %></p></div>
-              <!-- <div class="carousel-caption"></div> -->
-            </div>
-
-            <% if @answer.public_answer %>
-            <% @answers.each do |answer| %>
-            <div class="item">
-              <!-- Begin Profile block -->
-              <div class="profile-container">
-                <div style="background: #FFF url(<%= asset_path(answer.user.avatar.url(:thumb))  %>);" class="diamond white-edge"></div>
-                <div class="right-block">
-                  <div class="pull-left"><h3><%= answer.user.first_name %></h3></div>
-                  <div class="pull-right">
-                    <div class="date"><span class="day"><%= @answer.created_at.strftime("%d") %></span><span class="month"><%= @answer.created_at.strftime("%B").first(3) %></span><span class="year"><%= @answer.created_at.strftime("%Y") %></span></div>
-                  </div>
-                </div>
-              </div>
-              <!-- End Profile block -->
-              <h2 class="question-text"><%= answer.question.question %></h2>
-              <div class="answer-box text-left">
-                <%= markdown answer.answer %>
-              </div>
-
-            </div>
-            <% end %>
-
-            <% if user_signed_in? %>
-            <% if @answer_owner_id == current_user.id && @answer.public_answer %>
-            <br>
-            <span>Comparte en:</span>
-            <div class="text-center">
-              <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas! http://cienpreguntas.com/answers/#{@answer.id}", url: "cienpreguntas.com/answers/#{@answer.id}", :via => "cienpreguntas" ) %>
-            </div>
-            <% end %>
-            <% if User.find(current_user.id).questions.include?(Question.find(@question_id)) %>
-            <% if @answer_owner_id != current_user.id %>
-            <h2>ya la respondio <%= link_to "ver mi respuesta", answer_path(Answer.where(user_id: current_user.id).first) %></h2>
-            <% end %>
-            <% else %>
-            <h2>no la ha respondido</h2>
-            <% end %>
-            <% end %>
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-            <% end %>
-          </div>
-        </div>
-
+      <div class="col-xs-10 col-xs-offset-1">
+        <br>
+        <h2 class="question-text text-center"><%= @answer.question.question %></h2>
       </div>
     </div>
+    <div class="row">
+      <div class="col-xs-1">
+       <a class="left carousel-control inline-block" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </div>
+    <div class="col-xs-10">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <div class="profile-container">
+              <div class="right-block">
+                <div style="display:inline-block;background:#FFF url(<%= @answer.user.avatar.url(:thumb)  %>);" class="diamond white-edge"></div>
+                <h3><%= @answer.user.first_name %></h3>
+                <div class="date"><span class="day"><%= @answer.created_at.strftime("%d") %></span><span class="month"><%= @answer.created_at.strftime("%B").first(3) %></span><span class="year"><%= @answer.created_at.strftime("%Y") %></span></div>
+              </div>
+            </div>
+            <div class="answer-box"><p><%= markdown @answer.answer %></p></div>
+          </div>
+
+          <% if @answer.public_answer %>
+          <% @answers.each do |answer| %>
+          <div class="item">
+            <!-- Begin Profile block -->
+
+            <div class="profile-container">
+              <div class="right-block">
+                <div style="display:inline-block;background:#FFF url(<%= answer.user.avatar.url(:thumb)  %>);" class="diamond white-edge"></div>
+                <h3><%= answer.user.first_name %></h3>
+                <div class="date"><span class="day"><%= answer.created_at.strftime("%d") %></span><span class="month"><%= answer.created_at.strftime("%B").first(3) %></span><span class="year"><%= answer.created_at.strftime("%Y") %></span></div>
+              </div>
+            </div>
+            <!-- End Profile block -->
+
+            <div class="answer-box text-left">
+              <%= markdown answer.answer %>
+            </div>
+
+          </div>
+          <% end %>
+
+          <% if user_signed_in? %>
+          <% if @answer_owner_id == current_user.id && @answer.public_answer %>
+          <br>
+          <span>Comparte en:</span>
+          <div class="text-center">
+            <%= social_share_button_tag("He respondido una nueva pregunta en 100 preguntas! http://cienpreguntas.com/answers/#{@answer.id}", url: "cienpreguntas.com/answers/#{@answer.id}", :via => "cienpreguntas" ) %>
+          </div>
+          <% end %>
+          <% if User.find(current_user.id).questions.include?(Question.find(@question_id)) %>
+          <% if @answer_owner_id != current_user.id %>
+          <h2>ya la respondio <%= link_to "ver mi respuesta", answer_path(Answer.where(user_id: current_user.id).first) %></h2>
+          <% end %>
+          <% else %>
+          <h2>no la ha respondido</h2>
+          <% end %>
+          <% end %>
+
+
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-xs-1">
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
+</div>
 
 </section>
 <style>
@@ -89,16 +92,29 @@
     margin-top: 2em;
     height: 110px;
   }
+  .answer-show-section .profile-container h3{
+    display:inline-block;
+    position:absolute;
+  }
+
 
   .answer-show-section .answer-box {
     overflow: hidden;
   }
 
-   .answer-show-section{
+  .answer-show-section{
     padding-bottom: 2em;
-   }
+  }
+  .right.carousel-control, .left.carousel-control{
 
-
+    margin-top: 90px;
+  }
+  .right.carousel-control{
+    margin-right: 40px;
+  }
+  .left.carousel-control{
+    margin-left: 40px;
+  }
 </style>
 <script>
   var facebookButton = $("a.social-share-button-facebook");
